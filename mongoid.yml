@@ -8,7 +8,6 @@ development:
 production:
   sessions:
     default:
-      database: mongoid
       uri: <%= ENV['MONGOLAB_URI'] %>
       options:
         skip_version_check: true
