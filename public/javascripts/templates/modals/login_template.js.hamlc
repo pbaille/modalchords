@@ -1,0 +1,8 @@
+#login-modal.pop_up
+  #error
+    %p something went wrong please retry
+  %input#email{:name => "email", :size => 30, :type => "text" , :placeholder => "E-mail"}
+  %input#password{ :name => "password", :size => 30, :type => "password", :placeholder => "Password" }
+  %input#submit{ :value => "Login", :type => "submit" } 
+  #signup_link
+    %i.icon-feather

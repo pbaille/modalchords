@@ -1,0 +1,48 @@
+<link rel="import" href="./rz-inc_box_left/rz-inc_box_left.html">
+<link rel="import" href="./rz-inc_box_right/rz-inc_box_right.html">
+
+<element attributes='note oct value' name='rz-midi_box' >
+
+  <template >
+
+    <link href='./style.css' rel='stylesheet'>
+
+    <div id="wrapper">
+      <rz-inc_box_left id="note" values="C Db D Eb E F Gb G Ab A Bb B" current="C"></rz-inc_box_left>
+      <rz-inc_box_right id="oct" min=-5 max=5 index=0 ></rz-inc_box_right>
+    </div>
+  </template>
+
+  <script>
+
+    Polymer.register(this,{
+
+      
+      ready: function(){
+        if (this.value == null) {
+          this.note= this.$.note.current
+          this.oct= this.$.oct.current
+          this.value= this.$.note.index + this.$.oct.index * 12
+        }
+        else{
+          this.$.note.index= this.value%12;
+          this.$.oct.index= Math.floor(this.value/12);
+          this.update();
+        }
+      },
+
+      update: function() {
+        this.note =  this.$.note.current;
+        this.oct = this.$.oct.current;
+        this.value = this.$.note.index + this.$.oct.index * 12;
+      },
+
+      get val() {
+        this.update();
+        return this.value;
+      } 
+
+    })
+    
+  </script>
+</element>

@@ -1,0 +1,173 @@
+$case_width: 20
+$case_height: 30
+$case_margin: 2
+$global_padding: 4
+
+.tab-wrapper
+  display: inline-block
+  position: relative
+
+.tab
+  background: $theme_3
+  padding: #{$global_padding}px
+  border-radius: #{$case_width/3}px
+  margin: #{$case_width + 2 * $global_padding}px
+  display: inline-block
+  position: relative
+
+@for $i from 3 through 8 
+  .tab.y-#{$i} 
+    height: #{$case_height * $i + $case_width + ($i+1) * 2 * $case_margin}px
+
+@for $i from 3 through 8 
+  .tab.x-#{$i} 
+    width: #{$case_width * $i + ($i * 2 * $case_margin)}px
+  
+.case
+  width: #{$case_width}px
+  height: #{$case_height}px
+  margin: #{$case_margin}px
+  border-radius: #{$case_width/5}px
+  position: relative
+  float: left
+  overflow: hidden
+  line-height: #{$case_height}px
+  text-align: center
+  color: white
+  background: $theme_4
+
+  &.on
+    background: $theme_5
+  &.fret-0
+    width: #{$case_width}px
+    height: #{$case_width}px
+    border-radius: #{$case_width}px
+  &.num_bubble
+    background: $theme_2//rgb(80, 179, 218)
+    display: inline-block
+    border-radius: #{$case_width/2}px 
+    width: #{$case_width}px
+    height: #{$case_width}px
+    text-align: center
+    line-height: #{$case_width}px
+    margin-top: #{$global_padding + $case_margin*2}px
+    b.funct
+      font-size: 14px
+      color: rgba($theme_3, .8)
+      line-height: #{$case_width}px  
+
+.fret_index  
+  background: $theme_3//rgb(80, 179, 218)
+  display: inline-block
+  border-radius: 5px 0 0 5px
+  width: #{$case_width}px
+  height: #{$case_height}px
+  text-align: center
+  line-height: #{$case_width}px     
+  position: absolute
+  top: #{$case_width+(3 * $case_margin)+ $global_padding}px
+  left: #{$case_width * -1}px
+  b
+    font-size: 16px
+    color: $theme_2
+    line-height: #{$case_height}px   
+
+span.tab-icons
+  width: #{$case_width}px
+  position: absolute
+  bottom: 36px
+  right: 8px
+  i
+    padding: #{$case_margin}px
+    display: inline-block
+    &.icon-play
+      color: $theme_2
+    &.icon-heart-1, &.icon-cancel-2  
+      color: $theme_5
+    &.icon-cancel-2
+      font-size: 18px
+
+.chord-view
+  display: inline-block       
+
+// EDITABLE 
+
+input#chord-name
+  text-align: center
+  background: transparent
+  border: none
+  margin: 3px 5px -6px 5px
+  color: $theme_1
+  +border-radius
+  font-size: 16px
+  line-height: 20px
+  font-weight: bold
+  padding: 5px
+  width: 70%
+  outline: none
+  &:focus
+    background: $theme_5
+
+#edit-chord-wrapper
+  border: none
+  background: $theme_4
+  +border-radius(10px)    
+  padding: 20px 10px 30px 10px
+  .tab
+    background: $theme_1
+  .case
+    background: rgba($theme_3, .3)
+    &.on
+      background: $theme_2
+    &.num_bubble
+      background: $theme_5  
+  .fret_index  
+    background: $theme_1
+    b
+      color: $theme_5
+      font-weight: bold
+  #submit
+    background: $theme_2
+    width: 100px    
+// #edited_chord_name
+//   text-align: center
+//   input[type*=submit] 
+//     background: $theme_5
+//     margin: 5px
+//     border: none
+//     color: rgba($theme_3, .8)
+//     +border-radius
+//     font-size: 14px
+//     line-height: 20px
+//     padding: 5px
+//     width: 50%
+//     border: 2px solid rgba($theme_3, .8)
+//     &:hover
+//       color: $theme_3
+//       border: 2px solid $theme_3
+//       +box-shadow($theme_3 0 0 5px)
+//       +text-shadow($theme_3 0 0 2px)
+
+//   input[type*=text]
+//     text-align: center
+//     +box-sizing(border-box)
+//     width: 70%
+//     display: block
+//     line-height: 20px
+//     font-size: 16px
+//     +border-radius
+//     padding: 5px
+//     margin: 5px auto
+//     background: rgba($theme_3, .6)
+//     box-shadow: none
+//     border: 2px solid rgba($theme_3, .5)
+//     color: $theme_1
+//     font-weight: bold
+//     outline: none
+
+//     &:focus
+//       border: 2px solid $theme_3
+//       +box-shadow($theme_3 0 0 5px) 
+
+
+

@@ -1,0 +1,9 @@
+%a#user-area-link
+  %i.icon-user-male
+
+- if @email.slice(0,5) != "guest"
+  #logout_link
+    %i.icon-logout
+- else
+  #login_link
+    %i.icon-login

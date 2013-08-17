@@ -1,0 +1,67 @@
+$theme_1: #423A38
+$theme_2: #47B8C8
+$theme_3: #E7EEE2
+$theme_4: #BDB9B1
+$theme_5: #D7503E
+
+span ,a ,p, b, h1, h2, h3, h4, div
+  color: $theme_3
+
+body
+  background: $theme_1
+  text-align: center
+  
+//########### MODE MENU ###########
+
+#mode-menu-wrap
+  position: relative
+  height: 40px
+  padding-top: 10px
+  #mode-menu
+    display: inline-block
+    position: relative
+    z-index: 1
+
+#hide-menu
+  position: absolute
+  display: inline-block
+  color: rgba($theme_3, .3)
+  top: 13px
+  left: -20px
+  &:hover
+    color: rgba($theme_3, .6)
+
+#mode-menu .select-box-wrap
+  margin: 0 10px 
+
+//################################## 
+
+
+  
+#lean_overlay 
+  opacity: .5
+  position: fixed
+  z-index: 100
+  top: 0px
+  left: 0px
+  height: 100%
+  width: 100%
+  background: #000
+  display: none
+
+#user-menu
+  position: fixed
+  right: 20px
+  top: 0
+  #login_link, #logout_link
+    display: inline-block
+  i
+    color: rgba($theme_3, .6)
+    font-size: 20px
+    line-height: 50px
+    &:hover
+      color: rgba($theme_3, .9)
+
+ 
+
+

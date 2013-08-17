@@ -1,0 +1,861 @@
+/* line 17, ../../vendor/bundle/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../vendor/bundle/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../vendor/bundle/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../vendor/bundle/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../vendor/bundle/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../vendor/bundle/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../vendor/bundle/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../vendor/bundle/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../vendor/bundle/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 7, ../../app/assets/stylesheets/_general.sass */
+span, a, p, b, h1, h2, h3, h4, div {
+  color: #e7eee2;
+}
+
+/* line 10, ../../app/assets/stylesheets/_general.sass */
+body {
+  background: #423a38;
+  text-align: center;
+}
+
+/* line 16, ../../app/assets/stylesheets/_general.sass */
+#mode-menu-wrap {
+  position: relative;
+  height: 40px;
+  padding-top: 10px;
+}
+/* line 20, ../../app/assets/stylesheets/_general.sass */
+#mode-menu-wrap #mode-menu {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+
+/* line 25, ../../app/assets/stylesheets/_general.sass */
+#hide-menu {
+  position: absolute;
+  display: inline-block;
+  color: rgba(231, 238, 226, 0.3);
+  top: 13px;
+  left: -20px;
+}
+/* line 31, ../../app/assets/stylesheets/_general.sass */
+#hide-menu:hover {
+  color: rgba(231, 238, 226, 0.6);
+}
+
+/* line 34, ../../app/assets/stylesheets/_general.sass */
+#mode-menu .select-box-wrap {
+  margin: 0 10px;
+}
+
+/* line 41, ../../app/assets/stylesheets/_general.sass */
+#lean_overlay {
+  opacity: 0.5;
+  position: fixed;
+  z-index: 100;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  background: black;
+  display: none;
+}
+
+/* line 52, ../../app/assets/stylesheets/_general.sass */
+#user-menu {
+  position: fixed;
+  right: 20px;
+  top: 0;
+}
+/* line 56, ../../app/assets/stylesheets/_general.sass */
+#user-menu #login_link, #user-menu #logout_link {
+  display: inline-block;
+}
+/* line 58, ../../app/assets/stylesheets/_general.sass */
+#user-menu i {
+  color: rgba(231, 238, 226, 0.6);
+  font-size: 20px;
+  line-height: 50px;
+}
+/* line 62, ../../app/assets/stylesheets/_general.sass */
+#user-menu i:hover {
+  color: rgba(231, 238, 226, 0.9);
+}
+
+/* line 8, ../../app/assets/stylesheets/_struct_form.sass */
+.hidden {
+  display: none !important;
+}
+
+/* line 11, ../../app/assets/stylesheets/_struct_form.sass */
+#struct_form_wrap {
+  position: relative;
+  display: inline-block;
+  margin: 10px auto 0 auto;
+  text-align: center;
+  padding-left: 20px;
+}
+
+/* line 23, ../../app/assets/stylesheets/_struct_form.sass */
+.wrapper {
+  width: 80px;
+  height: 80px;
+  display: inline-block;
+  background: transparent;
+  position: relative;
+}
+
+/* line 30, ../../app/assets/stylesheets/_struct_form.sass */
+.main {
+  cursor: default;
+  margin: 10px 20px 10px 0;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 3px solid #e7eee2;
+  cursor: pointer;
+}
+/* line 41, ../../app/assets/stylesheets/_struct_form.sass */
+.main.enabled {
+  background: #47b8c8;
+}
+/* line 43, ../../app/assets/stylesheets/_struct_form.sass */
+.main.enabled b {
+  color: #423a38;
+}
+/* line 45, ../../app/assets/stylesheets/_struct_form.sass */
+.main.disabled {
+  background: #423a38;
+}
+/* line 47, ../../app/assets/stylesheets/_struct_form.sass */
+.main.disabled b {
+  color: rgba(231, 238, 226, 0.6);
+}
+/* line 49, ../../app/assets/stylesheets/_struct_form.sass */
+.main.uniq {
+  background: #d7503e;
+}
+/* line 51, ../../app/assets/stylesheets/_struct_form.sass */
+.main.uniq b {
+  color: #423a38;
+}
+/* line 53, ../../app/assets/stylesheets/_struct_form.sass */
+.main.optional {
+  background: #bdb9b1;
+}
+/* line 55, ../../app/assets/stylesheets/_struct_form.sass */
+.main.optional b {
+  color: #423a38;
+}
+/* line 58, ../../app/assets/stylesheets/_struct_form.sass */
+.main b {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  line-height: 60px;
+  font-size: 26.66667px;
+}
+
+/* line 65, ../../app/assets/stylesheets/_struct_form.sass */
+.bub {
+  position: absolute;
+  background: #50b3da;
+  display: inline-block;
+  border-radius: 10px;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  left: 20px;
+  border: 2px solid #e7eee2;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 76, ../../app/assets/stylesheets/_struct_form.sass */
+.bub b {
+  color: white;
+  line-height: 20px;
+}
+/* line 79, ../../app/assets/stylesheets/_struct_form.sass */
+.bub.top {
+  cursor: n-resize;
+  top: 0px;
+}
+/* line 82, ../../app/assets/stylesheets/_struct_form.sass */
+.bub.bottom {
+  cursor: s-resize;
+  bottom: 0px;
+}
+/* line 85, ../../app/assets/stylesheets/_struct_form.sass */
+.bub.uniq {
+  background: #47b8c8;
+}
+/* line 87, ../../app/assets/stylesheets/_struct_form.sass */
+.bub.uniq b {
+  color: #423a38;
+}
+/* line 89, ../../app/assets/stylesheets/_struct_form.sass */
+.bub.enabled {
+  background: #d7503e;
+}
+/* line 91, ../../app/assets/stylesheets/_struct_form.sass */
+.bub.enabled b {
+  color: #423a38;
+}
+/* line 93, ../../app/assets/stylesheets/_struct_form.sass */
+.bub.disabled {
+  background: #423a38;
+}
+/* line 95, ../../app/assets/stylesheets/_struct_form.sass */
+.bub.disabled b {
+  color: #423a38;
+}
+/* line 97, ../../app/assets/stylesheets/_struct_form.sass */
+.bub.optional {
+  background: #47b8c8;
+}
+
+/* line 99, ../../app/assets/stylesheets/_struct_form.sass */
+.state-selector-wrap {
+  position: absolute;
+  width: 11px;
+  display: inline-block;
+  right: 7px;
+  top: 15px;
+  cursor: none;
+}
+
+/* line 107, ../../app/assets/stylesheets/_struct_form.sass */
+.little_circle {
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  border-radius: 20px;
+  height: 7px;
+  width: 7px;
+  display: inline-block;
+  float: left;
+  margin: 2px;
+}
+/* line 114, ../../app/assets/stylesheets/_struct_form.sass */
+.little_circle:hover {
+  height: 11px;
+  width: 11px;
+  margin: 0px;
+}
+/* line 119, ../../app/assets/stylesheets/_struct_form.sass */
+.little_circle.enabled {
+  background: #47b8c8;
+  border: 1px solid #47b8c8;
+}
+/* line 122, ../../app/assets/stylesheets/_struct_form.sass */
+.little_circle.disabled {
+  background: #423a38;
+  border: 1px solid #bdb9b1;
+}
+/* line 125, ../../app/assets/stylesheets/_struct_form.sass */
+.little_circle.optional {
+  background: #bdb9b1;
+  border: 1px solid #bdb9b1;
+}
+/* line 128, ../../app/assets/stylesheets/_struct_form.sass */
+.little_circle.uniq {
+  background: #d7503e;
+  border: 1px solid #d7503e;
+}
+
+/* line 132, ../../app/assets/stylesheets/_struct_form.sass */
+#struct_form_icon_wrap.right {
+  display: inline-block;
+  position: absolute;
+  top: 28px;
+  right: -77px;
+}
+/* line 137, ../../app/assets/stylesheets/_struct_form.sass */
+#struct_form_icon_wrap.right i {
+  color: rgba(231, 238, 226, 0.5);
+}
+/* line 139, ../../app/assets/stylesheets/_struct_form.sass */
+#struct_form_icon_wrap.right i:hover {
+  color: rgba(231, 238, 226, 0.8);
+}
+
+/* line 142, ../../app/assets/stylesheets/_struct_form.sass */
+#struct_form_icon_wrap.left {
+  display: inline-block;
+  position: absolute;
+  top: 28px;
+  left: -77px;
+}
+/* line 147, ../../app/assets/stylesheets/_struct_form.sass */
+#struct_form_icon_wrap.left i {
+  color: rgba(231, 238, 226, 0.5);
+}
+/* line 149, ../../app/assets/stylesheets/_struct_form.sass */
+#struct_form_icon_wrap.left i:hover {
+  color: rgba(231, 238, 226, 0.8);
+}
+
+/* line 1, ../../app/assets/stylesheets/_options.sass */
+#options-wrapper {
+  display: inline-block;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  width: 400px;
+  background: #bdb9b1;
+  border: 3px solid rgba(231, 238, 226, 0.7);
+  margin: 10px;
+}
+/* line 9, ../../app/assets/stylesheets/_options.sass */
+#options-wrapper .opt-item {
+  height: 60px;
+}
+/* line 11, ../../app/assets/stylesheets/_options.sass */
+#options-wrapper .opt-item span.label {
+  color: #423a38;
+  line-height: 60px;
+  font-size: 18px;
+  float: left;
+  margin-left: 10px;
+}
+/* line 18, ../../app/assets/stylesheets/_options.sass */
+#options-wrapper .control {
+  float: right;
+  margin: 5px 12px;
+}
+/* line 22, ../../app/assets/stylesheets/_options.sass */
+#options-wrapper .opt-item:nth-child(2n+1) {
+  background: rgba(231, 238, 226, 0.2);
+}
+/* line 25, ../../app/assets/stylesheets/_options.sass */
+#options-wrapper .cycle-box {
+  float: right;
+  margin: 15px 12px;
+}
+
+/* line 6, ../../app/assets/stylesheets/_modals.sass */
+::-webkit-input-placeholder {
+  color: rgba(66, 58, 56, 0.5);
+}
+
+/* line 8, ../../app/assets/stylesheets/_modals.sass */
+::-moz-placeholder {
+  color: rgba(66, 58, 56, 0.5);
+}
+
+/* line 12, ../../app/assets/stylesheets/_modals.sass */
+#modals #signup-modal, #modals #login-modal, #modals #search-naming, #modals #chord-naming, #modals #options-wrapper, #modals #user-area-modal, #modals #edit-chord-wrapper {
+  display: none;
+}
+
+/* line 15, ../../app/assets/stylesheets/_modals.sass */
+.pop_up, #signup-form, #login-form, #search-naming, #chord-naming {
+  position: fixed;
+  top: 125px;
+  z-index: 12000;
+  left: 50%;
+  margin-left: -133px;
+  display: inline-block;
+  width: 250px;
+  background: #47b8c8;
+  padding: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  border: 3px solid rgba(231, 238, 226, 0.3);
+}
+/* line 32, ../../app/assets/stylesheets/_modals.sass */
+.pop_up #email, .pop_up #password, .pop_up #confirm-password, .pop_up #user-fav-name, #signup-form #email, #signup-form #password, #signup-form #confirm-password, #signup-form #user-fav-name, #login-form #email, #login-form #password, #login-form #confirm-password, #login-form #user-fav-name, #search-naming #email, #search-naming #password, #search-naming #confirm-password, #search-naming #user-fav-name, #chord-naming #email, #chord-naming #password, #chord-naming #confirm-password, #chord-naming #user-fav-name {
+  text-align: center;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 240px;
+  display: block;
+  line-height: 25px;
+  font-size: 16px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+  background: rgba(231, 238, 226, 0.6);
+  box-shadow: none;
+  border: 2px solid rgba(231, 238, 226, 0.5);
+  color: #423a38;
+  font-weight: bold;
+  outline: none;
+}
+/* line 49, ../../app/assets/stylesheets/_modals.sass */
+.pop_up #email:focus, .pop_up #password:focus, .pop_up #confirm-password:focus, .pop_up #user-fav-name:focus, #signup-form #email:focus, #signup-form #password:focus, #signup-form #confirm-password:focus, #signup-form #user-fav-name:focus, #login-form #email:focus, #login-form #password:focus, #login-form #confirm-password:focus, #login-form #user-fav-name:focus, #search-naming #email:focus, #search-naming #password:focus, #search-naming #confirm-password:focus, #search-naming #user-fav-name:focus, #chord-naming #email:focus, #chord-naming #password:focus, #chord-naming #confirm-password:focus, #chord-naming #user-fav-name:focus {
+  border: 2px solid #e7eee2;
+  -webkit-box-shadow: #e7eee2 0 0 5px;
+  -moz-box-shadow: #e7eee2 0 0 5px;
+  box-shadow: #e7eee2 0 0 5px;
+}
+/* line 54, ../../app/assets/stylesheets/_modals.sass */
+.pop_up #submit, #signup-form #submit, #login-form #submit, #search-naming #submit, #chord-naming #submit {
+  background: #d7503e;
+  margin: 5px;
+  border: none;
+  color: rgba(231, 238, 226, 0.8);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 5px;
+  width: 60%;
+  border: 2px solid rgba(231, 238, 226, 0.8);
+}
+/* line 65, ../../app/assets/stylesheets/_modals.sass */
+.pop_up #submit:hover, #signup-form #submit:hover, #login-form #submit:hover, #search-naming #submit:hover, #chord-naming #submit:hover {
+  color: #e7eee2;
+  border: 2px solid #e7eee2;
+  -webkit-box-shadow: #e7eee2 0 0 5px;
+  -moz-box-shadow: #e7eee2 0 0 5px;
+  box-shadow: #e7eee2 0 0 5px;
+  text-shadow: #e7eee2 0 0 2px;
+}
+/* line 71, ../../app/assets/stylesheets/_modals.sass */
+.pop_up #login_link, .pop_up #signup_link, #signup-form #login_link, #signup-form #signup_link, #login-form #login_link, #login-form #signup_link, #search-naming #login_link, #search-naming #signup_link, #chord-naming #login_link, #chord-naming #signup_link {
+  position: absolute;
+  bottom: 18px;
+  right: 27px;
+  opacity: 0.4;
+}
+/* line 76, ../../app/assets/stylesheets/_modals.sass */
+.pop_up #login_link:hover, .pop_up #signup_link:hover, #signup-form #login_link:hover, #signup-form #signup_link:hover, #login-form #login_link:hover, #login-form #signup_link:hover, #search-naming #login_link:hover, #search-naming #signup_link:hover, #chord-naming #login_link:hover, #chord-naming #signup_link:hover {
+  opacity: 0.8;
+}
+
+/* line 6, ../../app/assets/stylesheets/_cycle-box.sass */
+.cycle-box {
+  width: 80px;
+  height: 30px;
+}
+/* line 10, ../../app/assets/stylesheets/_cycle-box.sass */
+.cycle-box p {
+  text-align: center;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 2px solid #e7eee2;
+  line-height: 26px;
+  font-weight: bold;
+  color: #423a38;
+}
+
+/* line 21, ../../app/assets/stylesheets/_cycle-box.sass */
+p.one {
+  background: #47b8c8;
+}
+/* line 23, ../../app/assets/stylesheets/_cycle-box.sass */
+p.two {
+  background: #d7503e;
+}
+/* line 25, ../../app/assets/stylesheets/_cycle-box.sass */
+p.three {
+  background: #bdb9b1;
+}
+
+/* line 1, ../../app/assets/stylesheets/_tuning_menu.sass */
+#tuning-menu {
+  display: block;
+  height: 80px;
+}
+/* line 4, ../../app/assets/stylesheets/_tuning_menu.sass */
+#tuning-menu #tuning-wrapper {
+  background: rgba(189, 185, 177, 0.2);
+  -moz-border-radius-topleft: 5px;
+  -webkit-border-top-left-radius: 5px;
+  border-top-left-radius: 5px;
+  -moz-border-radius-topright: 5px;
+  -webkit-border-top-right-radius: 5px;
+  border-top-right-radius: 5px;
+  display: inline-block;
+  padding: 0 10px;
+}
+/* line 9, ../../app/assets/stylesheets/_tuning_menu.sass */
+#tuning-menu #tuning-wrapper rz-midi_box {
+  padding: 5px;
+}
+/* line 12, ../../app/assets/stylesheets/_tuning_menu.sass */
+#tuning-menu #tuning-wrapper rz-inc_box p {
+  margin-bottom: 3px;
+}
+/* line 15, ../../app/assets/stylesheets/_tuning_menu.sass */
+#tuning-menu #tuning-wrapper #instument_settings_wrap {
+  float: left;
+  padding: 10px;
+}
+/* line 19, ../../app/assets/stylesheets/_tuning_menu.sass */
+#tuning-menu #tuning-wrapper #instument_settings_wrap #strings-wrap {
+  float: left;
+  padding: 5px;
+  margin: 0 5px 0 0;
+}
+/* line 24, ../../app/assets/stylesheets/_tuning_menu.sass */
+#tuning-menu #tuning-wrapper #tuning {
+  display: inline-block;
+}
+
+/* line 1, ../../app/assets/stylesheets/_selectBox.sass */
+.select-box-wrap {
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+}
+
+/* line 6, ../../app/assets/stylesheets/_selectBox.sass */
+.select-box {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  display: inline-block;
+  background: #47b8c8;
+  overflow: hidden;
+}
+
+/* line 17, ../../app/assets/stylesheets/_selectBox.sass */
+.item {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  background: #e7eee2;
+  color: #423a38;
+}
+/* line 21, ../../app/assets/stylesheets/_selectBox.sass */
+.item.hov {
+  background: #d7503e;
+  color: #e7eee2;
+}
+
+/* line 24, ../../app/assets/stylesheets/_selectBox.sass */
+.group {
+  background: rgba(231, 238, 226, 0.5);
+}
+
+/* line 6, ../../app/assets/stylesheets/_tablature.sass */
+.tab-wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+/* line 10, ../../app/assets/stylesheets/_tablature.sass */
+.tab {
+  background: #e7eee2;
+  padding: 4px;
+  border-radius: 6.66667px;
+  margin: 28px;
+  display: inline-block;
+  position: relative;
+}
+
+/* line 19, ../../app/assets/stylesheets/_tablature.sass */
+.tab.y-3 {
+  height: 126px;
+}
+
+/* line 19, ../../app/assets/stylesheets/_tablature.sass */
+.tab.y-4 {
+  height: 160px;
+}
+
+/* line 19, ../../app/assets/stylesheets/_tablature.sass */
+.tab.y-5 {
+  height: 194px;
+}
+
+/* line 19, ../../app/assets/stylesheets/_tablature.sass */
+.tab.y-6 {
+  height: 228px;
+}
+
+/* line 19, ../../app/assets/stylesheets/_tablature.sass */
+.tab.y-7 {
+  height: 262px;
+}
+
+/* line 19, ../../app/assets/stylesheets/_tablature.sass */
+.tab.y-8 {
+  height: 296px;
+}
+
+/* line 23, ../../app/assets/stylesheets/_tablature.sass */
+.tab.x-3 {
+  width: 72px;
+}
+
+/* line 23, ../../app/assets/stylesheets/_tablature.sass */
+.tab.x-4 {
+  width: 96px;
+}
+
+/* line 23, ../../app/assets/stylesheets/_tablature.sass */
+.tab.x-5 {
+  width: 120px;
+}
+
+/* line 23, ../../app/assets/stylesheets/_tablature.sass */
+.tab.x-6 {
+  width: 144px;
+}
+
+/* line 23, ../../app/assets/stylesheets/_tablature.sass */
+.tab.x-7 {
+  width: 168px;
+}
+
+/* line 23, ../../app/assets/stylesheets/_tablature.sass */
+.tab.x-8 {
+  width: 192px;
+}
+
+/* line 26, ../../app/assets/stylesheets/_tablature.sass */
+.case {
+  width: 20px;
+  height: 30px;
+  margin: 2px;
+  border-radius: 4px;
+  position: relative;
+  float: left;
+  overflow: hidden;
+  line-height: 30px;
+  text-align: center;
+  color: white;
+  background: #bdb9b1;
+}
+/* line 39, ../../app/assets/stylesheets/_tablature.sass */
+.case.on {
+  background: #d7503e;
+}
+/* line 41, ../../app/assets/stylesheets/_tablature.sass */
+.case.fret-0 {
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+}
+/* line 45, ../../app/assets/stylesheets/_tablature.sass */
+.case.num_bubble {
+  background: #47b8c8;
+  display: inline-block;
+  border-radius: 10px;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  margin-top: 8px;
+}
+/* line 54, ../../app/assets/stylesheets/_tablature.sass */
+.case.num_bubble b.funct {
+  font-size: 14px;
+  color: rgba(231, 238, 226, 0.8);
+  line-height: 20px;
+}
+
+/* line 59, ../../app/assets/stylesheets/_tablature.sass */
+.fret_index {
+  background: #e7eee2;
+  display: inline-block;
+  border-radius: 5px 0 0 5px;
+  width: 20px;
+  height: 30px;
+  text-align: center;
+  line-height: 20px;
+  position: absolute;
+  top: 30px;
+  left: -20px;
+}
+/* line 70, ../../app/assets/stylesheets/_tablature.sass */
+.fret_index b {
+  font-size: 16px;
+  color: #47b8c8;
+  line-height: 30px;
+}
+
+/* line 75, ../../app/assets/stylesheets/_tablature.sass */
+span.tab-icons {
+  width: 20px;
+  position: absolute;
+  bottom: 36px;
+  right: 8px;
+}
+/* line 80, ../../app/assets/stylesheets/_tablature.sass */
+span.tab-icons i {
+  padding: 2px;
+  display: inline-block;
+}
+/* line 83, ../../app/assets/stylesheets/_tablature.sass */
+span.tab-icons i.icon-play {
+  color: #47b8c8;
+}
+/* line 85, ../../app/assets/stylesheets/_tablature.sass */
+span.tab-icons i.icon-heart-1, span.tab-icons i.icon-cancel-2 {
+  color: #d7503e;
+}
+/* line 87, ../../app/assets/stylesheets/_tablature.sass */
+span.tab-icons i.icon-cancel-2 {
+  font-size: 18px;
+}
+
+/* line 90, ../../app/assets/stylesheets/_tablature.sass */
+.chord-view {
+  display: inline-block;
+}
+
+/* line 95, ../../app/assets/stylesheets/_tablature.sass */
+input#chord-name {
+  text-align: center;
+  background: transparent;
+  border: none;
+  margin: 3px 5px -6px 5px;
+  color: #423a38;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: bold;
+  padding: 5px;
+  width: 70%;
+  outline: none;
+}
+/* line 108, ../../app/assets/stylesheets/_tablature.sass */
+input#chord-name:focus {
+  background: #d7503e;
+}
+
+/* line 111, ../../app/assets/stylesheets/_tablature.sass */
+#edit-chord-wrapper {
+  border: none;
+  background: #bdb9b1;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  padding: 20px 10px 30px 10px;
+}
+/* line 116, ../../app/assets/stylesheets/_tablature.sass */
+#edit-chord-wrapper .tab {
+  background: #423a38;
+}
+/* line 118, ../../app/assets/stylesheets/_tablature.sass */
+#edit-chord-wrapper .case {
+  background: rgba(231, 238, 226, 0.3);
+}
+/* line 120, ../../app/assets/stylesheets/_tablature.sass */
+#edit-chord-wrapper .case.on {
+  background: #47b8c8;
+}
+/* line 122, ../../app/assets/stylesheets/_tablature.sass */
+#edit-chord-wrapper .case.num_bubble {
+  background: #d7503e;
+}
+/* line 124, ../../app/assets/stylesheets/_tablature.sass */
+#edit-chord-wrapper .fret_index {
+  background: #423a38;
+}
+/* line 126, ../../app/assets/stylesheets/_tablature.sass */
+#edit-chord-wrapper .fret_index b {
+  color: #d7503e;
+  font-weight: bold;
+}
+/* line 129, ../../app/assets/stylesheets/_tablature.sass */
+#edit-chord-wrapper #submit {
+  background: #47b8c8;
+  width: 100px;
+}

@@ -1,0 +1,9 @@
+%input#chord-name{:name => "name", :size => 20, :type => "text" , :value => @name}
+#edit-chord{ :rel => "tablature", :editable => "true", :strings_nb => @tab.length, :frets_nb => @tab_width, :start_fret => @tab_index, :chord => @tab.map((x)-> if x == null then "null" else x).toString(), :tuning => @tuning.toString()}
+  %span.tab-icons
+    %i.icon-play 
+
+%input#submit{:type => "submit", :value => "Save"}      
+  / #edited_chord_name
+  /   %input{:type => "text", :placeholder => "untitled"}
+  /   %input{:type => "submit", :value => "Save"}  

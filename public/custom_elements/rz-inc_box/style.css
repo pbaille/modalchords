@@ -1,0 +1,63 @@
+@host {
+  /* line 15, sass/style.sass */
+  * {
+    display: inline-block;
+    text-align: center;
+  }
+}
+
+/* line 19, sass/style.sass */
+#wrapper {
+  width: 34px;
+  height: 50px;
+  display: inline-block;
+  background: transparent;
+  position: relative;
+}
+
+/* line 26, sass/style.sass */
+#display {
+  margin: 8px 0;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  border: 2px solid #e7eee2;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  background: #d7503e;
+}
+/* line 35, sass/style.sass */
+#display b {
+  color: #423a38;
+  line-height: 30px;
+  font-size: 15px;
+}
+
+/* line 41, sass/style.sass */
+.arrow {
+  width: 0px;
+  height: 0px;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  position: absolute;
+  display: inline-block;
+  text-align: center;
+  left: 9px;
+}
+/* line 50, sass/style.sass */
+.arrow.up {
+  border-bottom: 8px solid #e7eee2;
+  top: 0;
+}
+/* line 53, sass/style.sass */
+.arrow.down {
+  border-top: 8px solid #e7eee2;
+  bottom: 0;
+}
+/* line 56, sass/style.sass */
+.arrow.hidden {
+  display: none;
+}

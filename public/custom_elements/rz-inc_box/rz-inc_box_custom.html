@@ -1,0 +1,70 @@
+
+<element attributes='min max index current values color br' name='rz-inc_box_custom' >
+
+  <template >
+    <link href='./style.css' rel='stylesheet'>
+    <div id='wrapper' on-pointerover='disparrow' on-pointerout='hidarrow' touch-action="none">
+      <div id='display' ><b>{{current}}</b></div>
+      <div id='up' class='arrow up hidden' on-tap='up' touch-action='none'> </div>
+      <div id='down' class='arrow down hidden' on-tap='down' touch-action='none'> </div>
+    </div>
+  </template>
+
+  <script>
+
+    Polymer.register(this,{
+
+      min: 0,
+      max: 10,
+      index: 0,
+      current: 0,
+      values: " ",
+
+      color: null,
+      br: null,
+
+      up: function(){
+        if (this.index < this.max) {this.index++;}
+      },
+
+      down: function(){
+        if (this.index > this.min) {this.index--;}
+      },
+
+      disparrow: function(){
+        this.$.up.classList.toggle('hidden');
+        this.$.down.classList.toggle('hidden');
+      },
+
+      hidarrow: function(){
+        this.$.up.classList.toggle('hidden');
+        this.$.down.classList.toggle('hidden');
+      },
+
+      indexChanged: function() {
+        if (this.values == " "){this.current = this.index;}
+        else {this.current= this.values[this.index];} 
+      },
+
+      ready: function(){
+        if (this.values != " "){
+          this.values=this.values.split(" ");
+          this.min=0;
+          this.max=(this.values.length)-1;
+          this.current=this.values[this.index];
+        }
+        else { this.current=this.index;}
+
+        if (this.color != null){
+          this.$.display.style.background=this.color;
+        }
+        if (this.br != null){
+          this.$.display.style.borderRadius=this.br;
+        }
+
+      }
+
+    })
+    
+  </script>
+</element>

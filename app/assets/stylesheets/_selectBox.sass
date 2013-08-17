@@ -1,0 +1,25 @@
+.select-box-wrap
+  position: relative
+  display: inline-block
+  margin: 10px
+
+.select-box
+  +box-sizing(border-box)
+  +border-radius
+  position: absolute
+  top: 0px
+  right: 0px
+  display: inline-block
+  background: $theme_2
+  overflow: hidden
+  
+  
+.item
+  +border-radius
+  background: $theme_3
+  color: $theme_1
+  &.hov
+    background: $theme_5
+    color: $theme_3
+.group
+  background: rgba($theme_3, .5)

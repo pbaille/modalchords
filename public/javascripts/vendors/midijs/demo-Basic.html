@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns = "http://www.w3.org/1999/xhtml">
+<head>
+ <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+ <!-- midi.js package -->
+ <script src="./js/MIDI/AudioDetect.js" type="text/javascript"></script>
+ <script src="./js/MIDI/LoadPlugin.js" type="text/javascript"></script>
+ <script src="./js/MIDI/Plugin.js" type="text/javascript"></script>
+ <script src="./js/MIDI/Player.js" type="text/javascript"></script>
+ <script src="./js/Window/DOMLoader.XMLHttp.js" type="text/javascript"></script>
+ <script src="./js/Window/DOMLoader.script.js" type="text/javascript"></script>
+ <!-- extras -->
+ <script src="./inc/Base64.js" type="text/javascript"></script>
+ <script src="./inc/base64binary.js" type="text/javascript"></script>
+</head>
+<body>
+<input type="button" onclick="arpegio(0,[60,63,67,71],60,0.1,2);">
+<script type="text/javascript">
+
+window.onload = function () {
+
+	MIDI.loadPlugin({
+		soundfontUrl: "./soundfont/",
+		instrument: "acoustic_grand_piano",
+		callback: function() {}
+	});
+
+	play_note = function(channel,pitch,vel,duration){
+		MIDI.noteOn(channel, pitch, vel, 0);
+		MIDI.noteOff(channel, pitch, duration);
+	}
+
+	plan_note = function(channel,pitch,vel,duration,start_time){
+		MIDI.noteOn(channel, pitch, vel, start_time);
+		MIDI.noteOff(channel, pitch, start_time+duration);
+	}
+
+	play_chord = function(channel,pitches,vel,duration){
+		for (index = 0; index < pitches.length; ++index) {
+    		play_note(channel,pitches[index],vel,duration);
+		}
+	}
+	arpegio = function(channel,pitches,vel,speed,duration){
+		for (index = 0; index < pitches.length; ++index) {
+    		plan_note(channel,pitches[index],vel,duration,speed*index);
+		}
+	}
+    	
+    	
+};
+
+</script>
+</body>
+</html>

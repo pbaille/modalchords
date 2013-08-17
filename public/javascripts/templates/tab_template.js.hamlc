@@ -1,0 +1,15 @@
+- if @name != "untitled"
+  %p
+    = @name
+  .saved_chord_tab{ :rel => "tablature", :editable => "false", :strings_nb => @tab.length, :frets_nb => @tab_width, :start_fret => @tab_index, :chord => @tab.map((x)-> if x == null then "null" else x).toString(), :tuning => @tuning.toString()}
+    %span.tab-icons
+      %i.icon-play    
+      %i.icon-wrench
+      %i.icon-cancel-2
+
+- else
+  .search_chord_tab{ :rel => "tablature", :editable => "false", :strings_nb => @tab.length, :frets_nb => @tab_width, :start_fret => @tab_index, :chord => @tab.map((x)-> if x == null then "null" else x).toString(), :tuning => @tuning.toString()}
+    %span.tab-icons
+      %i.icon-play 
+      %i.icon-heart-1
+      %i.icon-wrench

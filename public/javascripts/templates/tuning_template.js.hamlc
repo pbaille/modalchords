@@ -1,0 +1,10 @@
+#tuning-wrapper
+  #instument_settings_wrap
+    %input#str.hidden{ :type=>"number", :value => "#{@strings_nb}" ,:name=>"strings_nb"}
+    #strings-wrap
+      %rz-inc_box{:id=> "strings", :min => 4, :max=> 8, :current=>@strings_nb, :color => "#47B8C8"}
+    
+    #tuning
+      - for e,i in ["one", "two", "three", "four", "five", "six", "seven", "eight"]
+        - do (e,i) =>
+          %rz-midi_box{:id => "#{e}",:class => "#{'hidden' unless i < @strings_nb}",:value => "#{ if @tuning[i] != undefined then @tuning[i] else 0 }"}

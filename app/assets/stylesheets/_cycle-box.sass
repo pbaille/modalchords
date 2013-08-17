@@ -1,0 +1,26 @@
+$cb-width: 80
+$cb-height: 30
+$cb-border: 2
+$cb-border-color: $theme_3
+
+.cycle-box
+  width: #{$cb-width}px
+  height: #{$cb-height}px
+
+  p
+    text-align: center
+    +border-radius
+    +box-sizing(border-box)
+    border: #{$cb-border}px solid #{$cb-border-color}
+    line-height: #{$cb-height - $cb-border * 2 }px
+    font-weight: bold
+    color: $theme_1
+
+  
+p
+  &.one
+    background: $theme_2
+  &.two
+    background: $theme_5
+  &.three
+    background: $theme_4

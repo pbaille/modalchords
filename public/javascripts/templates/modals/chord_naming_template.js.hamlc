@@ -1,0 +1,4 @@
+#chord-naming.pop_up 
+  .chord-index.hidden
+  %input#user-fav-name{:name => "name", :size => 30, :type => "text" , :placeholder => "Choose a name"}
+  %input#submit{ :value => "Save chord", :type => "submit" } 

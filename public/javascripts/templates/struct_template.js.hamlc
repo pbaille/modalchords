@@ -1,0 +1,30 @@
+#struct_form_wrap 
+  - unless @name == "user_current_search"
+    #name-label(style= "text-align: left; position: absolute;")
+      = @name 
+  - for k,v of @degree_status_hash  
+    %div{:id => "#{k}", :class => "wrapper"}
+      %div{:class => "main #{v.split(' ')[1]}"}
+        %b(unselectable="on")
+          = v.split(' ')[0]
+      %div{:class => "bub top #{v.split(' ')[1]}"}
+        %b 
+      %div{:class => "bub bottom #{v.split(' ')[1]}"}
+        %b
+      .state-selector-wrap
+        .enabled.little_circle
+        .uniq.little_circle 
+        .optional.little_circle
+        .disabled.little_circle
+  #struct_form_icon_wrap.right
+    - if @name == "user_current_search"
+      %i.icon-refresh{ :style => "font-size: 25px;"}
+    - else
+      %i.icon-rocket{ :style => "font-size: 22px;"}
+    - if @name == "user_current_search"
+      %i.icon-heart-1{ :style => "font-size: 25px;"}  
+    - else
+      %i.icon-cancel-2{ :style => "font-size: 20px;"}  
+  #struct_form_icon_wrap.left
+    %i.icon-tumbler{ :style => "font-size: 25px;"}
+    %i.icon-cog-1{ :style => "font-size: 25px;"}  

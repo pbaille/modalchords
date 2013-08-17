@@ -1,0 +1,54 @@
+@import 'compass'
+
+$note_width: 50
+$note_height: 50
+$oct_width: 50
+$oct_height: 50
+$arrow_size: 10
+$border_size: 3
+
+$theme_1: #423A38
+$theme_2: #47B8C8
+$theme_3: #E7EEE2
+$theme_4: #BDB9B1
+$theme_5: #D7503E
+
+@host
+  *
+    display: inline-block  
+
+#note, #oct
+  float: left    
+  
+#note #display
+  margin: #{$arrow_size}px 0
+  width: #{$note_width}px
+  height: #{$note_height}px
+  text-align: center
+  border: #{$border_size}px solid $theme_3
+  background: $theme_5
+    
+  b
+    color: $theme_1 
+    line-height: #{$note_height}px
+    font-size: #{$note_height / 2}px
+
+    
+// .arrow
+//   width: 0px
+//   height: 0px
+//   border-left: #{$arrow_size}px solid transparent
+//   border-right: #{$arrow_size}px solid transparent
+//   position: absolute
+//   display: inline-block
+//   text-align: center
+//   left: #{$width / 2 - $arrow_size / 2}px
+//   &.up
+//     border-bottom: #{$arrow_size}px solid $theme_3
+//     top: 0
+//   &.down 
+//     border-top: #{$arrow_size}px solid $theme_3
+//     bottom: 0
+//   &.hidden
+//     display: none  
+  

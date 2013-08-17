@@ -1,0 +1,160 @@
+@import 'compass'
+
+$width: 80
+$height: 80
+$bub_size: 20
+$state_select_width: 20
+
+.hidden
+  display: none !important
+
+#struct_form_wrap
+  position: relative
+  display: inline-block
+  margin: 10px auto 0 auto
+  text-align: center
+  padding-left: #{$state_select_width}px
+
+// form#struct_form
+//   display: inline-block  
+//   position: relative
+//   padding-left: #{$state_select_width}px
+
+.wrapper
+  width: #{$width}px
+  height: #{$height}px
+  display: inline-block
+  background: transparent
+  position: relative
+  
+.main
+  cursor: default
+  margin: #{$bub_size / 2}px #{$state_select_width}px #{$bub_size / 2}px 0
+  width: #{$width - $bub_size}px
+  height: #{$height - $bub_size}px
+  text-align: center
+  +border-radius(10px) 
+  +box-sizing(border-box)
+  border: 3px solid $theme_3 
+  cursor: pointer 
+    
+  &.enabled
+    background: $theme_2 
+    b
+      color: $theme_1
+  &.disabled
+    background: $theme_1
+    b
+      color: rgba($theme_3, .6)
+  &.uniq
+    background: $theme_5
+    b
+      color: $theme_1 
+  &.optional
+    background: $theme_4
+    b
+      color: $theme_1    
+      
+  b
+    -webkit-user-select: none /* Chrome/Safari */        
+    -moz-user-select: none /* Firefox */
+    -ms-user-select: none /* IE10+ */
+
+    line-height: #{$height - $bub_size}px
+    font-size: #{$height / 3}px
+.bub
+  position: absolute
+  background: rgb(80, 179, 218)
+  display: inline-block
+  border-radius: #{$bub_size / 2}px
+  width: #{$bub_size}px
+  height: #{$bub_size}px
+  text-align: center
+  left: #{($width - $state_select_width) / 2 - $bub_size / 2}px  
+  border: 2px solid $theme_3 
+  +box-sizing(border-box)  
+  b
+    color: white
+    line-height: #{$bub_size}px
+  &.top
+    cursor: n-resize
+    top: 0px    
+  &.bottom
+    cursor: s-resize
+    bottom: 0px 
+  &.uniq
+    background: $theme_2 
+    b
+      color: $theme_1
+  &.enabled
+    background: $theme_5
+    b
+      color: $theme_1
+  &.disabled
+    background: $theme_1
+    b
+      color: $theme_1
+  &.optional
+    background: $theme_2 
+.state-selector-wrap
+  position: absolute
+  width: 11px
+  display: inline-block
+  right: 7px
+  top: 15px
+  cursor: none
+  
+.little_circle
+  +border-radius(20px)
+  height: 7px
+  width: 7px
+  display: inline-block
+  float: left
+  margin: 2px
+  &:hover
+    height: 11px
+    width: 11px
+    margin: 0px
+
+  &.enabled
+    background: $theme_2
+    border: 1px solid $theme_2
+  &.disabled
+    background: $theme_1
+    border: 1px solid $theme_4    
+  &.optional
+    background: $theme_4
+    border: 1px solid $theme_4
+  &.uniq
+    background: $theme_5
+    border: 1px solid $theme_5
+
+#struct_form_icon_wrap.right
+  display: inline-block
+  position: absolute
+  top: 28px
+  right: -77px
+  i
+    color: rgba($theme_3, .5)
+    &:hover
+      color: rgba($theme_3, .8)
+
+#struct_form_icon_wrap.left
+  display: inline-block
+  position: absolute
+  top: 28px
+  left: -77px
+  i
+    color: rgba($theme_3, .5)
+    &:hover
+      color: rgba($theme_3, .8)      
+
+// #submit
+//   display: none  
+
+// #saved_flash
+//   position: absolute
+//   display: inline-block
+//   top: 0
+//   font-size: 25px
+

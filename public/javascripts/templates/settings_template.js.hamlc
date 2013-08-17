@@ -1,0 +1,72 @@
+#search-range.opt-item
+  %span.label
+    search-range
+  .control  
+    %rz-inc_box{:id=> "fb_min", :min => 0, :max=> @cases_nb , :current=> @fb_min_fret}
+
+    %span ...
+    %rz-inc_box{:id=> "fb_max", :min => 1, :max=> @cases_nb, :current=> @fb_max_fret}
+
+#fingering-max-gap.opt-item
+  %span.label
+    fingering-max-gap
+  .control  
+    %rz-inc_box{:id=> "position_max_width", :min => 3, :max=> 6 , :current=> @position_max_width}
+
+#inversions.opt-item
+  %span.label
+    inversions
+  .cycle-box
+    %p.one{:class => "#{'current' if @chord_filters['inversions'] == null }" }
+      Yes
+    %p.two{:class => "#{'current' if @chord_filters['inversions'] == false }" }
+      No
+    %p.three{:class => "#{'current' if @chord_filters['inversions'] == true }" }
+      Only
+
+#b9.opt-item
+  %span.label
+    minor 9th
+  .cycle-box
+    %p.one{:class => "#{'current' if @chord_filters['b9'] == null }" }
+      Yes
+    %p.two{:class => "#{'current' if @chord_filters['b9'] == false }" }
+      No
+    %p.three{:class => "#{'current' if @chord_filters['b9'] == true }" }
+      Only
+
+#bass-max-distance.opt-item
+  %span.label
+    bass-max-distance
+  .control  
+    %rz-inc_box{:id=> "bass_max_step", :min => 1, :max=> 99 , :current=> @chord_filters['bass_max_step']}
+
+#max-step.opt-item
+  %span.label
+    max-step
+  .control  
+    %rz-inc_box{:id=> "max_step", :min => 1, :max=> 99 , :current=> @chord_filters['max_step']}
+
+#open-strings.opt-item
+  %span.label
+    open-strings
+  .cycle-box
+    %p.one{:class => "#{'current' if @chord_filters['open_strings'] == null }" }
+      Yes
+    %p.two{:class => "#{'current' if @chord_filters['open_strings'] == false }" }
+      No
+    %p.three{:class => "#{'current' if @chord_filters['open_strings'] == true }" }
+      Only
+
+#twin-pitches.opt-item
+  %span.label
+    twin-pitches
+  .cycle-box
+    %p.one{:class => "#{'current' if @chord_filters['twin_pitches'] == null }" }
+      Yes
+    %p.two{:class => "#{'current' if @chord_filters['twin_pitches'] == false }" }
+      No
+    %p.three{:class => "#{'current' if @chord_filters['twin_pitches'] == true }" }
+      Only
+
+#intervals-ranges
