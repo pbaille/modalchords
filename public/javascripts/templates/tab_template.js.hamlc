@@ -1,5 +1,5 @@
 - if @name != "untitled"
-  %p
+  %p.user-chord-name
     = @name
   .saved_chord_tab{ :rel => "tablature", :editable => "false", :strings_nb => @tab.length, :frets_nb => @tab_width, :start_fret => @tab_index, :chord => @tab.map((x)-> if x == null then "null" else x).toString(), :tuning => @tuning.toString()}
     %span.tab-icons

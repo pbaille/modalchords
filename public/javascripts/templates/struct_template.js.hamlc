@@ -1,7 +1,7 @@
+ 
+
 #struct_form_wrap 
-  - unless @name == "user_current_search"
-    #name-label(style= "text-align: left; position: absolute;")
-      = @name 
+  
   - for k,v of @degree_status_hash  
     %div{:id => "#{k}", :class => "wrapper"}
       %div{:class => "main #{v.split(' ')[1]}"}

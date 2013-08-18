@@ -72,6 +72,8 @@ class UserSearchView extends Backbone.View
   render: ->
 
     @$el.html("<div id='tuning-menu'></div><div id='struct-wrap'></div><div id='mode-menu-wrap'></div><div id='options-wrapper'></div>")
+    unless @model.get('name') == "user_current_search"
+      @$el.prepend("<div class='user-search-name'>#{@model.get('name')}</div>")
     @renderTuning()
     @renderStruct()
     @renderModeMenu()

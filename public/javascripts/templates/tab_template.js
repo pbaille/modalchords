@@ -25,7 +25,7 @@
       };
       $o = [];
       if (this.name !== "untitled") {
-        $o.push("<p>");
+        $o.push("<p class='user-chord-name'>");
         $o.push("  " + $e($c(this.name)));
         $o.push("</p>\n<div class='saved_chord_tab' rel='tablature' editable='false' strings_nb='" + ($e($c(this.tab.length))) + "' frets_nb='" + ($e($c(this.tab_width))) + "' start_fret='" + ($e($c(this.tab_index))) + "' chord='" + ($e($c(this.tab.map(function(x) {
           if (x === null) {

@@ -104,6 +104,9 @@ UserSearchView = (function(_super) {
 
   UserSearchView.prototype.render = function() {
     this.$el.html("<div id='tuning-menu'></div><div id='struct-wrap'></div><div id='mode-menu-wrap'></div><div id='options-wrapper'></div>");
+    if (this.model.get('name') !== "user_current_search") {
+      this.$el.prepend("<div class='user-search-name'>" + (this.model.get('name')) + "</div>");
+    }
     this.renderTuning();
     this.renderStruct();
     this.renderModeMenu();

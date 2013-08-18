@@ -25,11 +25,6 @@
       };
       $o = [];
       $o.push("<div id='struct_form_wrap'>");
-      if (this.name !== "user_current_search") {
-        $o.push("  <div id='name-label' style='text-align: left; position: absolute;'>");
-        $o.push("    " + $e($c(this.name)));
-        $o.push("  </div>");
-      }
       _ref1 = this.degree_status_hash;
       for (k in _ref1) {
         v = _ref1[k];
