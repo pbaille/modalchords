@@ -30,7 +30,7 @@
         } else {
           return x;
         }
-      }).toString()))) + "' tuning='" + ($e($c(this.tuning.toString()))) + "'>\n  <span class='tab-icons'>\n    <i class='icon-play'></i>\n  </span>\n</div>\n<input id='submit' type='submit' value='Save'>\n  <!-- #edited_chord_name -->\n  <!--   %input{:type => \"text\", :placeholder => \"untitled\"} -->\n  <!--   %input{:type => \"submit\", :value => \"Save\"}   -->");
+      }).toString()))) + "' tuning='" + ($e($c(this.tuning.toString()))) + "'>\n  <span class='tab-icons'>\n    <i class='icon-play'></i>\n  </span>\n</div>\n<input id='submit' type='submit' value='Save'>");
       return $o.join("\n").replace(/\s(\w+)='true'/mg, ' $1').replace(/\s(\w+)='false'/mg, '');
     }).call(context);
   };

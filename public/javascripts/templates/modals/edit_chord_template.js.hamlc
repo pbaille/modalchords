@@ -4,6 +4,4 @@
     %i.icon-play 
 
 %input#submit{:type => "submit", :value => "Save"}      
-  / #edited_chord_name
-  /   %input{:type => "text", :placeholder => "untitled"}
-  /   %input{:type => "submit", :value => "Save"}  
+  

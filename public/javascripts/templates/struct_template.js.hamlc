@@ -1,7 +1,4 @@
- 
-
 #struct_form_wrap 
-  
   - for k,v of @degree_status_hash  
     %div{:id => "#{k}", :class => "wrapper"}
       %div{:class => "main #{v.split(' ')[1]}"}

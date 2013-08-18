@@ -72,7 +72,7 @@ span, a, p, b, h1, h2, h3, h4, div {
 body {
   background: #423a38;
   text-align: center;
-  padding-top: 10px;
+  padding-top: 20px;
 }
 
 /* line 17, ../../app/assets/stylesheets/_general.sass */
@@ -106,7 +106,16 @@ body {
   margin: 0 10px;
 }
 
-/* line 42, ../../app/assets/stylesheets/_general.sass */
+/* line 39, ../../app/assets/stylesheets/_general.sass */
+.search {
+  padding: 5px 0 15px 0;
+}
+/* line 41, ../../app/assets/stylesheets/_general.sass */
+.search:nth-child(2n) {
+  background: #4a413f;
+}
+
+/* line 46, ../../app/assets/stylesheets/_general.sass */
 #lean_overlay {
   opacity: 0.5;
   position: fixed;
@@ -119,23 +128,23 @@ body {
   display: none;
 }
 
-/* line 53, ../../app/assets/stylesheets/_general.sass */
+/* line 57, ../../app/assets/stylesheets/_general.sass */
 #user-menu {
   position: fixed;
   right: 20px;
   top: 0;
 }
-/* line 57, ../../app/assets/stylesheets/_general.sass */
+/* line 61, ../../app/assets/stylesheets/_general.sass */
 #user-menu #login_link, #user-menu #logout_link {
   display: inline-block;
 }
-/* line 59, ../../app/assets/stylesheets/_general.sass */
+/* line 63, ../../app/assets/stylesheets/_general.sass */
 #user-menu i {
   color: rgba(231, 238, 226, 0.6);
   font-size: 20px;
   line-height: 50px;
 }
-/* line 63, ../../app/assets/stylesheets/_general.sass */
+/* line 67, ../../app/assets/stylesheets/_general.sass */
 #user-menu i:hover {
   color: rgba(231, 238, 226, 0.9);
 }
@@ -148,11 +157,13 @@ body {
 /* line 11, ../../app/assets/stylesheets/_struct_form.sass */
 .user-search-name {
   position: relative;
-  top: 10px;
+  top: 6px;
   font-size: 20px;
+  font-weight: bold;
+  margin: 10px;
 }
 
-/* line 16, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 18, ../../app/assets/stylesheets/_struct_form.sass */
 #struct_form_wrap {
   position: relative;
   display: inline-block;
@@ -160,7 +171,7 @@ body {
   padding-left: 20px;
 }
 
-/* line 29, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 31, ../../app/assets/stylesheets/_struct_form.sass */
 .wrapper {
   width: 80px;
   height: 80px;
@@ -169,7 +180,7 @@ body {
   position: relative;
 }
 
-/* line 36, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 38, ../../app/assets/stylesheets/_struct_form.sass */
 .main {
   cursor: default;
   margin: 10px 20px 10px 0;
@@ -187,39 +198,39 @@ body {
   border: 3px solid #e7eee2;
   cursor: pointer;
 }
-/* line 47, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 49, ../../app/assets/stylesheets/_struct_form.sass */
 .main.enabled {
   background: #47b8c8;
 }
-/* line 49, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 51, ../../app/assets/stylesheets/_struct_form.sass */
 .main.enabled b {
   color: #423a38;
 }
-/* line 51, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 53, ../../app/assets/stylesheets/_struct_form.sass */
 .main.disabled {
   background: #423a38;
 }
-/* line 53, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 55, ../../app/assets/stylesheets/_struct_form.sass */
 .main.disabled b {
   color: rgba(231, 238, 226, 0.6);
 }
-/* line 55, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 57, ../../app/assets/stylesheets/_struct_form.sass */
 .main.uniq {
   background: #d7503e;
 }
-/* line 57, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 59, ../../app/assets/stylesheets/_struct_form.sass */
 .main.uniq b {
   color: #423a38;
 }
-/* line 59, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 61, ../../app/assets/stylesheets/_struct_form.sass */
 .main.optional {
   background: #bdb9b1;
 }
-/* line 61, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 63, ../../app/assets/stylesheets/_struct_form.sass */
 .main.optional b {
   color: #423a38;
 }
-/* line 64, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 66, ../../app/assets/stylesheets/_struct_form.sass */
 .main b {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -228,7 +239,7 @@ body {
   font-size: 26.66667px;
 }
 
-/* line 71, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 73, ../../app/assets/stylesheets/_struct_form.sass */
 .bub {
   position: absolute;
   background: #50b3da;
@@ -243,51 +254,51 @@ body {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 82, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 84, ../../app/assets/stylesheets/_struct_form.sass */
 .bub b {
   color: white;
   line-height: 20px;
 }
-/* line 85, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 87, ../../app/assets/stylesheets/_struct_form.sass */
 .bub.top {
   cursor: n-resize;
   top: 0px;
 }
-/* line 88, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 90, ../../app/assets/stylesheets/_struct_form.sass */
 .bub.bottom {
   cursor: s-resize;
   bottom: 0px;
 }
-/* line 91, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 93, ../../app/assets/stylesheets/_struct_form.sass */
 .bub.uniq {
   background: #47b8c8;
 }
-/* line 93, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 95, ../../app/assets/stylesheets/_struct_form.sass */
 .bub.uniq b {
   color: #423a38;
 }
-/* line 95, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 97, ../../app/assets/stylesheets/_struct_form.sass */
 .bub.enabled {
   background: #d7503e;
 }
-/* line 97, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 99, ../../app/assets/stylesheets/_struct_form.sass */
 .bub.enabled b {
   color: #423a38;
 }
-/* line 99, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 101, ../../app/assets/stylesheets/_struct_form.sass */
 .bub.disabled {
   background: #423a38;
 }
-/* line 101, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 103, ../../app/assets/stylesheets/_struct_form.sass */
 .bub.disabled b {
   color: #423a38;
 }
-/* line 103, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 105, ../../app/assets/stylesheets/_struct_form.sass */
 .bub.optional {
   background: #47b8c8;
 }
 
-/* line 105, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 107, ../../app/assets/stylesheets/_struct_form.sass */
 .state-selector-wrap {
   position: absolute;
   width: 11px;
@@ -297,7 +308,7 @@ body {
   cursor: none;
 }
 
-/* line 113, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 115, ../../app/assets/stylesheets/_struct_form.sass */
 .little_circle {
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
@@ -310,61 +321,61 @@ body {
   float: left;
   margin: 2px;
 }
-/* line 120, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 122, ../../app/assets/stylesheets/_struct_form.sass */
 .little_circle:hover {
   height: 11px;
   width: 11px;
   margin: 0px;
 }
-/* line 125, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 127, ../../app/assets/stylesheets/_struct_form.sass */
 .little_circle.enabled {
   background: #47b8c8;
   border: 1px solid #47b8c8;
 }
-/* line 128, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 130, ../../app/assets/stylesheets/_struct_form.sass */
 .little_circle.disabled {
   background: #423a38;
   border: 1px solid #bdb9b1;
 }
-/* line 131, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 133, ../../app/assets/stylesheets/_struct_form.sass */
 .little_circle.optional {
   background: #bdb9b1;
   border: 1px solid #bdb9b1;
 }
-/* line 134, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 136, ../../app/assets/stylesheets/_struct_form.sass */
 .little_circle.uniq {
   background: #d7503e;
   border: 1px solid #d7503e;
 }
 
-/* line 138, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 140, ../../app/assets/stylesheets/_struct_form.sass */
 #struct_form_icon_wrap.right {
   display: inline-block;
   position: absolute;
   top: 28px;
   right: -77px;
 }
-/* line 143, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 145, ../../app/assets/stylesheets/_struct_form.sass */
 #struct_form_icon_wrap.right i {
   color: rgba(231, 238, 226, 0.5);
 }
-/* line 145, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 147, ../../app/assets/stylesheets/_struct_form.sass */
 #struct_form_icon_wrap.right i:hover {
   color: rgba(231, 238, 226, 0.8);
 }
 
-/* line 148, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 150, ../../app/assets/stylesheets/_struct_form.sass */
 #struct_form_icon_wrap.left {
   display: inline-block;
   position: absolute;
   top: 28px;
   left: -77px;
 }
-/* line 153, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 155, ../../app/assets/stylesheets/_struct_form.sass */
 #struct_form_icon_wrap.left i {
   color: rgba(231, 238, 226, 0.5);
 }
-/* line 155, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 157, ../../app/assets/stylesheets/_struct_form.sass */
 #struct_form_icon_wrap.left i:hover {
   color: rgba(231, 238, 226, 0.8);
 }
@@ -380,7 +391,7 @@ body {
   width: 400px;
   background: #bdb9b1;
   border: 3px solid rgba(231, 238, 226, 0.7);
-  margin: 20px;
+  margin: 20px 0 5px 0;
 }
 /* line 9, ../../app/assets/stylesheets/_options.sass */
 #options-wrapper .opt-item {
@@ -873,6 +884,6 @@ input#chord-name:focus {
 /* line 134, ../../app/assets/stylesheets/_tablature.sass */
 .user-chord-name {
   position: relative;
-  top: 10px;
+  top: 16px;
   font-size: 20px;
 }

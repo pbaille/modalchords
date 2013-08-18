@@ -123,8 +123,8 @@ end
 
 get "/ensure_user" do
 	content_type(:json)
-	session[:user]= nil
-	p "hello"
+	#session[:user]= nil
+	#p "hello"
 	create_guest_user if MongoUser.where(_id: session[:user]).empty? or !session[:user]
 	current_user.to_json 
 end	
