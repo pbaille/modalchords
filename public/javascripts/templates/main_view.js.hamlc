@@ -4,4 +4,6 @@
 
 #user-area
   #user-searches
+    %p.categorie User searches
   #user-chords
+    %p.categorie User chords

@@ -104,6 +104,7 @@ Modals = (function(_super) {
     pass_conf = $('#signup-modal input#confirm-password').val();
     return $.get("mongo_users/signup/" + email + "/" + pass + "/" + pass_conf, function(user) {
       if (user) {
+        console.log(user);
         _this.hide_all();
         return router.login(user);
       } else {

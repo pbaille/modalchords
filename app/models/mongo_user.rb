@@ -170,12 +170,25 @@ get '/mongo_users/logout' do
   guest.to_json
 end
 
+# get "/mongo_users/signup/:email/:password/:password_confirmation" do
+#     content_type(:json)
+# 	current_user.update_attributes params.reject {|k,v| k=="splat" or k=="captures"}
+# 	if current_user.save
+#       #add_current_search_to_new_user new_user
+#       #session[:user] = new_user._id
+# 	  current_user.to_json
+#     else
+#       false.to_json
+#     end
+# end	
 
 get "/mongo_users/signup/:email/:password/:password_confirmation" do
     content_type(:json)
 	new_user= MongoUser.new params.reject {|k,v| k=="splat" or k=="captures"}
 	if new_user.save
-      add_current_search_to_new_user new_user
+      current_user.searches.each {|x| new_user.searches.push x }
+      current_user.mongoid_chords.each {|x| new_user.mongoid_chords.push x }
+      new_user.save
       session[:user] = new_user._id
 	  new_user.to_json
     else

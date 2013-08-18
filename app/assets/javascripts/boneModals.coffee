@@ -75,9 +75,10 @@ class Modals extends Backbone.View
   	pass= $('#signup-modal input#password').val()
   	pass_conf= $('#signup-modal input#confirm-password').val()
   	$.get "mongo_users/signup/#{email}/#{pass}/#{pass_conf}", (user) =>
-  	  if user 
-  	  	@hide_all()
-  	  	router.login(user)
+  	  if user
+        console.log user
+        @hide_all()
+        router.login(user)
   	  else 
   	    @show_error()
 

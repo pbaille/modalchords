@@ -72,23 +72,27 @@ span, a, p, b, h1, h2, h3, h4, div {
 body {
   background: #423a38;
   text-align: center;
+}
+
+/* line 14, ../../app/assets/stylesheets/_general.sass */
+#main-search {
   padding-top: 20px;
 }
 
-/* line 17, ../../app/assets/stylesheets/_general.sass */
+/* line 19, ../../app/assets/stylesheets/_general.sass */
 #mode-menu-wrap {
   position: relative;
   height: 40px;
   padding-top: 10px;
 }
-/* line 21, ../../app/assets/stylesheets/_general.sass */
+/* line 23, ../../app/assets/stylesheets/_general.sass */
 #mode-menu-wrap #mode-menu {
   display: inline-block;
   position: relative;
   z-index: 1;
 }
 
-/* line 26, ../../app/assets/stylesheets/_general.sass */
+/* line 28, ../../app/assets/stylesheets/_general.sass */
 #hide-menu {
   position: absolute;
   display: inline-block;
@@ -96,26 +100,41 @@ body {
   top: 13px;
   left: -20px;
 }
-/* line 32, ../../app/assets/stylesheets/_general.sass */
+/* line 34, ../../app/assets/stylesheets/_general.sass */
 #hide-menu:hover {
   color: rgba(231, 238, 226, 0.6);
 }
 
-/* line 35, ../../app/assets/stylesheets/_general.sass */
+/* line 37, ../../app/assets/stylesheets/_general.sass */
 #mode-menu .select-box-wrap {
   margin: 0 10px;
 }
 
-/* line 39, ../../app/assets/stylesheets/_general.sass */
-.search {
+/* line 41, ../../app/assets/stylesheets/_general.sass */
+#user-searches .search {
   padding: 5px 0 15px 0;
 }
-/* line 41, ../../app/assets/stylesheets/_general.sass */
-.search:nth-child(2n) {
+/* line 43, ../../app/assets/stylesheets/_general.sass */
+#user-searches .search:nth-child(2n) {
   background: #4a413f;
 }
 
 /* line 46, ../../app/assets/stylesheets/_general.sass */
+#user-chords {
+  background: #4a413f;
+  border-top: 5px solid rgba(231, 238, 226, 0.3);
+}
+
+/* line 52, ../../app/assets/stylesheets/_general.sass */
+#user-searches p.categorie, #user-chords p.categorie {
+  background: #423a38;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 50px;
+  color: #47b8c8;
+}
+
+/* line 62, ../../app/assets/stylesheets/_general.sass */
 #lean_overlay {
   opacity: 0.5;
   position: fixed;
@@ -128,23 +147,23 @@ body {
   display: none;
 }
 
-/* line 57, ../../app/assets/stylesheets/_general.sass */
+/* line 73, ../../app/assets/stylesheets/_general.sass */
 #user-menu {
   position: fixed;
   right: 20px;
   top: 0;
 }
-/* line 61, ../../app/assets/stylesheets/_general.sass */
-#user-menu #login_link, #user-menu #logout_link {
+/* line 77, ../../app/assets/stylesheets/_general.sass */
+#user-menu #login_link, #user-menu #logout_link, #user-menu #signup_link {
   display: inline-block;
 }
-/* line 63, ../../app/assets/stylesheets/_general.sass */
+/* line 79, ../../app/assets/stylesheets/_general.sass */
 #user-menu i {
   color: rgba(231, 238, 226, 0.6);
   font-size: 20px;
   line-height: 50px;
 }
-/* line 67, ../../app/assets/stylesheets/_general.sass */
+/* line 83, ../../app/assets/stylesheets/_general.sass */
 #user-menu i:hover {
   color: rgba(231, 238, 226, 0.9);
 }
@@ -831,16 +850,18 @@ input#chord-name {
   line-height: 20px;
   font-weight: bold;
   padding: 5px;
-  width: 70%;
+  width: 57%;
   outline: none;
 }
 /* line 108, ../../app/assets/stylesheets/_tablature.sass */
 input#chord-name:focus {
   background: #d7503e;
+  color: #e7eee2;
 }
 
-/* line 111, ../../app/assets/stylesheets/_tablature.sass */
+/* line 112, ../../app/assets/stylesheets/_tablature.sass */
 #edit-chord-wrapper {
+  text-align: center;
   border: none;
   background: #bdb9b1;
   -webkit-border-radius: 10px;
@@ -848,40 +869,42 @@ input#chord-name:focus {
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
   border-radius: 10px;
-  padding: 20px 10px 30px 10px;
+  padding: 20px 10px 20px 10px;
 }
-/* line 116, ../../app/assets/stylesheets/_tablature.sass */
+/* line 118, ../../app/assets/stylesheets/_tablature.sass */
 #edit-chord-wrapper .tab {
   background: #423a38;
 }
-/* line 118, ../../app/assets/stylesheets/_tablature.sass */
+/* line 120, ../../app/assets/stylesheets/_tablature.sass */
 #edit-chord-wrapper .case {
   background: rgba(231, 238, 226, 0.3);
 }
-/* line 120, ../../app/assets/stylesheets/_tablature.sass */
+/* line 122, ../../app/assets/stylesheets/_tablature.sass */
 #edit-chord-wrapper .case.on {
   background: #47b8c8;
 }
-/* line 122, ../../app/assets/stylesheets/_tablature.sass */
+/* line 124, ../../app/assets/stylesheets/_tablature.sass */
 #edit-chord-wrapper .case.num_bubble {
   background: #d7503e;
 }
-/* line 124, ../../app/assets/stylesheets/_tablature.sass */
+/* line 126, ../../app/assets/stylesheets/_tablature.sass */
 #edit-chord-wrapper .fret_index {
   background: #423a38;
 }
-/* line 126, ../../app/assets/stylesheets/_tablature.sass */
+/* line 128, ../../app/assets/stylesheets/_tablature.sass */
 #edit-chord-wrapper .fret_index b {
   color: #d7503e;
   font-weight: bold;
 }
-/* line 129, ../../app/assets/stylesheets/_tablature.sass */
+/* line 131, ../../app/assets/stylesheets/_tablature.sass */
 #edit-chord-wrapper #submit {
+  margin-top: 10px;
+  border: none;
   background: #47b8c8;
   width: 100px;
 }
 
-/* line 134, ../../app/assets/stylesheets/_tablature.sass */
+/* line 138, ../../app/assets/stylesheets/_tablature.sass */
 .user-chord-name {
   position: relative;
   top: 16px;

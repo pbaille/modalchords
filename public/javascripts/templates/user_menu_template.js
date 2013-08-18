@@ -13,7 +13,7 @@
       if (this.email.slice(0, 5) !== "guest") {
         $o.push("<div id='logout_link'>\n  <i class='icon-logout'></i>\n</div>");
       } else {
-        $o.push("<div id='login_link'>\n  <i class='icon-login'></i>\n</div>");
+        $o.push("<div id='login_link'>\n  <i class='icon-login'></i>\n</div>\n<div id='signup_link'>\n  <i class='icon-feather'></i>\n</div>");
       }
       return $o.join("\n").replace(/\s(\w+)='true'/mg, ' $1').replace(/\s(\w+)='false'/mg, '');
     }).call(context);

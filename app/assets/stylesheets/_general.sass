@@ -10,7 +10,9 @@ span ,a ,p, b, h1, h2, h3, h4, div
 body
   background: $theme_1
   text-align: center
-  padding-top: 20px
+
+#main-search
+  padding-top: 20px  
   
 //########### MODE MENU ###########
 
@@ -36,10 +38,24 @@ body
   margin: 0 10px 
 
 //################################## 
-.search
+#user-searches .search
   padding: 5px 0 15px 0
   &:nth-child(2n)
     background: lighten($theme_1, 3%)
+    
+#user-chords
+  background: lighten($theme_1, 3%)
+  border-top: 5px solid rgba($theme_3, .3) 
+
+  //border-top: 3px solid rgba($theme_3, .8) 
+#user-searches, #user-chords
+  p.categorie 
+    background: $theme_1
+    font-size: 30px
+    font-weight: bold
+    line-height: 50px
+    color: $theme_2//lighten($theme_2, 10%)//rgba($theme_3, .7)
+     
 
 
   
@@ -58,7 +74,7 @@ body
   position: fixed
   right: 20px
   top: 0
-  #login_link, #logout_link
+  #login_link, #logout_link, #signup_link
     display: inline-block
   i
     color: rgba($theme_3, .6)

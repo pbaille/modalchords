@@ -7,3 +7,5 @@
 - else
   #login_link
     %i.icon-login
+  #signup_link
+    %i.icon-feather  
