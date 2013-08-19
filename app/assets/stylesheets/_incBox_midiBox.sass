@@ -1,0 +1,61 @@
+$width: 30
+$height: 30
+$arrow_size: 8
+$border_size: 2
+
+// INCBOX
+
+.incBoxWrapper
+  width: #{$width + 2 * $border_size }px
+  height: #{$height + 2 * $arrow_size + 2 * $border_size}px
+  display: inline-block
+  background: transparent
+  position: relative
+  
+.incBoxDisplay
+  margin: #{$arrow_size}px 0
+  width: #{$width}px
+  height: #{$height}px
+  text-align: center
+  border: #{$border_size}px solid $theme_3
+  +border-radius(5px) 
+  background: $theme_5
+    
+  b
+    color: $theme_1 
+    line-height: #{$height}px
+    font-size: #{$height / 2}px
+    font-weight: bold
+
+    
+.arrow
+  width: 0px
+  height: 0px
+  border-left: #{$arrow_size}px solid transparent
+  border-right: #{$arrow_size}px solid transparent
+  position: absolute
+  display: inline-block
+  text-align: center
+  left: #{$width / 2 - $arrow_size / 2 - $border_size}px
+  &.up
+    border-bottom: #{$arrow_size}px solid $theme_3
+    top: 0
+  &.down 
+    border-top: #{$arrow_size}px solid $theme_3
+    bottom: 0
+  &.hidden
+    display: none  
+  
+// MIDIBOX
+.midiBoxWrapper
+  display: inline-block
+.pitch_box .incBoxDisplay
+  +border-radius(5px 0 0 5px) 
+.oct_box
+  .incBoxDisplay
+    border-left: none
+    width: 25px
+    background: $theme_2
+    +border-radius(0 5px 5px 0) 
+  .arrow
+    left: #{20 / 2 - $arrow_size / 2 - $border_size}px
