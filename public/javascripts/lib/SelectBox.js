@@ -49,6 +49,12 @@ SelectBox = (function() {
     }
     this.mother.css("height", "" + closed_height + "px").css("width", "" + item_width + "px").css("display", "inline-block");
     this.mother.find(".item").css("height", "" + item_height + "px").css("width", "" + (item_width - 2 * item_margin) + "px").css("margin", "" + item_margin + "px").css("line-height", "" + item_height + "px");
+    this.mother.mouseenter(function() {
+      return $(this).addClass("hover");
+    });
+    this.mother.mouseleave(function() {
+      return $(this).removeClass("hover");
+    });
     this.mother.find(".placeholder").click(function() {
       if (open) {
         $(this).parent().css('height', "" + closed_height + "px");
@@ -61,7 +67,7 @@ SelectBox = (function() {
     this.mother.bind("mouseleave", function(e) {
       var cb;
       cb = function() {
-        if (!_this.mother.is(":hover")) {
+        if (!_this.mother.hasClass("hover")) {
           _this.mother.css('height', "" + closed_height + "px");
           return open = false;
         }

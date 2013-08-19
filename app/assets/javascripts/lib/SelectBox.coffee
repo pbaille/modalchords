@@ -64,6 +64,10 @@ class SelectBox
 
     ##### EVENTS #####
       #simple-sb
+    @mother.mouseenter ->
+      $(this).addClass "hover" 
+    @mother.mouseleave ->
+      $(this).removeClass "hover"   
 
     @mother.find(".placeholder").click ->
       if open
@@ -75,7 +79,7 @@ class SelectBox
 
     @mother.bind "mouseleave", (e) =>
       cb= =>
-        unless @mother.is(":hover")
+        unless @mother.hasClass("hover")
           @mother.css('height', "#{closed_height}px")
           open = false  
       setTimeout cb, 1000    

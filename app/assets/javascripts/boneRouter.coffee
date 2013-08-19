@@ -66,6 +66,7 @@ class SearchesRouter extends Backbone.Router
 window.router= {}
 
 jQuery ($) ->
+  
   # window.onbeforeunload = ->
   #   if router.app.user.get('email').slice(0,5) == "guest"
   #     return "Are you sure you want to leave?  someCondition does not equal someValue..."

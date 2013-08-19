@@ -1,4 +1,3 @@
-window.onload = function () {
 
 	MIDI.loadPlugin({
 		soundfontUrl: "./soundfont/",
@@ -31,4 +30,3 @@ window.onload = function () {
 	}
     	
     	
-};

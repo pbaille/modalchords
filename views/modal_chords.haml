@@ -1,7 +1,7 @@
 !!!  
 %html{:lang => "en"}
   %head
-
+    
     / polymer
     %script{:src => "javascripts/vendors/polymer/polymer.min.js", :type => "text/javascript"} 
 
@@ -15,17 +15,12 @@
 
     /jQuery
     %script{:type=>"text/javascript", :src=> "javascripts/vendors/jQuery1_10_1.js"}
-    
-    
+
   %body
 
     /require
     /%script(data-main="javascripts/boneRouter" src="javascripts/vendors/require.js")
-
     
-
-    
-
     / midi.js package
     %script{:src => "javascripts/vendors/midijs/js/midi/AudioDetect.js", :type => "text/javascript"}
     %script{:src => "javascripts/vendors/midijs/js/midi/LoadPlugin.js", :type => "text/javascript"}
@@ -39,7 +34,7 @@
     %script{:src => "javascripts/vendors/midijs/inc/base64binary.js", :type => "text/javascript"}
 
     /midi perso
-    %script{:src => "javascripts/listen.js", :type => "text/javascript"} 
+    %script{:src => "javascripts/lib/listen2.js", :type => "text/javascript"} 
 
     /backbone dep
     %script{:src=>"http://underscorejs.org/underscore.js", :type => "text/javascript"}
