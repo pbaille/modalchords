@@ -2,16 +2,9 @@
 %html{:lang => "en"}
   %head
     
-    / polymer
-    %script{:src => "javascripts/vendors/polymer/polymer.min.js", :type => "text/javascript"} 
-
     %link(rel="stylesheet" href="stylesheets/screen.css")
     %link(rel="stylesheet" href="stylesheets/fontello/css/fontello.css")
     %link(rel="stylesheet" href="stylesheets/fontello/css/animation.css")
-
-
-    %link(href='custom_elements/rz-midi_box/rz-midi_box.html' rel='import')
-    %link(href='custom_elements/rz-inc_box/rz-inc_box.html' rel='import')
 
     /jQuery
     %script{:type=>"text/javascript", :src=> "javascripts/vendors/jQuery1_10_1.js"}
@@ -56,6 +49,7 @@
     %script{:type=>"text/javascript", :src=> "javascripts/templates/modals/chord_naming_template.js"}
 
     /lib
+    %script{:type=>"text/javascript", :src=> "javascripts/lib/IncBox_MidiBox.js"}
     %script{:type=>"text/javascript", :src=> "javascripts/lib/CycleBoxObject.js"}
     %script{:type=>"text/javascript", :src=> "javascripts/lib/SelectBox.js"}
     %script{:type => "text/javascript", :src => "javascripts/lib/Tablature.js"}

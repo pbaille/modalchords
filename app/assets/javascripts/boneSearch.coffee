@@ -63,7 +63,7 @@ class UserSearchView extends Backbone.View
 
     #tuning
     "mouseleave #tuning-wrapper": "update_tuning"
-    "click rz-inc_box#strings": "nb_strings_update"
+    "click #tuning-wrapper #strings": "nb_strings_update"
 
     #select_boxes
     "click #struct-selector .item": "update_struct"
@@ -96,11 +96,13 @@ class UserSearchView extends Backbone.View
 
   renderTuning: =>
     @$el.find('#tuning-menu').html(@tuning_template(@model.toJSON()))
+    @init_tuning_boxes()
     this
 
   renderOptions: =>
     @$el.find('#options-wrapper').html(@settings_template(@model.toJSON()))
     @init_cycle_boxes()
+    @init_inc_boxes()
     this
   
   ####
@@ -173,6 +175,48 @@ class UserSearchView extends Backbone.View
     @os_box = new CycleBox {mother: @$el.find("#open-strings .cycle-box"), values:[null,false,true]}
     @iv_box = new CycleBox {mother: @$el.find("#inversions .cycle-box"),   values:[null,false,true]}
     @b9_box = new CycleBox {mother: @$el.find("#b9 .cycle-box"),           values:[null,false,true]}
+
+  init_inc_boxes: ->
+
+    @fb_min_ib= new IncBox
+      el: @$el.find('#fb_min')
+      current: @model.get('fb_min_fret')
+      min: 0
+      max: @model.get('cases_nb')
+
+    @fb_max_ib = new IncBox
+      el: @$el.find('#fb_max')
+      current: @model.get('fb_max_fret')
+      min: @model.get('fb_min_fret')
+      max: @model.get('cases_nb')
+
+    @position_max_width_ib = new IncBox
+      el: @$el.find('#position_max_width')
+      current: @model.get('position_max_width')
+      min: 3
+      max: 6
+
+    @bass_max_step_ib = new IncBox
+      el: @$el.find('#bass_max_step')
+      current: @model.attributes.chord_filters['bass_max_step']
+
+    @max_step_ib = new IncBox
+      el: @$el.find('#max_step')
+      current: @model.attributes.chord_filters['max_step']
+
+  init_tuning_boxes: ->
+
+    @strings_nb_ib = new IncBox
+      el: @$el.find('#tuning-wrapper #strings')
+      current: @model.get('strings_nb')
+      min: 4
+      max: 8   
+
+    @tuning_midi_boxes= new Array(8)
+    for num,index in ["one", "two", "three", "four", "five", "six", "seven", "eight"]
+      @tuning_midi_boxes[index]= new MidiBox
+        el: @$el.find("#tuning ##{num}")  
+        pitch: @model.attributes.tuning[index]
 
   init_select_boxes: => 
     @struct_selector = new SelectBox
@@ -250,8 +294,8 @@ class UserSearchView extends Backbone.View
     cb = =>
       cf= @model.get('chord_filters')
 
-      cf['bass_max_step']= @$el.find("#bass_max_step")[0].current
-      cf['max_step']= @$el.find("#max_step")[0].current
+      cf['bass_max_step']= @bass_max_step_ib.get_val()
+      cf['max_step']= @max_step_ib.get_val()
       cf['inversions']= @iv_box.get_val()
       cf['b9']= @b9_box.get_val()
       cf['open_strings']= @os_box.get_val()
@@ -260,9 +304,9 @@ class UserSearchView extends Backbone.View
 
       @model.set
         chord_filters : cf 
-        fb_min_fret: @$el.find("#fb_min")[0].current 
-        fb_max_fret: @$el.find("#fb_max")[0].current
-        position_max_width: @$el.find("#position_max_width")[0].current
+        fb_min_fret: @fb_min_ib.get_val() 
+        fb_max_fret: @fb_max_ib.get_val()
+        position_max_width: @position_max_width_ib.get_val()
 
       console.log @model.attributes
 
@@ -283,24 +327,26 @@ class UserSearchView extends Backbone.View
   ############ TUNING ##############
 
   update_tuning: ->
-    cb= =>
-      s = @model.get('strings_nb')
-      tuning = []
-      for e,i in ["one", "two", "three", "four", "five", "six", "seven", "eight"]
-        do (e,i) =>
-          tuning.push @$el.find("rz-midi_box##{e}")[0].val if i < s
+    #cb= =>
+    s = @strings_nb_ib.get_val()
+    tuning = []
+    for e,i in @tuning_midi_boxes
+      do (e,i) =>
+        tuning.push e.get_val() if i < s
 
-      console.log tuning
-      @model.set {tuning: tuning}
-      @model.save()
+    console.log tuning
+    @model.set {tuning: tuning}
+    @model.save()
 
-    setTimeout cb, 250 
+    #setTimeout cb, 50 
 
   nb_strings_update: ->
     cb= =>
-      @model.set {strings_nb: @$el.find('rz-inc_box#strings')[0].current} 
+      @model.set {strings_nb: @strings_nb_ib.get_val()}
       @model.save()
       @renderTuning()
+
+    @update_tuning()  
     setTimeout cb, 250
 
   toggle_tuning: ->

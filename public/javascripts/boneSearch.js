@@ -97,7 +97,7 @@ UserSearchView = (function(_super) {
     "click .little_circle": "assign_status",
     "mouseleave #options-wrapper": "update_options",
     "mouseleave #tuning-wrapper": "update_tuning",
-    "click rz-inc_box#strings": "nb_strings_update",
+    "click #tuning-wrapper #strings": "nb_strings_update",
     "click #struct-selector .item": "update_struct",
     "click #mode-selector .item": "update_mode"
   };
@@ -134,12 +134,14 @@ UserSearchView = (function(_super) {
 
   UserSearchView.prototype.renderTuning = function() {
     this.$el.find('#tuning-menu').html(this.tuning_template(this.model.toJSON()));
+    this.init_tuning_boxes();
     return this;
   };
 
   UserSearchView.prototype.renderOptions = function() {
     this.$el.find('#options-wrapper').html(this.settings_template(this.model.toJSON()));
     this.init_cycle_boxes();
+    this.init_inc_boxes();
     return this;
   };
 
@@ -246,6 +248,56 @@ UserSearchView = (function(_super) {
     });
   };
 
+  UserSearchView.prototype.init_inc_boxes = function() {
+    this.fb_min_ib = new IncBox({
+      el: this.$el.find('#fb_min'),
+      current: this.model.get('fb_min_fret'),
+      min: 0,
+      max: this.model.get('cases_nb')
+    });
+    this.fb_max_ib = new IncBox({
+      el: this.$el.find('#fb_max'),
+      current: this.model.get('fb_max_fret'),
+      min: this.model.get('fb_min_fret'),
+      max: this.model.get('cases_nb')
+    });
+    this.position_max_width_ib = new IncBox({
+      el: this.$el.find('#position_max_width'),
+      current: this.model.get('position_max_width'),
+      min: 3,
+      max: 6
+    });
+    this.bass_max_step_ib = new IncBox({
+      el: this.$el.find('#bass_max_step'),
+      current: this.model.attributes.chord_filters['bass_max_step']
+    });
+    return this.max_step_ib = new IncBox({
+      el: this.$el.find('#max_step'),
+      current: this.model.attributes.chord_filters['max_step']
+    });
+  };
+
+  UserSearchView.prototype.init_tuning_boxes = function() {
+    var index, num, _i, _len, _ref, _results;
+    this.strings_nb_ib = new IncBox({
+      el: this.$el.find('#tuning-wrapper #strings'),
+      current: this.model.get('strings_nb'),
+      min: 4,
+      max: 8
+    });
+    this.tuning_midi_boxes = new Array(8);
+    _ref = ["one", "two", "three", "four", "five", "six", "seven", "eight"];
+    _results = [];
+    for (index = _i = 0, _len = _ref.length; _i < _len; index = ++_i) {
+      num = _ref[index];
+      _results.push(this.tuning_midi_boxes[index] = new MidiBox({
+        el: this.$el.find("#tuning #" + num),
+        pitch: this.model.attributes.tuning[index]
+      }));
+    }
+    return _results;
+  };
+
   UserSearchView.prototype.init_select_boxes = function() {
     this.struct_selector = new SelectBox({
       mother: this.$el.find("#struct-selector"),
@@ -337,17 +389,17 @@ UserSearchView = (function(_super) {
     cb = function() {
       var cf;
       cf = _this.model.get('chord_filters');
-      cf['bass_max_step'] = _this.$el.find("#bass_max_step")[0].current;
-      cf['max_step'] = _this.$el.find("#max_step")[0].current;
+      cf['bass_max_step'] = _this.bass_max_step_ib.get_val();
+      cf['max_step'] = _this.max_step_ib.get_val();
       cf['inversions'] = _this.iv_box.get_val();
       cf['b9'] = _this.b9_box.get_val();
       cf['open_strings'] = _this.os_box.get_val();
       cf['twin_pitches'] = _this.tp_box.get_val();
       _this.model.set({
         chord_filters: cf,
-        fb_min_fret: _this.$el.find("#fb_min")[0].current,
-        fb_max_fret: _this.$el.find("#fb_max")[0].current,
-        position_max_width: _this.$el.find("#position_max_width")[0].current
+        fb_min_fret: _this.fb_min_ib.get_val(),
+        fb_max_fret: _this.fb_max_ib.get_val(),
+        position_max_width: _this.position_max_width_ib.get_val()
       });
       return console.log(_this.model.attributes);
     };
@@ -368,29 +420,25 @@ UserSearchView = (function(_super) {
   };
 
   UserSearchView.prototype.update_tuning = function() {
-    var cb,
+    var e, i, s, tuning, _fn, _i, _len, _ref,
       _this = this;
-    cb = function() {
-      var e, i, s, tuning, _fn, _i, _len, _ref;
-      s = _this.model.get('strings_nb');
-      tuning = [];
-      _ref = ["one", "two", "three", "four", "five", "six", "seven", "eight"];
-      _fn = function(e, i) {
-        if (i < s) {
-          return tuning.push(_this.$el.find("rz-midi_box#" + e)[0].val);
-        }
-      };
-      for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
-        e = _ref[i];
-        _fn(e, i);
+    s = this.strings_nb_ib.get_val();
+    tuning = [];
+    _ref = this.tuning_midi_boxes;
+    _fn = function(e, i) {
+      if (i < s) {
+        return tuning.push(e.get_val());
       }
-      console.log(tuning);
-      _this.model.set({
-        tuning: tuning
-      });
-      return _this.model.save();
     };
-    return setTimeout(cb, 250);
+    for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
+      e = _ref[i];
+      _fn(e, i);
+    }
+    console.log(tuning);
+    this.model.set({
+      tuning: tuning
+    });
+    return this.model.save();
   };
 
   UserSearchView.prototype.nb_strings_update = function() {
@@ -398,11 +446,12 @@ UserSearchView = (function(_super) {
       _this = this;
     cb = function() {
       _this.model.set({
-        strings_nb: _this.$el.find('rz-inc_box#strings')[0].current
+        strings_nb: _this.strings_nb_ib.get_val()
       });
       _this.model.save();
       return _this.renderTuning();
     };
+    this.update_tuning();
     return setTimeout(cb, 250);
   };
 

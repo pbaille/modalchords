@@ -2,16 +2,15 @@
   %span.label
     search-range
   .control  
-    %rz-inc_box{:id=> "fb_min", :min => 0, :max=> @cases_nb , :current=> @fb_min_fret}
-
+    #fb_min
     %span ...
-    %rz-inc_box{:id=> "fb_max", :min => 1, :max=> @cases_nb, :current=> @fb_max_fret}
+    #fb_max
 
 #fingering-max-gap.opt-item
   %span.label
     fingering-max-gap
   .control  
-    %rz-inc_box{:id=> "position_max_width", :min => 3, :max=> 6 , :current=> @position_max_width}
+    #position_max_width
 
 #inversions.opt-item
   %span.label
@@ -39,13 +38,13 @@
   %span.label
     bass-max-distance
   .control  
-    %rz-inc_box{:id=> "bass_max_step", :min => 1, :max=> 99 , :current=> @chord_filters['bass_max_step']}
+    #bass_max_step
 
 #max-step.opt-item
   %span.label
     max-step
   .control  
-    %rz-inc_box{:id=> "max_step", :min => 1, :max=> 99 , :current=> @chord_filters['max_step']}
+    #max_step
 
 #open-strings.opt-item
   %span.label
