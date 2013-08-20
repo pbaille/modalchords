@@ -57,7 +57,10 @@ UserMenu = (function(_super) {
 
   UserMenu.prototype.logout = function() {
     return $.get("/mongo_users/logout", function(guest_user) {
-      return router.login(guest_user);
+      router.login(guest_user);
+      return router.navigate('', {
+        trigger: true
+      });
     });
   };
 

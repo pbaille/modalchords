@@ -28,6 +28,7 @@ class UserMenu extends Backbone.View
   logout: ->
   	$.get "/mongo_users/logout", (guest_user) ->
   	  router.login guest_user
+  	  router.navigate('', {trigger: true})
 
   login: ->
   	router.app.modals.pop_login()

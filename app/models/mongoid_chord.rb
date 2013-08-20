@@ -11,7 +11,7 @@ class MongoidChord
   field :tab_index, type: Integer
   field :tab_width, type: Integer
 
-	belongs_to :mongo_user
+	has_and_belongs_to_many :mongo_users
 
   def self.create_form_CMF chordMF, name
     c= MongoidChord.new_from_CMF chordMF, name

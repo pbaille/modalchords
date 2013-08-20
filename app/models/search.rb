@@ -16,9 +16,13 @@ class Search
   field :partials,           type: Hash
   field :mother_scales,      type: Hash
   field :known_modes,        type: Hash
+  # field :users_ids,          type: Array 
 
-  belongs_to :mongo_user
+  has_and_belongs_to_many :mongo_users
 
+  # def users
+  #    MongoUser.criteria.in(:_id => self.users_ids) 
+  # end
 
   def self.create_from_current_settings name
     n=self.new_from_current_settings name

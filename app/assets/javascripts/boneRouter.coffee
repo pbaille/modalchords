@@ -56,6 +56,7 @@ class SearchesRouter extends Backbone.Router
     Backbone.history.start({pushState: true})
   
   login: (user) ->
+    console.log user
     @app = new ModalChordsApp user
     $('body .modal-chords-app').remove()
     $('body').prepend @app.render().el
@@ -66,7 +67,7 @@ class SearchesRouter extends Backbone.Router
 window.router= {}
 
 jQuery ($) ->
-  
+
   # window.onbeforeunload = ->
   #   if router.app.user.get('email').slice(0,5) == "guest"
   #     return "Are you sure you want to leave?  someCondition does not equal someValue..."

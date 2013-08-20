@@ -160,7 +160,7 @@ UserSearchView = (function(_super) {
     return this.model.destroy();
   };
 
-  UserSearchView.prototype.update_model = function() {
+  UserSearchView.prototype.update_model = function(callback) {
     var d, degs, dsh, get_val, stat;
     dsh = {};
     degs = this.model.degrees;
@@ -172,7 +172,13 @@ UserSearchView = (function(_super) {
       get_val(d);
     }
     this.model.set("degree_status_hash", dsh);
-    return this.model.save();
+    if (callback) {
+      return this.model.save({}, {
+        success: callback
+      });
+    } else {
+      return this.model.save();
+    }
   };
 
   UserSearchView.prototype.save_search = function() {
@@ -180,35 +186,45 @@ UserSearchView = (function(_super) {
   };
 
   UserSearchView.prototype.load_search = function() {
-    var coll, current_search, search_to_load;
-    this.update_model();
-    coll = router.app.usc;
-    current_search = coll.filter(function(s) {
-      return s.attributes.name === "user_current_search";
-    })[0];
-    search_to_load = $.extend(true, {}, this.model.toJSON());
-    delete search_to_load._id;
-    delete search_to_load.name;
-    current_search.set(search_to_load);
-    current_search.trigger('refresh');
-    return $.get("/load_current_search", function(r) {
-      router.navigate('', {
-        trigger: true
+    var callback,
+      _this = this;
+    callback = function() {
+      var after_transfer, coll, current_search, search_to_load;
+      coll = router.app.usc;
+      current_search = coll.filter(function(s) {
+        return s.attributes.name === "user_current_search";
+      })[0];
+      search_to_load = $.extend(true, {}, _this.model.toJSON());
+      delete search_to_load._id;
+      delete search_to_load.name;
+      after_transfer = function() {
+        return $.get("/load_current_search", function(r) {
+          router.navigate('', {
+            trigger: true
+          });
+          return router.app.searchResults.fetch({
+            reset: true
+          });
+        });
+      };
+      current_search.save(search_to_load, {
+        success: after_transfer
       });
-      return router.app.searchResults.fetch({
-        reset: true
-      });
-    });
+      return current_search.trigger('refresh');
+    };
+    return this.update_model(callback);
   };
 
   UserSearchView.prototype.search = function() {
-    console.log("search");
-    this.update_model();
-    return $.get("/load_current_search", function(r) {
-      return router.app.searchResults.fetch({
-        reset: true
+    var callback;
+    callback = function() {
+      return $.get("/load_current_search", function(r) {
+        return router.app.searchResults.fetch({
+          reset: true
+        });
       });
-    });
+    };
+    return this.update_model(callback);
   };
 
   UserSearchView.prototype.degrees_init = function() {

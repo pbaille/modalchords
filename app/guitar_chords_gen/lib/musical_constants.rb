@@ -17,7 +17,7 @@ module MK #musical_constants
 			   #"Fb" => 4,
 			   #"E#" => 5,
 			   "F" => 5,
-			   "F#" => 6,
+			   #"F#" => 6,
 			   "Gb" => 6,
 			   "G" => 7,
 			   #"G#" => 8,

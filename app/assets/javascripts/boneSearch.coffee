@@ -120,7 +120,7 @@ class UserSearchView extends Backbone.View
     @$el.remove()
     @model.destroy()
 
-  update_model: ->
+  update_model: (callback)->
     dsh= {}
     degs= @model.degrees
     stat= @model.state_classes
@@ -131,30 +131,38 @@ class UserSearchView extends Backbone.View
     get_val d for d of degs
 
     @model.set("degree_status_hash", dsh) 
-    @model.save() 
+    if callback then @model.save({}, {success: callback}) else @model.save()
 
   save_search: ->
     router.app.modals.pop_search_naming() 
 
   load_search: ->
-    @update_model()
-    coll= router.app.usc
-    current_search= coll.filter((s) -> s.attributes.name == "user_current_search")[0]
-    search_to_load= $.extend(true, {}, @model.toJSON())
-    delete search_to_load._id
-    delete search_to_load.name
-    current_search.set search_to_load
-    current_search.trigger('refresh')
-    
-    $.get "/load_current_search", (r) ->
-      router.navigate('', {trigger: true})
-      router.app.searchResults.fetch({reset: true})
+
+    callback= =>  
+      coll= router.app.usc
+      current_search= coll.filter((s) -> s.attributes.name == "user_current_search")[0]
+      search_to_load= $.extend(true, {}, @model.toJSON())
+      delete search_to_load._id
+      delete search_to_load.name
+
+      after_transfer = =>
+        $.get "/load_current_search", (r) ->
+          router.navigate('', {trigger: true})
+          router.app.searchResults.fetch({reset: true})
+
+      current_search.save(search_to_load, {success: after_transfer})
+      current_search.trigger('refresh')
+      
+    @update_model(callback)
 
   search: ->
-    console.log "search"
-    @update_model()
-    $.get "/load_current_search", (r) ->
-      router.app.searchResults.fetch({reset: true})
+    #console.log "search"
+    callback= () ->
+      $.get "/load_current_search", (r) ->
+        router.app.searchResults.fetch({reset: true})
+
+    @update_model(callback)
+    
 
   ############# INITS #########################################
 
