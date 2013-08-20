@@ -4,6 +4,10 @@ get '/' do
 	haml :modal_chords, :layout => false
 end
 
+get '/user_area' do
+  redirect "/"
+end  
+
 get '/search_results' do
 	content_type(:json)
 	cs= ChordSearch.new(
@@ -15,7 +19,7 @@ get '/search_results' do
 
 	cs.search
 	results = cs.chords.map {|x| MongoidChord.new_from_CMF x, "untitled" }
-	
+
 	if results.empty?
 	  "No chords, please check your settings"	
 	else	

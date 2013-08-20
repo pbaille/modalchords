@@ -57,6 +57,9 @@ class UserSearchView extends Backbone.View
     "mouseenter .wrapper": "show_degree_control"
     "mouseleave .wrapper": "hide_degree_control"
     "click .little_circle": "assign_status"
+    "mouseenter #struct-wrap, .wrapper " : "show_mode_menu_toggle"
+    "mouseleave #struct-wrap " : "hide_mode_menu_toggle"
+    "click i.icon-down-open" : "toggle_mode_menu"
 
     #options   
     "mouseleave #options-wrapper": "update_options"
@@ -68,6 +71,7 @@ class UserSearchView extends Backbone.View
     #select_boxes
     "click #struct-selector .item": "update_struct"
     "click #mode-selector .item": "update_mode"
+    "click .close_button" : "toggle_mode_menu"
 
   render: ->
 
@@ -90,7 +94,7 @@ class UserSearchView extends Backbone.View
     this
 
   renderModeMenu: =>
-    @$el.find('#mode-menu-wrap').empty().append("<div id='mode-menu'><div class='select-box' id='mode-selector'></div><div class='select-box' id='struct-selector'></div></div>")
+    @$el.find('#mode-menu-wrap').empty().append("<div id='mode-menu'><div class='select-box' id='mode-selector'></div><div class='select-box' id='struct-selector'></div><div class='close_button'><i class='icon-cancel-circled2'/></div></div>")
     setTimeout @init_select_boxes, 30
     this
 
@@ -242,6 +246,7 @@ class UserSearchView extends Backbone.View
   hide_stuffs: ->
     @$el.find('.bub').hide()
     @$el.find('.state-selector-wrap').hide()
+    @$el.find('#struct_form_wrap #mode-menu-toggle').hide()
 
   cycle_status: (e) ->
     id = $(e.currentTarget).parent().attr("id")
@@ -288,6 +293,12 @@ class UserSearchView extends Backbone.View
     $(e.currentTarget).parent().parent().find('.main').removeClass('uniq enabled disabled optional').addClass k
     $(e.currentTarget).parent().parent().find(".bub").removeClass('uniq enabled disabled optional').addClass k
 
+  show_mode_menu_toggle: () ->
+    if @model.get('name') == "user_current_search"
+      @$el.find('#struct_form_wrap #mode-menu-toggle').slideDown() unless @$el.find('#mode-menu-wrap').is(":visible")
+  hide_mode_menu_toggle: () ->  
+    @$el.find('#struct_form_wrap #mode-menu-toggle').slideUp()
+
   ############## OPTIONS ###############
 
   update_options: (e) ->
@@ -319,8 +330,9 @@ class UserSearchView extends Backbone.View
 
     if ow.is(":visible")
       ow.slideUp()
-      mm.slideUp()
+      mm.slideUp() unless @model.get('name') == "user_current_search"
     else
+      @hide_mode_menu_toggle()
       ow.slideDown()
       mm.slideDown()
 
@@ -358,6 +370,9 @@ class UserSearchView extends Backbone.View
       tm.slideDown()
 
   ########### MODE MENU ############
+  toggle_mode_menu: () ->
+    @hide_mode_menu_toggle()
+    @$el.find('#mode-menu-wrap').slideToggle()
 
   update_struct: (e) ->
 

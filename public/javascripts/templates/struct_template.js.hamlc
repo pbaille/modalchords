@@ -13,15 +13,18 @@
         .uniq.little_circle 
         .optional.little_circle
         .disabled.little_circle
+        
   #struct_form_icon_wrap.right
     - if @name == "user_current_search"
       %i.icon-refresh{ :style => "font-size: 25px;"}
+      %i.icon-heart-1{ :style => "font-size: 25px;"} 
     - else
       %i.icon-rocket{ :style => "font-size: 22px;"}
-    - if @name == "user_current_search"
-      %i.icon-heart-1{ :style => "font-size: 25px;"}  
-    - else
       %i.icon-cancel-2{ :style => "font-size: 20px;"}  
+
   #struct_form_icon_wrap.left
     %i.icon-tumbler{ :style => "font-size: 25px;"}
-    %i.icon-cog-1{ :style => "font-size: 25px;"}  
+    %i.icon-cog-1{ :style => "font-size: 25px;"} 
+
+  #mode-menu-toggle
+    %i.icon-down-open   

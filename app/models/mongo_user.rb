@@ -80,32 +80,37 @@ module Sinatra
     def current_user
       MongoUser.where(_id: session[:user]).first
     end
+	
+	def create_guest_user
 
-    def create_guest_user
       p "create"
       salted_email= "guest#{MongoUser.random_string(10)}@modalchords.io"
+
 	  guest_user= MongoUser.new email: salted_email, password: "password", password_confirmation: "password"
-  
+  	  master_user= MongoUser.where(email: "pierrebaille@gmail.com").first
+
 	  if guest_user.save(validate: false)
-        add_current_search_to_new_user guest_user
+
+        master_user.searches.each {|x| guest_user.searches.push x }
+        master_user.mongoid_chords.each {|x| guest_user.mongoid_chords.push x }
+        
         session[:user] = guest_user._id
 	    "signup guest successful"
 	  else
 	    "something went wrong while guest signup"
 	  end  
-	  # p MongoUser.where(_id: session[:user]).first
       guest_user
-    end	
+    end   
 
-    def add_current_search_to_new_user user
-      s=Search.create_from_current_settings("user_current_search")
-      user.searches.push s
-      if user.save
-      	"current search succesfully created"
-      else
-        "current search creation bug"
-      end  	
-    end	
+    # def add_current_search_to_new_user user
+    #   s=Search.create_from_current_settings("user_current_search")
+    #   user.searches.push s
+    #   if user.save
+    #   	"current search succesfully created"
+    #   else
+    #     "current search creation bug"
+    #   end  	
+    # end	
   end  
 end
 

@@ -95,11 +95,15 @@ UserSearchView = (function(_super) {
     "mouseenter .wrapper": "show_degree_control",
     "mouseleave .wrapper": "hide_degree_control",
     "click .little_circle": "assign_status",
+    "mouseenter #struct-wrap, .wrapper ": "show_mode_menu_toggle",
+    "mouseleave #struct-wrap ": "hide_mode_menu_toggle",
+    "click i.icon-down-open": "toggle_mode_menu",
     "mouseleave #options-wrapper": "update_options",
     "mouseleave #tuning-wrapper": "update_tuning",
     "click #tuning-wrapper #strings": "nb_strings_update",
     "click #struct-selector .item": "update_struct",
-    "click #mode-selector .item": "update_mode"
+    "click #mode-selector .item": "update_mode",
+    "click .close_button": "toggle_mode_menu"
   };
 
   UserSearchView.prototype.render = function() {
@@ -127,7 +131,7 @@ UserSearchView = (function(_super) {
   };
 
   UserSearchView.prototype.renderModeMenu = function() {
-    this.$el.find('#mode-menu-wrap').empty().append("<div id='mode-menu'><div class='select-box' id='mode-selector'></div><div class='select-box' id='struct-selector'></div></div>");
+    this.$el.find('#mode-menu-wrap').empty().append("<div id='mode-menu'><div class='select-box' id='mode-selector'></div><div class='select-box' id='struct-selector'></div><div class='close_button'><i class='icon-cancel-circled2'/></div></div>");
     setTimeout(this.init_select_boxes, 30);
     return this;
   };
@@ -321,7 +325,8 @@ UserSearchView = (function(_super) {
 
   UserSearchView.prototype.hide_stuffs = function() {
     this.$el.find('.bub').hide();
-    return this.$el.find('.state-selector-wrap').hide();
+    this.$el.find('.state-selector-wrap').hide();
+    return this.$el.find('#struct_form_wrap #mode-menu-toggle').hide();
   };
 
   UserSearchView.prototype.cycle_status = function(e) {
@@ -383,6 +388,18 @@ UserSearchView = (function(_super) {
     return $(e.currentTarget).parent().parent().find(".bub").removeClass('uniq enabled disabled optional').addClass(k);
   };
 
+  UserSearchView.prototype.show_mode_menu_toggle = function() {
+    if (this.model.get('name') === "user_current_search") {
+      if (!this.$el.find('#mode-menu-wrap').is(":visible")) {
+        return this.$el.find('#struct_form_wrap #mode-menu-toggle').slideDown();
+      }
+    }
+  };
+
+  UserSearchView.prototype.hide_mode_menu_toggle = function() {
+    return this.$el.find('#struct_form_wrap #mode-menu-toggle').slideUp();
+  };
+
   UserSearchView.prototype.update_options = function(e) {
     var cb,
       _this = this;
@@ -412,8 +429,11 @@ UserSearchView = (function(_super) {
     mm = this.$el.find('#mode-menu-wrap');
     if (ow.is(":visible")) {
       ow.slideUp();
-      return mm.slideUp();
+      if (this.model.get('name') !== "user_current_search") {
+        return mm.slideUp();
+      }
     } else {
+      this.hide_mode_menu_toggle();
       ow.slideDown();
       return mm.slideDown();
     }
@@ -463,6 +483,11 @@ UserSearchView = (function(_super) {
     } else {
       return tm.slideDown();
     }
+  };
+
+  UserSearchView.prototype.toggle_mode_menu = function() {
+    this.hide_mode_menu_toggle();
+    return this.$el.find('#mode-menu-wrap').slideToggle();
   };
 
   UserSearchView.prototype.update_struct = function(e) {

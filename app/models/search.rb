@@ -5,7 +5,6 @@ class Search
 
   field :name 
   field :mode_name
-  field :current,            type: Boolean, :default => false
   field :degree_status_hash, type: Hash
   field :tuning,             type: Array
   field :strings_nb,         type: Integer

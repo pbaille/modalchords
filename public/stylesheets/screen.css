@@ -93,6 +93,19 @@ body {
 }
 
 /* line 28, ../../app/assets/stylesheets/_general.sass */
+.close_button {
+  position: absolute;
+  display: inline-block;
+  left: -22px;
+  top: 13px;
+  color: rgba(231, 238, 226, 0.3);
+}
+/* line 34, ../../app/assets/stylesheets/_general.sass */
+.close_button:hover {
+  color: rgba(231, 238, 226, 0.6);
+}
+
+/* line 37, ../../app/assets/stylesheets/_general.sass */
 #hide-menu {
   position: absolute;
   display: inline-block;
@@ -100,32 +113,32 @@ body {
   top: 13px;
   left: -20px;
 }
-/* line 34, ../../app/assets/stylesheets/_general.sass */
+/* line 43, ../../app/assets/stylesheets/_general.sass */
 #hide-menu:hover {
   color: rgba(231, 238, 226, 0.6);
 }
 
-/* line 37, ../../app/assets/stylesheets/_general.sass */
+/* line 46, ../../app/assets/stylesheets/_general.sass */
 #mode-menu .select-box-wrap {
   margin: 0 10px;
 }
 
-/* line 41, ../../app/assets/stylesheets/_general.sass */
+/* line 50, ../../app/assets/stylesheets/_general.sass */
 #user-searches .search {
   padding: 5px 0 15px 0;
 }
-/* line 43, ../../app/assets/stylesheets/_general.sass */
+/* line 52, ../../app/assets/stylesheets/_general.sass */
 #user-searches .search:nth-child(2n) {
   background: #4a413f;
 }
 
-/* line 46, ../../app/assets/stylesheets/_general.sass */
+/* line 55, ../../app/assets/stylesheets/_general.sass */
 #user-chords {
   background: #4a413f;
   border-top: 5px solid rgba(231, 238, 226, 0.3);
 }
 
-/* line 52, ../../app/assets/stylesheets/_general.sass */
+/* line 61, ../../app/assets/stylesheets/_general.sass */
 #user-searches p.categorie, #user-chords p.categorie {
   background: #423a38;
   font-size: 30px;
@@ -134,7 +147,7 @@ body {
   color: #47b8c8;
 }
 
-/* line 62, ../../app/assets/stylesheets/_general.sass */
+/* line 71, ../../app/assets/stylesheets/_general.sass */
 #lean_overlay {
   opacity: 0.5;
   position: fixed;
@@ -147,23 +160,23 @@ body {
   display: none;
 }
 
-/* line 73, ../../app/assets/stylesheets/_general.sass */
+/* line 82, ../../app/assets/stylesheets/_general.sass */
 #user-menu {
   position: fixed;
   right: 20px;
   top: 0;
 }
-/* line 77, ../../app/assets/stylesheets/_general.sass */
+/* line 86, ../../app/assets/stylesheets/_general.sass */
 #user-menu #login_link, #user-menu #logout_link, #user-menu #signup_link {
   display: inline-block;
 }
-/* line 79, ../../app/assets/stylesheets/_general.sass */
+/* line 88, ../../app/assets/stylesheets/_general.sass */
 #user-menu i {
   color: rgba(231, 238, 226, 0.6);
   font-size: 20px;
   line-height: 50px;
 }
-/* line 83, ../../app/assets/stylesheets/_general.sass */
+/* line 92, ../../app/assets/stylesheets/_general.sass */
 #user-menu i:hover {
   color: rgba(231, 238, 226, 0.9);
 }
@@ -399,6 +412,19 @@ body {
   color: rgba(231, 238, 226, 0.8);
 }
 
+/* line 160, ../../app/assets/stylesheets/_struct_form.sass */
+#mode-menu-toggle {
+  position: relative;
+  right: 10px;
+  top: 1px;
+  font-size: 25px;
+  color: rgba(231, 238, 226, 0.5);
+}
+/* line 166, ../../app/assets/stylesheets/_struct_form.sass */
+#mode-menu-toggle:hover {
+  color: rgba(231, 238, 226, 0.8);
+}
+
 /* line 1, ../../app/assets/stylesheets/_options.sass */
 #options-wrapper {
   display: inline-block;
@@ -579,7 +605,7 @@ p.three {
 /* line 1, ../../app/assets/stylesheets/_tuning_menu.sass */
 #tuning-menu {
   display: block;
-  height: 60px;
+  height: 53px;
 }
 /* line 4, ../../app/assets/stylesheets/_tuning_menu.sass */
 #tuning-menu #tuning-wrapper {
@@ -593,28 +619,36 @@ p.three {
   padding: 0 10px;
 }
 /* line 9, ../../app/assets/stylesheets/_tuning_menu.sass */
-#tuning-menu #tuning-wrapper rz-midi_box {
-  padding: 5px;
-}
-/* line 12, ../../app/assets/stylesheets/_tuning_menu.sass */
-#tuning-menu #tuning-wrapper rz-inc_box p {
-  margin-bottom: 3px;
-}
-/* line 15, ../../app/assets/stylesheets/_tuning_menu.sass */
-#tuning-menu #tuning-wrapper #instument_settings_wrap {
-  float: left;
-}
-/* line 18, ../../app/assets/stylesheets/_tuning_menu.sass */
-#tuning-menu #tuning-wrapper #instument_settings_wrap #strings {
+#tuning-menu #tuning-wrapper #strings {
   margin-right: 10px;
 }
-/* line 20, ../../app/assets/stylesheets/_tuning_menu.sass */
-#tuning-menu #tuning-wrapper #instument_settings_wrap #strings .incBoxDisplay {
-  background: #47b8c8;
+/* line 11, ../../app/assets/stylesheets/_tuning_menu.sass */
+#tuning-menu #tuning-wrapper #strings .incBoxDisplay {
+  background: #d7503e;
 }
-/* line 23, ../../app/assets/stylesheets/_tuning_menu.sass */
+/* line 13, ../../app/assets/stylesheets/_tuning_menu.sass */
+#tuning-menu #tuning-wrapper #strings .incBoxDisplay b {
+  color: #e7eee2;
+}
+/* line 16, ../../app/assets/stylesheets/_tuning_menu.sass */
 #tuning-menu #tuning-wrapper #tuning {
   display: inline-block;
+}
+/* line 20, ../../app/assets/stylesheets/_tuning_menu.sass */
+#tuning-menu #tuning-wrapper #tuning .tuning-midi-box .pitch_box .incBoxDisplay {
+  background: #47b8c8;
+}
+/* line 22, ../../app/assets/stylesheets/_tuning_menu.sass */
+#tuning-menu #tuning-wrapper #tuning .tuning-midi-box .pitch_box .incBoxDisplay b {
+  color: #e7eee2;
+}
+/* line 24, ../../app/assets/stylesheets/_tuning_menu.sass */
+#tuning-menu #tuning-wrapper #tuning .tuning-midi-box .oct_box .incBoxDisplay {
+  background: #bdb9b1;
+}
+/* line 26, ../../app/assets/stylesheets/_tuning_menu.sass */
+#tuning-menu #tuning-wrapper #tuning .tuning-midi-box .oct_box .incBoxDisplay b {
+  color: #423a38;
 }
 
 /* line 8, ../../app/assets/stylesheets/_incBox_midiBox.sass */

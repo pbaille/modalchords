@@ -1,8 +1,7 @@
 #tuning-wrapper
-  #instument_settings_wrap
-    #strings
-    
-    #tuning
-      - for e,i in ["one", "two", "three", "four", "five", "six", "seven", "eight"]
-        - do (e,i) =>
-          %div{:id => "#{e}",:class => "#{'hidden' unless i < @strings_nb}"}
+  #strings
+  
+  #tuning
+    - for e,i in ["one", "two", "three", "four", "five", "six", "seven", "eight"]
+      - do (e,i) =>
+        .tuning-midi-box{:id => "#{e}",:class => "#{'hidden' unless i < @strings_nb}"}
