@@ -14,8 +14,8 @@ class MongoUser
   validates_presence_of :password
   validates_confirmation_of :password
 
-  has_and_belongs_to_many :searches
-  has_and_belongs_to_many :mongoid_chords
+  has_many :searches
+  has_many :mongoid_chords
 
   attr_accessor :password, :password_confirmation
 
@@ -101,8 +101,19 @@ module Sinatra
 
 	    if guest_user.save(validate: false)
 	    	if master_user
-          master_user.searches.each {|x| guest_user.searches.push x }
-          master_user.mongoid_chords.each {|x| guest_user.mongoid_chords.push x }
+
+          master_user.searches.each do |x|
+            new_search = x.clone
+            new_search.save
+            guest_user.searches.push new_search
+          end 
+
+          master_user.mongoid_chords.each do |x|
+            new_chord = x.clone
+            new_chord.save
+            guest_user.mongoid_chords.push new_chord
+          end
+
         else
           add_current_search_to_new_user guest_user
         end
@@ -144,27 +155,13 @@ get "/ensure_user" do
 	current_user.to_json 
 end	
 
-# get '/is_guest_user' do
-# 	if current_user.email[0..4] == "guest"
-# 		"true"
-# 	else "false" end	
+# get "/remove_all_guest" do 
+# 	MongoUser.all.each do |u|
+# 		if u.email[0..4] == "guest"
+# 			u.destroy
+# 		end	
+# 	end	
 # end	
-
-# get "/remove_guest_user_when_leaving" do
-# 	if current_user.email[0..4] == "guest" 
-# 	  current_user.destroy 
-# 	  session[:user]= nil
-# 	  {message: "guest succesfully removed from db"}.to_json
-# 	end  
-# end	
-
-get "/remove_all_guest" do 
-	guests= MongoUser.all.each do |u|
-		if u.email[0..4] == "guest"
-			u.destroy
-		end	
-	end	
-end	
 
 ## AUTH ##
 
@@ -206,13 +203,20 @@ get "/mongo_users/signup/:email/:password/:password_confirmation" do
 	new_user= MongoUser.new email: params[:email],password: params[:password],password_confirmation: params[:password_confirmation]#params.reject {|k,v| k=="splat" or k=="captures"}
 
 	if new_user.save 
-    if guest_user?
-      current_user.searches.each {|x| new_user.searches.push x }
-      current_user.mongoid_chords.each {|x| new_user.mongoid_chords.push x }
-    else
-      super_guest.searches.each {|x| new_user.searches.push x }
-      super_guest.mongoid_chords.each {|x| new_user.mongoid_chords.push x }
-    end  
+    guest_user? ? mother_user = current_user : mother_user = super_guest
+      
+    mother_user.searches.each do |x|
+      new_search = x.clone
+      new_search.save
+      new_user.searches.push new_search
+    end 
+
+    mother_user.mongoid_chords.each do |x|
+      new_chord = x.clone
+      new_chord.save
+      new_user.mongoid_chords.push new_chord
+    end
+
     new_user.save
     current_user.destroy if current_user.is_guest?
     session[:user] = new_user._id
