@@ -272,7 +272,7 @@ UserSearchView = (function(_super) {
     this.fb_min_ib = new IncBox({
       el: this.$el.find('#fb_min'),
       current: this.model.get('fb_min_fret'),
-      min: 0,
+      min: 1,
       max: this.model.get('cases_nb')
     });
     this.fb_max_ib = new IncBox({

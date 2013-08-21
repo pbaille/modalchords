@@ -152,7 +152,7 @@ class UserSearchView extends Backbone.View
 
       current_search.save(search_to_load, {success: after_transfer})
       current_search.trigger('refresh')
-      
+
     @update_model(callback)
 
   search: ->
@@ -193,7 +193,7 @@ class UserSearchView extends Backbone.View
     @fb_min_ib= new IncBox
       el: @$el.find('#fb_min')
       current: @model.get('fb_min_fret')
-      min: 0
+      min: 1
       max: @model.get('cases_nb')
 
     @fb_max_ib = new IncBox

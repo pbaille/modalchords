@@ -565,7 +565,7 @@ class ChordMF < JSONable # MF => multi format
 
 		opt[:root] ? @root = opt[:root] : @root = pitches_arr.compact.sort[0]%12      
 
-		@tab_index=@tab.select{|x| x!=0}.compact.sort[0]
+		@tab_index=@tab.select{|x| x!=0}.compact.sort[0] || 1
 		df_calc
 	end
 
@@ -695,8 +695,16 @@ class ChordSearch
 
 		@chords=[]
 
-		split_impossible_structs
+		#p "before opt"
+		#@mss_arr.each {|e| p e.functs}
 		optional_struct_split
+		#p "before split imp"
+		#@mss_arr.each {|e| p e.functs}
+
+		split_impossible_structs
+		#p "after split imp"
+		#@mss_arr.each {|e| p e.functs}
+
 
 	end
 
@@ -710,6 +718,7 @@ class ChordSearch
 		end
 
 		apply_filters unless @filters == {}
+		@chords = @chords.sort_by {|x| x.tab_index } if @chords.size < 500
 	end	
 
 	def global_search modal_search_struct
@@ -734,11 +743,10 @@ class ChordSearch
 	def local_search modal_search_struct, position
 
 		local_results=[]
-
+		local_results<< fretboard_slice.tuning if position.low_fret == fretboard_slice.low_fret
+		
 		#replace unneeded notes of position by nil
 		search_array= position.tonal_filter modal_search_struct.functs
-		#p "search_array => #{search_array}"
-
 		#find all first case possibilities
 		  #construct first case possibilities array [[pitch,string],[pitch,string],...]
 		  first_case=search_array.each_with_index.map {|x,i| if x[1] then [x[1],i] else nil end}.compact
@@ -746,7 +754,6 @@ class ChordSearch
 		  first_case_combinations=[]
 		  (1..first_case.size).each {|x| first_case_combinations<<first_case.combination(x).to_a}
 		  first_case_combinations.flatten!(1) 
-
 		#for each reconstruct search_array
 		#delete 1 indexes (contains index finger notes)  (conditional is for the case that no pitch available on a string)
 		search_array.map! {|e| e.delete_at(1); if e.compact.empty? then [nil] else e.compact end}
@@ -787,7 +794,7 @@ class ChordSearch
 					cd=c.dup
 					cd[di]=nil
 					# condition only check if first case of fb_loc is here
-					if (position.to_tab(cd)).delete_if{|x| x==0}.compact.min==position.low_fret
+					if (position.to_tab(cd)).delete_if{|x| x==0}.compact.min==position.low_fret #or (position.to_tab(cd)).delete_if{|x| x==0}.empty?
 						local_results<<cd 
 						#p "appended => #{ChordMF.new(cd, position).inspect}"
 					end	
@@ -814,22 +821,24 @@ class ChordSearch
 		#TODO remove impossible fingerings
 
 		# 'add "removed functs duplicate" combinations' can produce duplicates, just remove them
+		#p local_results.uniq
 		local_results.uniq
 	end
 
 	# if funct.size > nb_Strings split mss into several mss of nb_strings size
+		
 	def split_impossible_structs
 
 		results=[]
 
-		if (defined?(settings)).nil?
-          n_strings=6
-        else
-          n_strings=settings.strings_nb
-        end        
+		# if (defined?(settings)).nil?
+  #         n_strings=6
+  #       else
+  #         n_strings=settings.strings_nb
+  #       end        
 
 		@mss_arr.each do |mss|
-			if mss.functs.size > n_strings #@fingerings_options[:max_width]
+			if mss.functs.size > @fretboard_slice.nb_strings #@fingerings_options[:max_width]
 				mss.transpose.combination(@fretboard_slice.nb_strings).each {|c| results<<ModalSearchStruct.new(c.transpose[0],c.transpose[1],mss.root)}
 			else
 				results<<mss
@@ -851,15 +860,18 @@ class ChordSearch
 				opt_part= mss.select{|x| x[1] < 0}
 				reg_part= mss.select{|x| x[1] > 0}
 				
-				(1..opt_part.size).to_a.each do |n|
-
-					opt_part.combination(n).each do |c|
-
-						reg_part_cp= reg_part.dup
-						join=(reg_part_cp+c).transpose
-					  results<< ModalSearchStruct.new(join[0],join[1],mss_root)
-
-					end  
+				if reg_part.size < @fretboard_slice.nb_strings
+					diff = @fretboard_slice.nb_strings - reg_part.size
+					(1..diff).to_a.each do |n|
+	
+						opt_part.combination(n).each do |c|
+	
+							reg_part_cp= reg_part.dup
+							join=(reg_part_cp+c).transpose
+						  results<< ModalSearchStruct.new(join[0],join[1],mss_root)
+	
+						end  
+					end	
 				end	
 
 				#add chord without any optional elements
@@ -881,6 +893,10 @@ class ChordSearch
 		end	
 	end	
 end
+
+# a= FretboardSlice.new(0,8)
+# ap= a.positions(5)
+# ap.each {|x| p x.low_fret}
 
 ##### MODE DEGREE NOTE ############################
 
@@ -940,21 +956,21 @@ end
 
 # p ms.to_MSS
 
-# ms = ModeSelector.new_from_degree_status_hash({"root"=>"Eb disabled", 
-# 											   "second"=>"M2 enabled", 
-# 											   "third"=>"M3 enabled", 
+# ms = ModeSelector.new_from_degree_status_hash({"root"=>"E uniq", 
+# 											   "second"=>"M2 uniq", 
+# 											   "third"=>"M3 disabled", 
 # 											   "fourth"=>"+4 disabled", 
-# 											   "fifth"=>"+5 enabled", 
-# 											   "sixt"=>"#6 enabled", 
-# 											   "seventh"=>"M7 enabled"})
+# 											   "fifth"=>"P5 uniq", 
+# 											   "sixt"=>"M6 uniq", 
+# 											   "seventh"=>"M7 disabled"})
 
-# ms.display
-# p ms.partials
-# ##******************* CS ***************************
-# cs= ChordSearch.new(FretboardSlice.new(0,8),
+# #ms.display
+# #p ms.partials
+# # ##******************* CS ***************************
+# cs= ChordSearch.new(FretboardSlice.new(1,12,[40,47,54,61]),
 # 	                       ms,
 # 	                       {:max_width=>5},
-# 	                       ChordFilter.new(:root_bassed))
+# 	                       ChordFilter.new(:inversions, false))
 # cs.search
 
 # cs.chords.each do |c|

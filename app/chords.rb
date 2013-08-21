@@ -21,7 +21,7 @@ get '/search_results' do
 	results = cs.chords.map {|x| MongoidChord.new_from_CMF x, "untitled" }
 
 	if results.empty?
-	  "No chords, please check your settings"	
+	  {}.to_json	
 	else	
 	  results.to_json
 	end
