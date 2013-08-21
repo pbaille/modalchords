@@ -26,5 +26,5 @@
     %i.icon-tumbler{ :style => "font-size: 25px;"}
     %i.icon-cog-1{ :style => "font-size: 25px;"} 
 
-  #mode-menu-toggle
-    %i.icon-down-open   
+  /#mode-menu-toggle
+  %i.icon-down-open   

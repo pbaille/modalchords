@@ -57,8 +57,8 @@ class UserSearchView extends Backbone.View
     "mouseenter .wrapper": "show_degree_control"
     "mouseleave .wrapper": "hide_degree_control"
     "click .little_circle": "assign_status"
-    "mouseenter #struct-wrap, .wrapper " : "show_mode_menu_toggle"
-    "mouseleave #struct-wrap " : "hide_mode_menu_toggle"
+    "mouseenter #struct_form_wrap, .wrapper " : "show_mode_menu_toggle"
+    "mouseleave #struct_form_wrap " : "hide_mode_menu_toggle"
     "click i.icon-down-open" : "toggle_mode_menu"
 
     #options   
@@ -254,7 +254,7 @@ class UserSearchView extends Backbone.View
   hide_stuffs: ->
     @$el.find('.bub').hide()
     @$el.find('.state-selector-wrap').hide()
-    @$el.find('#struct_form_wrap #mode-menu-toggle').hide()
+    @$el.find('#struct_form_wrap i.icon-down-open').hide()
 
   cycle_status: (e) ->
     id = $(e.currentTarget).parent().attr("id")
@@ -303,9 +303,9 @@ class UserSearchView extends Backbone.View
 
   show_mode_menu_toggle: () ->
     if @model.get('name') == "user_current_search"
-      @$el.find('#struct_form_wrap #mode-menu-toggle').slideDown() unless @$el.find('#mode-menu-wrap').is(":visible")
+      @$el.find('#struct_form_wrap i.icon-down-open').fadeIn() unless @$el.find('#mode-menu-wrap').is(":visible")
   hide_mode_menu_toggle: () ->  
-    @$el.find('#struct_form_wrap #mode-menu-toggle').slideUp()
+    @$el.find('#struct_form_wrap i.icon-down-open').fadeOut()
 
   ############## OPTIONS ###############
 

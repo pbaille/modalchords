@@ -35,6 +35,14 @@ class MongoUser
     self.id == 1
   end
 
+  def is_guest?
+    self.email[0..4] == "guest"
+  end
+
+  def self.super_guest
+    MongoUser.where(email: "super_guest@modalchords.io").first
+  end 
+
   def self.authenticate(email, pass)
     current_user = MongoUser.where(:email => email).first
     return nil unless current_user
@@ -78,28 +86,31 @@ module Sinatra
     def current_user
       MongoUser.where(_id: session[:user]).first
     end
+
+    def guest_user?
+      current_user.email[0..4] == "guest"
+    end 
 	
-	def create_guest_user
+	  def create_guest_user
 
       p "create"
       salted_email= "guest#{MongoUser.random_string(10)}@modalchords.io"
 
-	  guest_user= MongoUser.new email: salted_email, password: "password", password_confirmation: "password"
-  	  master_user= MongoUser.where(email: "super_guest@modalchords.io").first
+	    guest_user= MongoUser.new email: salted_email, password: "password", password_confirmation: "password"
+  	  master_user= MongoUser.super_guest
 
-	  if guest_user.save(validate: false)
-	  	if master_user
+	    if guest_user.save(validate: false)
+	    	if master_user
           master_user.searches.each {|x| guest_user.searches.push x }
           master_user.mongoid_chords.each {|x| guest_user.mongoid_chords.push x }
         else
           add_current_search_to_new_user guest_user
         end
-
         session[:user] = guest_user._id
-	    "signup guest successful"
-	  else
-	    "something went wrong while guest signup"
-	  end  
+	      "signup guest successful"
+	    else
+	      "something went wrong while guest signup"
+	    end  
       guest_user
     end   
 
@@ -129,25 +140,23 @@ end
 
 get "/ensure_user" do
 	content_type(:json)
-	#session[:user]= nil
-	#p "hello"
 	create_guest_user if MongoUser.where(_id: session[:user]).empty? or !session[:user]
 	current_user.to_json 
 end	
 
-get '/is_guest_user' do
-	if current_user.email[0..4] == "guest"
-		"true"
-	else "false" end	
-end	
+# get '/is_guest_user' do
+# 	if current_user.email[0..4] == "guest"
+# 		"true"
+# 	else "false" end	
+# end	
 
-get "/remove_guest_user_when_leaving" do
-	if current_user.email[0..4] == "guest" 
-	  current_user.destroy 
-	  session[:user]= nil
-	  {message: "guest succesfully removed from db"}.to_json
-	end  
-end	
+# get "/remove_guest_user_when_leaving" do
+# 	if current_user.email[0..4] == "guest" 
+# 	  current_user.destroy 
+# 	  session[:user]= nil
+# 	  {message: "guest succesfully removed from db"}.to_json
+# 	end  
+# end	
 
 get "/remove_all_guest" do 
 	guests= MongoUser.all.each do |u|
@@ -161,8 +170,11 @@ end
 
 get "/mongo_users/login/:email/:password" do
     content_type(:json)
-	if user = MongoUser.authenticate(params[:email], params[:password])
+    previous_user = current_user
+
+	  if user = MongoUser.authenticate(params[:email], params[:password])
       session[:user] = user._id
+      previous_user.destroy if previous_user.is_guest?
       user.to_json
     else
       false.to_json
@@ -177,34 +189,37 @@ get '/mongo_users/logout' do
 end
 
 # get "/mongo_users/signup/:email/:password/:password_confirmation" do
-#     content_type(:json)
-# 	current_user.update_attributes params.reject {|k,v| k=="splat" or k=="captures"}
-# 	if current_user.save
-#       #add_current_search_to_new_user new_user
-#       #session[:user] = new_user._id
-# 	  current_user.to_json
-#     else
-#       false.to_json
-#     end
+  #     content_type(:json)
+  # 	current_user.update_attributes params.reject {|k,v| k=="splat" or k=="captures"}
+  # 	if current_user.save
+  #       #add_current_search_to_new_user new_user
+  #       #session[:user] = new_user._id
+  # 	  current_user.to_json
+  #     else
+  #       false.to_json
+  #     end
 # end	
 
 get "/mongo_users/signup/:email/:password/:password_confirmation" do
-    content_type(:json)
-    p params[:password_confirmation]
-    p params[:password]
+  content_type(:json)
+    
 	new_user= MongoUser.new email: params[:email],password: params[:password],password_confirmation: params[:password_confirmation]#params.reject {|k,v| k=="splat" or k=="captures"}
-	p new_user
-	if new_user.save! 
-	  p "new_user saved!"
+
+	if new_user.save 
+    if guest_user?
       current_user.searches.each {|x| new_user.searches.push x }
       current_user.mongoid_chords.each {|x| new_user.mongoid_chords.push x }
-      new_user.save
-      session[:user] = new_user._id
-	  new_user.to_json
     else
-      p "error"	
-      false.to_json
-    end
+      super_guest.searches.each {|x| new_user.searches.push x }
+      super_guest.mongoid_chords.each {|x| new_user.mongoid_chords.push x }
+    end  
+    new_user.save
+    current_user.destroy if current_user.is_guest?
+    session[:user] = new_user._id
+	  new_user.to_json
+  else
+    false.to_json
+  end
 end	
 
 

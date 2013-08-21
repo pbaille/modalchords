@@ -95,8 +95,8 @@ UserSearchView = (function(_super) {
     "mouseenter .wrapper": "show_degree_control",
     "mouseleave .wrapper": "hide_degree_control",
     "click .little_circle": "assign_status",
-    "mouseenter #struct-wrap, .wrapper ": "show_mode_menu_toggle",
-    "mouseleave #struct-wrap ": "hide_mode_menu_toggle",
+    "mouseenter #struct_form_wrap, .wrapper ": "show_mode_menu_toggle",
+    "mouseleave #struct_form_wrap ": "hide_mode_menu_toggle",
     "click i.icon-down-open": "toggle_mode_menu",
     "mouseleave #options-wrapper": "update_options",
     "mouseleave #tuning-wrapper": "update_tuning",
@@ -342,7 +342,7 @@ UserSearchView = (function(_super) {
   UserSearchView.prototype.hide_stuffs = function() {
     this.$el.find('.bub').hide();
     this.$el.find('.state-selector-wrap').hide();
-    return this.$el.find('#struct_form_wrap #mode-menu-toggle').hide();
+    return this.$el.find('#struct_form_wrap i.icon-down-open').hide();
   };
 
   UserSearchView.prototype.cycle_status = function(e) {
@@ -407,13 +407,13 @@ UserSearchView = (function(_super) {
   UserSearchView.prototype.show_mode_menu_toggle = function() {
     if (this.model.get('name') === "user_current_search") {
       if (!this.$el.find('#mode-menu-wrap').is(":visible")) {
-        return this.$el.find('#struct_form_wrap #mode-menu-toggle').slideDown();
+        return this.$el.find('#struct_form_wrap i.icon-down-open').fadeIn();
       }
     }
   };
 
   UserSearchView.prototype.hide_mode_menu_toggle = function() {
-    return this.$el.find('#struct_form_wrap #mode-menu-toggle').slideUp();
+    return this.$el.find('#struct_form_wrap i.icon-down-open').fadeOut();
   };
 
   UserSearchView.prototype.update_options = function(e) {

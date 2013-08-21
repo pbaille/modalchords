@@ -178,7 +178,8 @@ body {
 }
 /* line 92, ../../app/assets/stylesheets/_general.sass */
 #user-menu i:hover {
-  color: rgba(231, 238, 226, 0.9);
+  text-shadow: rgba(231, 238, 226, 0.8) 0 0 4px;
+  color: rgba(231, 238, 226, 0.8);
 }
 
 /* line 8, ../../app/assets/stylesheets/_struct_form.sass */
@@ -230,39 +231,45 @@ body {
   border: 3px solid #e7eee2;
   cursor: pointer;
 }
-/* line 49, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 48, ../../app/assets/stylesheets/_struct_form.sass */
+.main:hover {
+  -webkit-box-shadow: #e7eee2 0 0 4px;
+  -moz-box-shadow: #e7eee2 0 0 4px;
+  box-shadow: #e7eee2 0 0 4px;
+}
+/* line 51, ../../app/assets/stylesheets/_struct_form.sass */
 .main.enabled {
   background: #47b8c8;
 }
-/* line 51, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 53, ../../app/assets/stylesheets/_struct_form.sass */
 .main.enabled b {
   color: #423a38;
 }
-/* line 53, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 55, ../../app/assets/stylesheets/_struct_form.sass */
 .main.disabled {
   background: #423a38;
 }
-/* line 55, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 57, ../../app/assets/stylesheets/_struct_form.sass */
 .main.disabled b {
   color: rgba(231, 238, 226, 0.6);
 }
-/* line 57, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 59, ../../app/assets/stylesheets/_struct_form.sass */
 .main.uniq {
   background: #d7503e;
 }
-/* line 59, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 61, ../../app/assets/stylesheets/_struct_form.sass */
 .main.uniq b {
   color: #423a38;
 }
-/* line 61, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 63, ../../app/assets/stylesheets/_struct_form.sass */
 .main.optional {
   background: #bdb9b1;
 }
-/* line 63, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 65, ../../app/assets/stylesheets/_struct_form.sass */
 .main.optional b {
   color: #423a38;
 }
-/* line 66, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 68, ../../app/assets/stylesheets/_struct_form.sass */
 .main b {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -271,7 +278,7 @@ body {
   font-size: 26.66667px;
 }
 
-/* line 73, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 75, ../../app/assets/stylesheets/_struct_form.sass */
 .bub {
   position: absolute;
   background: #50b3da;
@@ -286,51 +293,57 @@ body {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 84, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 86, ../../app/assets/stylesheets/_struct_form.sass */
+.bub:hover {
+  -webkit-box-shadow: #e7eee2 0 0 4px;
+  -moz-box-shadow: #e7eee2 0 0 4px;
+  box-shadow: #e7eee2 0 0 4px;
+}
+/* line 89, ../../app/assets/stylesheets/_struct_form.sass */
 .bub b {
   color: white;
   line-height: 20px;
 }
-/* line 87, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 92, ../../app/assets/stylesheets/_struct_form.sass */
 .bub.top {
   cursor: n-resize;
   top: 0px;
 }
-/* line 90, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 95, ../../app/assets/stylesheets/_struct_form.sass */
 .bub.bottom {
   cursor: s-resize;
   bottom: 0px;
 }
-/* line 93, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 98, ../../app/assets/stylesheets/_struct_form.sass */
 .bub.uniq {
   background: #47b8c8;
 }
-/* line 95, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 100, ../../app/assets/stylesheets/_struct_form.sass */
 .bub.uniq b {
   color: #423a38;
 }
-/* line 97, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 102, ../../app/assets/stylesheets/_struct_form.sass */
 .bub.enabled {
   background: #d7503e;
 }
-/* line 99, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 104, ../../app/assets/stylesheets/_struct_form.sass */
 .bub.enabled b {
   color: #423a38;
 }
-/* line 101, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 106, ../../app/assets/stylesheets/_struct_form.sass */
 .bub.disabled {
   background: #423a38;
 }
-/* line 103, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 108, ../../app/assets/stylesheets/_struct_form.sass */
 .bub.disabled b {
   color: #423a38;
 }
-/* line 105, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 110, ../../app/assets/stylesheets/_struct_form.sass */
 .bub.optional {
   background: #47b8c8;
 }
 
-/* line 107, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 112, ../../app/assets/stylesheets/_struct_form.sass */
 .state-selector-wrap {
   position: absolute;
   width: 11px;
@@ -340,7 +353,7 @@ body {
   cursor: none;
 }
 
-/* line 115, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 120, ../../app/assets/stylesheets/_struct_form.sass */
 .little_circle {
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
@@ -353,75 +366,101 @@ body {
   float: left;
   margin: 2px;
 }
-/* line 122, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 127, ../../app/assets/stylesheets/_struct_form.sass */
 .little_circle:hover {
   height: 11px;
   width: 11px;
   margin: 0px;
 }
-/* line 127, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 132, ../../app/assets/stylesheets/_struct_form.sass */
 .little_circle.enabled {
   background: #47b8c8;
   border: 1px solid #47b8c8;
 }
-/* line 130, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 135, ../../app/assets/stylesheets/_struct_form.sass */
+.little_circle.enabled:hover {
+  -webkit-box-shadow: #47b8c8 0 0 4px;
+  -moz-box-shadow: #47b8c8 0 0 4px;
+  box-shadow: #47b8c8 0 0 4px;
+}
+/* line 137, ../../app/assets/stylesheets/_struct_form.sass */
 .little_circle.disabled {
   background: #423a38;
   border: 1px solid #bdb9b1;
 }
-/* line 133, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 140, ../../app/assets/stylesheets/_struct_form.sass */
+.little_circle.disabled:hover {
+  -webkit-box-shadow: #e7eee2 0 0 4px;
+  -moz-box-shadow: #e7eee2 0 0 4px;
+  box-shadow: #e7eee2 0 0 4px;
+}
+/* line 142, ../../app/assets/stylesheets/_struct_form.sass */
 .little_circle.optional {
   background: #bdb9b1;
   border: 1px solid #bdb9b1;
 }
-/* line 136, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 145, ../../app/assets/stylesheets/_struct_form.sass */
+.little_circle.optional:hover {
+  -webkit-box-shadow: #bdb9b1 0 0 4px;
+  -moz-box-shadow: #bdb9b1 0 0 4px;
+  box-shadow: #bdb9b1 0 0 4px;
+}
+/* line 147, ../../app/assets/stylesheets/_struct_form.sass */
 .little_circle.uniq {
   background: #d7503e;
   border: 1px solid #d7503e;
 }
+/* line 150, ../../app/assets/stylesheets/_struct_form.sass */
+.little_circle.uniq:hover {
+  -webkit-box-shadow: #d7503e 0 0 4px;
+  -moz-box-shadow: #d7503e 0 0 4px;
+  box-shadow: #d7503e 0 0 4px;
+}
 
-/* line 140, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 153, ../../app/assets/stylesheets/_struct_form.sass */
 #struct_form_icon_wrap.right {
   display: inline-block;
   position: absolute;
   top: 28px;
   right: -77px;
 }
-/* line 145, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 158, ../../app/assets/stylesheets/_struct_form.sass */
 #struct_form_icon_wrap.right i {
   color: rgba(231, 238, 226, 0.5);
 }
-/* line 147, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 160, ../../app/assets/stylesheets/_struct_form.sass */
 #struct_form_icon_wrap.right i:hover {
+  text-shadow: rgba(231, 238, 226, 0.8) 0 0 4px;
   color: rgba(231, 238, 226, 0.8);
 }
 
-/* line 150, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 164, ../../app/assets/stylesheets/_struct_form.sass */
 #struct_form_icon_wrap.left {
   display: inline-block;
   position: absolute;
   top: 28px;
   left: -77px;
 }
-/* line 155, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 169, ../../app/assets/stylesheets/_struct_form.sass */
 #struct_form_icon_wrap.left i {
   color: rgba(231, 238, 226, 0.5);
 }
-/* line 157, ../../app/assets/stylesheets/_struct_form.sass */
+/* line 171, ../../app/assets/stylesheets/_struct_form.sass */
 #struct_form_icon_wrap.left i:hover {
+  text-shadow: rgba(231, 238, 226, 0.8) 0 0 4px;
   color: rgba(231, 238, 226, 0.8);
 }
 
-/* line 160, ../../app/assets/stylesheets/_struct_form.sass */
-#mode-menu-toggle {
-  position: relative;
-  right: 10px;
-  top: 1px;
-  font-size: 25px;
+/* line 175, ../../app/assets/stylesheets/_struct_form.sass */
+i.icon-down-open {
+  position: absolute;
+  left: 287px;
+  bottom: -25px;
+  font-size: 22px;
   color: rgba(231, 238, 226, 0.5);
 }
-/* line 166, ../../app/assets/stylesheets/_struct_form.sass */
-#mode-menu-toggle:hover {
+/* line 181, ../../app/assets/stylesheets/_struct_form.sass */
+i.icon-down-open:hover {
   color: rgba(231, 238, 226, 0.8);
 }
 
@@ -634,19 +673,19 @@ p.three {
 #tuning-menu #tuning-wrapper #tuning {
   display: inline-block;
 }
-/* line 20, ../../app/assets/stylesheets/_tuning_menu.sass */
+/* line 21, ../../app/assets/stylesheets/_tuning_menu.sass */
 #tuning-menu #tuning-wrapper #tuning .tuning-midi-box .pitch_box .incBoxDisplay {
   background: #47b8c8;
 }
-/* line 22, ../../app/assets/stylesheets/_tuning_menu.sass */
+/* line 23, ../../app/assets/stylesheets/_tuning_menu.sass */
 #tuning-menu #tuning-wrapper #tuning .tuning-midi-box .pitch_box .incBoxDisplay b {
   color: #e7eee2;
 }
-/* line 24, ../../app/assets/stylesheets/_tuning_menu.sass */
+/* line 26, ../../app/assets/stylesheets/_tuning_menu.sass */
 #tuning-menu #tuning-wrapper #tuning .tuning-midi-box .oct_box .incBoxDisplay {
   background: #bdb9b1;
 }
-/* line 26, ../../app/assets/stylesheets/_tuning_menu.sass */
+/* line 28, ../../app/assets/stylesheets/_tuning_menu.sass */
 #tuning-menu #tuning-wrapper #tuning .tuning-midi-box .oct_box .incBoxDisplay b {
   color: #423a38;
 }
@@ -944,20 +983,32 @@ span.tab-icons i.icon-play {
   color: #47b8c8;
 }
 /* line 85, ../../app/assets/stylesheets/_tablature.sass */
+span.tab-icons i.icon-play:hover {
+  text-shadow: #47b8c8 0 0 4px;
+}
+/* line 87, ../../app/assets/stylesheets/_tablature.sass */
 span.tab-icons i.icon-heart-1, span.tab-icons i.icon-cancel-2 {
   color: #d7503e;
 }
-/* line 87, ../../app/assets/stylesheets/_tablature.sass */
+/* line 89, ../../app/assets/stylesheets/_tablature.sass */
+span.tab-icons i.icon-heart-1:hover, span.tab-icons i.icon-cancel-2:hover {
+  text-shadow: #d7503e 0 0 4px;
+}
+/* line 91, ../../app/assets/stylesheets/_tablature.sass */
 span.tab-icons i.icon-cancel-2 {
   font-size: 18px;
 }
+/* line 94, ../../app/assets/stylesheets/_tablature.sass */
+span.tab-icons i.icon-wrench:hover {
+  text-shadow: #e7eee2 0 0 4px;
+}
 
-/* line 90, ../../app/assets/stylesheets/_tablature.sass */
+/* line 97, ../../app/assets/stylesheets/_tablature.sass */
 .chord-view {
   display: inline-block;
 }
 
-/* line 95, ../../app/assets/stylesheets/_tablature.sass */
+/* line 102, ../../app/assets/stylesheets/_tablature.sass */
 input#chord-name {
   text-align: center;
   background: transparent;
@@ -976,13 +1027,13 @@ input#chord-name {
   width: 57%;
   outline: none;
 }
-/* line 108, ../../app/assets/stylesheets/_tablature.sass */
+/* line 115, ../../app/assets/stylesheets/_tablature.sass */
 input#chord-name:focus {
   background: #d7503e;
   color: #e7eee2;
 }
 
-/* line 112, ../../app/assets/stylesheets/_tablature.sass */
+/* line 119, ../../app/assets/stylesheets/_tablature.sass */
 #edit-chord-wrapper {
   text-align: center;
   border: none;
@@ -994,32 +1045,32 @@ input#chord-name:focus {
   border-radius: 10px;
   padding: 20px 10px 20px 10px;
 }
-/* line 118, ../../app/assets/stylesheets/_tablature.sass */
+/* line 125, ../../app/assets/stylesheets/_tablature.sass */
 #edit-chord-wrapper .tab {
   background: #423a38;
 }
-/* line 120, ../../app/assets/stylesheets/_tablature.sass */
+/* line 127, ../../app/assets/stylesheets/_tablature.sass */
 #edit-chord-wrapper .case {
   background: rgba(231, 238, 226, 0.3);
 }
-/* line 122, ../../app/assets/stylesheets/_tablature.sass */
+/* line 129, ../../app/assets/stylesheets/_tablature.sass */
 #edit-chord-wrapper .case.on {
   background: #47b8c8;
 }
-/* line 124, ../../app/assets/stylesheets/_tablature.sass */
+/* line 131, ../../app/assets/stylesheets/_tablature.sass */
 #edit-chord-wrapper .case.num_bubble {
   background: #d7503e;
 }
-/* line 126, ../../app/assets/stylesheets/_tablature.sass */
+/* line 133, ../../app/assets/stylesheets/_tablature.sass */
 #edit-chord-wrapper .fret_index {
   background: #423a38;
 }
-/* line 128, ../../app/assets/stylesheets/_tablature.sass */
+/* line 135, ../../app/assets/stylesheets/_tablature.sass */
 #edit-chord-wrapper .fret_index b {
   color: #d7503e;
   font-weight: bold;
 }
-/* line 131, ../../app/assets/stylesheets/_tablature.sass */
+/* line 138, ../../app/assets/stylesheets/_tablature.sass */
 #edit-chord-wrapper #submit {
   margin-top: 10px;
   border: none;
@@ -1027,7 +1078,7 @@ input#chord-name:focus {
   width: 100px;
 }
 
-/* line 138, ../../app/assets/stylesheets/_tablature.sass */
+/* line 145, ../../app/assets/stylesheets/_tablature.sass */
 .user-chord-name {
   position: relative;
   top: 16px;

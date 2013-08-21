@@ -34,7 +34,7 @@ $state_select_width: 20
   display: inline-block
   background: transparent
   position: relative
-  
+
 .main
   cursor: default
   margin: #{$bub_size / 2}px #{$state_select_width}px #{$bub_size / 2}px 0
@@ -44,7 +44,9 @@ $state_select_width: 20
   +border-radius(10px) 
   +box-sizing(border-box)
   border: 3px solid $theme_3 
-  cursor: pointer 
+  cursor: pointer
+  &:hover
+    +box-shadow($theme_3 0 0 4px) 
     
   &.enabled
     background: $theme_2 
@@ -80,7 +82,10 @@ $state_select_width: 20
   text-align: center
   left: #{($width - $state_select_width) / 2 - $bub_size / 2}px  
   border: 2px solid $theme_3 
-  +box-sizing(border-box)  
+  +box-sizing(border-box) 
+  &:hover
+    +box-shadow($theme_3 0 0 4px) 
+
   b
     color: white
     line-height: #{$bub_size}px
@@ -127,15 +132,23 @@ $state_select_width: 20
   &.enabled
     background: $theme_2
     border: 1px solid $theme_2
+    &:hover
+      +box-shadow($theme_2 0 0 4px)
   &.disabled
     background: $theme_1
-    border: 1px solid $theme_4    
+    border: 1px solid $theme_4
+    &:hover
+      +box-shadow($theme_3 0 0 4px)    
   &.optional
     background: $theme_4
     border: 1px solid $theme_4
+    &:hover
+      +box-shadow($theme_4 0 0 4px)
   &.uniq
     background: $theme_5
     border: 1px solid $theme_5
+    &:hover
+      +box-shadow($theme_5 0 0 4px)
 
 #struct_form_icon_wrap.right
   display: inline-block
@@ -145,6 +158,7 @@ $state_select_width: 20
   i
     color: rgba($theme_3, .5)
     &:hover
+      +text-shadow(rgba($theme_3, .8) 0 0 4px)
       color: rgba($theme_3, .8)
 
 #struct_form_icon_wrap.left
@@ -155,13 +169,14 @@ $state_select_width: 20
   i
     color: rgba($theme_3, .5)
     &:hover
+      +text-shadow(rgba($theme_3, .8) 0 0 4px)
       color: rgba($theme_3, .8)  
 
-#mode-menu-toggle
-  position: relative
-  right: 10px
-  top: 1px
-  font-size: 25px
+i.icon-down-open
+  position: absolute
+  left: 287px
+  bottom: -25px
+  font-size: 22px
   color: rgba($theme_3, .5)
   &:hover
     color: rgba($theme_3, .8)          

@@ -82,10 +82,17 @@ span.tab-icons
     display: inline-block
     &.icon-play
       color: $theme_2
+      &:hover
+        +text-shadow($theme_2 0 0 4px)
     &.icon-heart-1, &.icon-cancel-2  
       color: $theme_5
+      &:hover
+        +text-shadow($theme_5 0 0 4px)
     &.icon-cancel-2
       font-size: 18px
+    &.icon-wrench
+      &:hover
+        +text-shadow($theme_3 0 0 4px)  
 
 .chord-view
   display: inline-block       
