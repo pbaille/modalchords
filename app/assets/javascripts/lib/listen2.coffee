@@ -13,7 +13,6 @@ play_chord = (channel,pitches,vel,duration) ->
 	
 
 arpegio = (channel,pitches,vel,speed,duration) ->
-  console.log "pitches"
   for pitch,index in pitches
   	plan_note channel,pitch,vel,duration,speed*index
 
@@ -21,4 +20,4 @@ MIDI.loadPlugin
   soundfontUrl: "./soundfont/"
   instrument: "acoustic_grand_piano"
   callback: () ->
-	console.log "MIDI loaded !! "
+	# console.log "MIDI loaded !! "

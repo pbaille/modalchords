@@ -56,10 +56,10 @@ class SearchesRouter extends Backbone.Router
     Backbone.history.start({pushState: true})
   
   login: (user) ->
-    console.log user
     @app = new ModalChordsApp user
     $('body .modal-chords-app').remove()
     $('body').prepend @app.render().el
+    @navigate('', {trigger: true})
 
 
 ##########################################################################################
@@ -76,7 +76,6 @@ jQuery ($) ->
 
 
   $.get 'ensure_user', (r) ->
-    console.log r
     window.router= new SearchesRouter r
     window.router.start()
 

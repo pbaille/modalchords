@@ -92,10 +92,8 @@ class SelectBox
   
     regular_items.add('.sub').bind "click", (e) =>
       ct= $(e.currentTarget)
-      console.log e.currentTarget
       ct.parent().find('.placeholder').html(ct.text())
       @value = ct.text().trim()
-      console.log "clic: val: " + @value 
       #poly-depth-sb
 
     @mother.find('.sub').hide() 

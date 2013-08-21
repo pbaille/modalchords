@@ -22,7 +22,6 @@ play_chord = function(channel, pitches, vel, duration) {
 
 arpegio = function(channel, pitches, vel, speed, duration) {
   var index, pitch, _i, _len, _results;
-  console.log("pitches");
   _results = [];
   for (index = _i = 0, _len = pitches.length; _i < _len; index = ++_i) {
     pitch = pitches[index];
@@ -36,5 +35,3 @@ MIDI.loadPlugin({
   instrument: "acoustic_grand_piano",
   callback: function() {}
 });
-
-console.log("MIDI loaded !! ");

@@ -95,9 +95,7 @@ UserSearchView = (function(_super) {
     "mouseenter .wrapper": "show_degree_control",
     "mouseleave .wrapper": "hide_degree_control",
     "click .little_circle": "assign_status",
-    "mouseenter #struct_form_wrap, .wrapper ": "show_mode_menu_toggle",
-    "mouseleave #struct_form_wrap ": "hide_mode_menu_toggle",
-    "click i.icon-down-open": "toggle_mode_menu",
+    "focusout .user-search-name input": "update_name",
     "mouseleave #options-wrapper": "update_options",
     "mouseleave #tuning-wrapper": "update_tuning",
     "click #tuning-wrapper #strings": "nb_strings_update",
@@ -109,7 +107,7 @@ UserSearchView = (function(_super) {
   UserSearchView.prototype.render = function() {
     this.$el.html("<div id='tuning-menu'></div><div id='struct-wrap'></div><div id='mode-menu-wrap'></div><div id='options-wrapper'></div>");
     if (this.model.get('name') !== "user_current_search") {
-      this.$el.prepend("<div class='user-search-name'>" + (this.model.get('name')) + "</div>");
+      this.$el.prepend("<div class='user-search-name'><input type='text' value=" + (this.model.get('name')) + "></input></div>");
     }
     this.renderTuning();
     this.renderStruct();
@@ -158,6 +156,12 @@ UserSearchView = (function(_super) {
   UserSearchView.prototype.delete_search = function() {
     this.$el.remove();
     return this.model.destroy();
+  };
+
+  UserSearchView.prototype.update_name = function(e) {
+    return this.model.save({
+      name: $(e.currentTarget).val()
+    });
   };
 
   UserSearchView.prototype.update_model = function(callback) {
@@ -322,7 +326,7 @@ UserSearchView = (function(_super) {
     this.struct_selector = new SelectBox({
       mother: this.$el.find("#struct-selector"),
       placeholder: "Sub-structures",
-      content: this.model.get('partials')
+      content: this.limited_partials()
     });
     return this.mode_selector = new SelectBox({
       mother: this.$el.find("#mode-selector"),
@@ -335,14 +339,22 @@ UserSearchView = (function(_super) {
     return this.struct_selector = new SelectBox({
       mother: this.$el.find("#struct-selector"),
       placeholder: "Sub-structures",
-      content: this.model.get('partials')
+      content: this.limited_partials()
     });
+  };
+
+  UserSearchView.prototype.limited_partials = function() {
+    var lim;
+    lim = {};
+    _.each(this.model.get('partials'), function(v, k) {
+      return lim[k] = v.slice(0, 10);
+    });
+    return lim;
   };
 
   UserSearchView.prototype.hide_stuffs = function() {
     this.$el.find('.bub').hide();
-    this.$el.find('.state-selector-wrap').hide();
-    return this.$el.find('#struct_form_wrap i.icon-down-open').hide();
+    return this.$el.find('.state-selector-wrap').hide();
   };
 
   UserSearchView.prototype.cycle_status = function(e) {
@@ -404,14 +416,6 @@ UserSearchView = (function(_super) {
     return $(e.currentTarget).parent().parent().find(".bub").removeClass('uniq enabled disabled optional').addClass(k);
   };
 
-  UserSearchView.prototype.show_mode_menu_toggle = function() {
-    if (this.model.get('name') === "user_current_search") {
-      if (!this.$el.find('#mode-menu-wrap').is(":visible")) {
-        return this.$el.find('#struct_form_wrap i.icon-down-open').fadeIn();
-      }
-    }
-  };
-
   UserSearchView.prototype.hide_mode_menu_toggle = function() {
     return this.$el.find('#struct_form_wrap i.icon-down-open').fadeOut();
   };
@@ -449,7 +453,6 @@ UserSearchView = (function(_super) {
         return mm.slideUp();
       }
     } else {
-      this.hide_mode_menu_toggle();
       ow.slideDown();
       return mm.slideDown();
     }

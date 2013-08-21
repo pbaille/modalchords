@@ -27,4 +27,4 @@
     %i.icon-cog-1{ :style => "font-size: 25px;"} 
 
   /#mode-menu-toggle
-  %i.icon-down-open   
+  / %i.icon-down-open   

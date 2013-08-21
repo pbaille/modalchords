@@ -83,10 +83,8 @@ SelectBox = (function() {
     regular_items.add('.sub').bind("click", function(e) {
       var ct;
       ct = $(e.currentTarget);
-      console.log(e.currentTarget);
       ct.parent().find('.placeholder').html(ct.text());
-      _this.value = ct.text().trim();
-      return console.log("clic: val: " + _this.value);
+      return _this.value = ct.text().trim();
     });
     this.mother.find('.sub').hide();
     this.mother.find(".group").click(function() {

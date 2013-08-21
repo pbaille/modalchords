@@ -38,7 +38,7 @@
       } else {
         $o.push("    <i class='icon-rocket' style='font-size: 22px;'></i>\n    <i class='icon-cancel-2' style='font-size: 20px;'></i>");
       }
-      $o.push("  </div>\n  <div class='left' id='struct_form_icon_wrap'>\n    <i class='icon-tumbler' style='font-size: 25px;'></i>\n    <i class='icon-cog-1' style='font-size: 25px;'></i>\n  </div>\n  <!-- #mode-menu-toggle -->\n  <i class='icon-down-open'> </i>\n</div>");
+      $o.push("  </div>\n  <div class='left' id='struct_form_icon_wrap'>\n    <i class='icon-tumbler' style='font-size: 25px;'></i>\n    <i class='icon-cog-1' style='font-size: 25px;'></i>\n  </div>\n  <!-- #mode-menu-toggle -->\n  <!-- %i.icon-down-open    -->\n</div>");
       return $o.join("\n").replace(/\s(\w+)='true'/mg, ' $1').replace(/\s(\w+)='false'/mg, '');
     }).call(context);
   };

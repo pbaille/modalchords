@@ -57,9 +57,10 @@ class UserSearchView extends Backbone.View
     "mouseenter .wrapper": "show_degree_control"
     "mouseleave .wrapper": "hide_degree_control"
     "click .little_circle": "assign_status"
-    "mouseenter #struct_form_wrap, .wrapper " : "show_mode_menu_toggle"
-    "mouseleave #struct_form_wrap " : "hide_mode_menu_toggle"
-    "click i.icon-down-open" : "toggle_mode_menu"
+    "focusout .user-search-name input" : "update_name"
+    # "mouseenter #struct_form_wrap, .wrapper " : "show_mode_menu_toggle"
+    # "mouseleave #struct_form_wrap " : "hide_mode_menu_toggle"
+    # "click i.icon-down-open" : "toggle_mode_menu"
 
     #options   
     "mouseleave #options-wrapper": "update_options"
@@ -77,7 +78,7 @@ class UserSearchView extends Backbone.View
 
     @$el.html("<div id='tuning-menu'></div><div id='struct-wrap'></div><div id='mode-menu-wrap'></div><div id='options-wrapper'></div>")
     unless @model.get('name') == "user_current_search"
-      @$el.prepend("<div class='user-search-name'>#{@model.get('name')}</div>")
+      @$el.prepend("<div class='user-search-name'><input type='text' value=#{@model.get('name')}></input></div>")
     @renderTuning()
     @renderStruct()
     @renderModeMenu()
@@ -119,6 +120,10 @@ class UserSearchView extends Backbone.View
   delete_search: ->
     @$el.remove()
     @model.destroy()
+
+  update_name: (e) ->
+    @model.save
+      name: $(e.currentTarget).val()
 
   update_model: (callback)->
     dsh= {}
@@ -234,7 +239,7 @@ class UserSearchView extends Backbone.View
     @struct_selector = new SelectBox
       mother: @$el.find("#struct-selector")
       placeholder: "Sub-structures"
-      content: @model.get('partials')
+      content: @limited_partials()
   
     @mode_selector = new SelectBox
       mother: @$el.find("#mode-selector")
@@ -245,7 +250,13 @@ class UserSearchView extends Backbone.View
     @struct_selector = new SelectBox
       mother: @$el.find("#struct-selector")
       placeholder: "Sub-structures"
-      content: @model.get('partials')     
+      content: @limited_partials() #@model.get('partials')
+
+  limited_partials: ->
+    lim= {}
+    _.each @model.get('partials'), (v,k) ->
+      lim[k]= v.slice(0,10)
+    lim            
 
   #################### UI CONTROLS ###################
 
@@ -254,7 +265,7 @@ class UserSearchView extends Backbone.View
   hide_stuffs: ->
     @$el.find('.bub').hide()
     @$el.find('.state-selector-wrap').hide()
-    @$el.find('#struct_form_wrap i.icon-down-open').hide()
+    # @$el.find('#struct_form_wrap i.icon-down-open').hide()
 
   cycle_status: (e) ->
     id = $(e.currentTarget).parent().attr("id")
@@ -301,9 +312,9 @@ class UserSearchView extends Backbone.View
     $(e.currentTarget).parent().parent().find('.main').removeClass('uniq enabled disabled optional').addClass k
     $(e.currentTarget).parent().parent().find(".bub").removeClass('uniq enabled disabled optional').addClass k
 
-  show_mode_menu_toggle: () ->
-    if @model.get('name') == "user_current_search"
-      @$el.find('#struct_form_wrap i.icon-down-open').fadeIn() unless @$el.find('#mode-menu-wrap').is(":visible")
+  # show_mode_menu_toggle: () ->
+  #   if @model.get('name') == "user_current_search"
+  #     @$el.find('#struct_form_wrap i.icon-down-open').fadeIn() unless @$el.find('#mode-menu-wrap').is(":visible")
   hide_mode_menu_toggle: () ->  
     @$el.find('#struct_form_wrap i.icon-down-open').fadeOut()
 
@@ -340,7 +351,7 @@ class UserSearchView extends Backbone.View
       ow.slideUp()
       mm.slideUp() unless @model.get('name') == "user_current_search"
     else
-      @hide_mode_menu_toggle()
+      #@hide_mode_menu_toggle()
       ow.slideDown()
       mm.slideDown()
 

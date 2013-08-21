@@ -90,10 +90,12 @@ SearchesRouter = (function(_super) {
   };
 
   SearchesRouter.prototype.login = function(user) {
-    console.log(user);
     this.app = new ModalChordsApp(user);
     $('body .modal-chords-app').remove();
-    return $('body').prepend(this.app.render().el);
+    $('body').prepend(this.app.render().el);
+    return this.navigate('', {
+      trigger: true
+    });
   };
 
   return SearchesRouter;
@@ -104,7 +106,6 @@ window.router = {};
 
 jQuery(function($) {
   return $.get('ensure_user', function(r) {
-    console.log(r);
     window.router = new SearchesRouter(r);
     return window.router.start();
   });

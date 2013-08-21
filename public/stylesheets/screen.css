@@ -464,6 +464,26 @@ i.icon-down-open:hover {
   color: rgba(231, 238, 226, 0.8);
 }
 
+/* line 184, ../../app/assets/stylesheets/_struct_form.sass */
+.user-search-name input {
+  text-align: center;
+  background: transparent;
+  border: none;
+  margin: -5px 5px 0px 5px;
+  color: #e7eee2;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 20px;
+  padding: 5px;
+  width: 300px;
+  outline: none;
+}
+/* line 197, ../../app/assets/stylesheets/_struct_form.sass */
+.user-search-name input:focus {
+  text-shadow: 0 0 5px rgba(231, 238, 226, 0.6);
+  color: #e7eee2;
+}
+
 /* line 1, ../../app/assets/stylesheets/_options.sass */
 #options-wrapper {
   display: inline-block;
@@ -1033,7 +1053,7 @@ input#chord-name:focus {
   color: #e7eee2;
 }
 
-/* line 119, ../../app/assets/stylesheets/_tablature.sass */
+/* line 120, ../../app/assets/stylesheets/_tablature.sass */
 #edit-chord-wrapper {
   text-align: center;
   border: none;
@@ -1045,32 +1065,32 @@ input#chord-name:focus {
   border-radius: 10px;
   padding: 20px 10px 20px 10px;
 }
-/* line 125, ../../app/assets/stylesheets/_tablature.sass */
+/* line 126, ../../app/assets/stylesheets/_tablature.sass */
 #edit-chord-wrapper .tab {
   background: #423a38;
 }
-/* line 127, ../../app/assets/stylesheets/_tablature.sass */
+/* line 128, ../../app/assets/stylesheets/_tablature.sass */
 #edit-chord-wrapper .case {
   background: rgba(231, 238, 226, 0.3);
 }
-/* line 129, ../../app/assets/stylesheets/_tablature.sass */
+/* line 130, ../../app/assets/stylesheets/_tablature.sass */
 #edit-chord-wrapper .case.on {
   background: #47b8c8;
 }
-/* line 131, ../../app/assets/stylesheets/_tablature.sass */
+/* line 132, ../../app/assets/stylesheets/_tablature.sass */
 #edit-chord-wrapper .case.num_bubble {
   background: #d7503e;
 }
-/* line 133, ../../app/assets/stylesheets/_tablature.sass */
+/* line 134, ../../app/assets/stylesheets/_tablature.sass */
 #edit-chord-wrapper .fret_index {
   background: #423a38;
 }
-/* line 135, ../../app/assets/stylesheets/_tablature.sass */
+/* line 136, ../../app/assets/stylesheets/_tablature.sass */
 #edit-chord-wrapper .fret_index b {
   color: #d7503e;
   font-weight: bold;
 }
-/* line 138, ../../app/assets/stylesheets/_tablature.sass */
+/* line 139, ../../app/assets/stylesheets/_tablature.sass */
 #edit-chord-wrapper #submit {
   margin-top: 10px;
   border: none;
@@ -1078,7 +1098,7 @@ input#chord-name:focus {
   width: 100px;
 }
 
-/* line 145, ../../app/assets/stylesheets/_tablature.sass */
+/* line 146, ../../app/assets/stylesheets/_tablature.sass */
 .user-chord-name {
   position: relative;
   top: 16px;
