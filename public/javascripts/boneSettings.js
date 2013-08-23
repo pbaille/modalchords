@@ -35,6 +35,7 @@ SettingsView = (function(_super) {
     this.$el.find('.search_options').html(this.search_options_template(this.model.toJSON()));
     this.init_cycle_boxes();
     this.init_inc_boxes();
+    this.hide_all();
     return this;
   };
 
@@ -148,6 +149,13 @@ SettingsView = (function(_super) {
       this.$el.find('.grey').addClass('open');
       return this.$el.find(".search_options_wrap").detach().insertAfter(this.$el.find('.toggles_wrap')).slideDown();
     }
+  };
+
+  SettingsView.prototype.hide_all = function() {
+    this.$el.find('.mode_selector_wrap').hide();
+    this.$el.find('.struct_selector_wrap').hide();
+    this.$el.find('.search_options_wrap').hide();
+    return this.$el.hide();
   };
 
   SettingsView.prototype.update_mode = function() {

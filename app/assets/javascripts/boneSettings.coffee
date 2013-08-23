@@ -30,6 +30,7 @@ class SettingsView extends Backbone.View
     @$el.find('.search_options').html(@search_options_template(@model.toJSON()))
     @init_cycle_boxes()
     @init_inc_boxes()
+    @hide_all()
     this
 
   init_elements: =>
@@ -110,6 +111,12 @@ class SettingsView extends Backbone.View
   	else
   	  @$el.find('.grey').addClass('open')	
   	  @$el.find(".search_options_wrap").detach().insertAfter(@$el.find('.toggles_wrap')).slideDown() 
+  
+  hide_all: ->
+  	@$el.find('.mode_selector_wrap').hide()
+  	@$el.find('.struct_selector_wrap').hide()
+  	@$el.find('.search_options_wrap').hide()
+  	@$el.hide()
 
   update_mode: ->
 

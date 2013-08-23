@@ -231,7 +231,12 @@ class UserSearchView extends Backbone.View
 
   toggle_options: (e) ->
     ssv= @$el.find('.search-settings-view')
-    if ssv.is(":visible") then ssv.slideUp() else ssv.slideDown() 
+    if ssv.is(":visible") 
+      ssv.slideUp()
+    else 
+      ssv.find('.toggle').hide()
+      ssv.slideDown 400, () =>
+        ssv.find('.toggle').fadeIn()
    
   ############ TUNING ##############
 

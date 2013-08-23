@@ -315,12 +315,16 @@ UserSearchView = (function(_super) {
   };
 
   UserSearchView.prototype.toggle_options = function(e) {
-    var ssv;
+    var ssv,
+      _this = this;
     ssv = this.$el.find('.search-settings-view');
     if (ssv.is(":visible")) {
       return ssv.slideUp();
     } else {
-      return ssv.slideDown();
+      ssv.find('.toggle').hide();
+      return ssv.slideDown(400, function() {
+        return ssv.find('.toggle').fadeIn();
+      });
     }
   };
 
