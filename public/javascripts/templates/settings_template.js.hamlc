@@ -6,12 +6,6 @@
     %span ...
     #fb_max
 
-#fingering-max-gap.opt-item
-  %span.label
-    fingering-max-gap
-  .control  
-    #position_max_width
-
 #inversions.opt-item
   %span.label
     inversions
@@ -22,6 +16,12 @@
       No
     %p.three{:class => "#{'current' if @chord_filters['inversions'] == true }" }
       Only
+
+#fingering-max-gap.opt-item
+  %span.label
+    fingering-max-gap
+  .control  
+    #position_max_width
 
 #b9.opt-item
   %span.label
@@ -40,12 +40,6 @@
   .control  
     #bass_max_step
 
-#max-step.opt-item
-  %span.label
-    max-step
-  .control  
-    #max_step
-
 #open-strings.opt-item
   %span.label
     open-strings
@@ -56,6 +50,12 @@
       No
     %p.three{:class => "#{'current' if @chord_filters['open_strings'] == true }" }
       Only
+
+#max-step.opt-item
+  %span.label
+    max-step
+  .control  
+    #max_step
 
 #twin-pitches.opt-item
   %span.label

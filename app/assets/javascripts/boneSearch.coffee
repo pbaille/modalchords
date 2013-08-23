@@ -34,12 +34,11 @@ class UserSearchView extends Backbone.View
   initialize: ->
     _.bindAll(this, 'render')
     @model.bind('refresh', @render)
-    #@model.on('refresh_struct', @renderStruct)
+    @settings_view = new SettingsView {model: @model}
+    @settings_view.mother= this
 
   struct_template: window.HAML['struct_template']
-  settings_template: window.HAML['settings_template']
   tuning_template: window.HAML['tuning_template']
-  #mode_menu_template: window.HAML['mode_menu_template']
 
   events: 
     #icons
@@ -58,21 +57,10 @@ class UserSearchView extends Backbone.View
     "mouseleave .wrapper": "hide_degree_control"
     "click .little_circle": "assign_status"
     "focusout .user-search-name input" : "update_name"
-    # "mouseenter #struct_form_wrap, .wrapper " : "show_mode_menu_toggle"
-    # "mouseleave #struct_form_wrap " : "hide_mode_menu_toggle"
-    # "click i.icon-down-open" : "toggle_mode_menu"
-
-    #options   
-    "mouseleave #options-wrapper": "update_options"
 
     #tuning
     "mouseleave #tuning-wrapper": "update_tuning"
     "click #tuning-wrapper #strings": "nb_strings_update"
-
-    #select_boxes
-    "click #struct-selector .item": "update_struct"
-    "click #mode-selector .item": "update_mode"
-    "click .close_button" : "toggle_mode_menu"
 
   render: ->
 
@@ -81,8 +69,7 @@ class UserSearchView extends Backbone.View
       @$el.prepend("<div class='user-search-name'><input type='text' value=#{@model.get('name')}></input></div>")
     @renderTuning()
     @renderStruct()
-    @renderModeMenu()
-    @renderOptions()
+    @$el.append(@settings_view.render().el)
     @hideControls()
     this
 
@@ -94,20 +81,9 @@ class UserSearchView extends Backbone.View
     @degrees_init() 
     this
 
-  renderModeMenu: =>
-    @$el.find('#mode-menu-wrap').empty().append("<div id='mode-menu'><div class='select-box' id='mode-selector'></div><div class='select-box' id='struct-selector'></div><div class='close_button'><i class='icon-cancel-circled2'/></div></div>")
-    setTimeout @init_select_boxes, 30
-    this
-
   renderTuning: =>
     @$el.find('#tuning-menu').html(@tuning_template(@model.toJSON()))
     @init_tuning_boxes()
-    this
-
-  renderOptions: =>
-    @$el.find('#options-wrapper').html(@settings_template(@model.toJSON()))
-    @init_cycle_boxes()
-    @init_inc_boxes()
     this
   
   ####
@@ -187,40 +163,6 @@ class UserSearchView extends Backbone.View
 
     di(i) for i of @model.degrees 
 
-  init_cycle_boxes: ->
-    @tp_box = new CycleBox {mother: @$el.find("#twin-pitches .cycle-box"), values:[null,false,true]} 
-    @os_box = new CycleBox {mother: @$el.find("#open-strings .cycle-box"), values:[null,false,true]}
-    @iv_box = new CycleBox {mother: @$el.find("#inversions .cycle-box"),   values:[null,false,true]}
-    @b9_box = new CycleBox {mother: @$el.find("#b9 .cycle-box"),           values:[null,false,true]}
-
-  init_inc_boxes: ->
-
-    @fb_min_ib= new IncBox
-      el: @$el.find('#fb_min')
-      current: @model.get('fb_min_fret')
-      min: 1
-      max: @model.get('cases_nb')
-
-    @fb_max_ib = new IncBox
-      el: @$el.find('#fb_max')
-      current: @model.get('fb_max_fret')
-      min: @model.get('fb_min_fret')
-      max: @model.get('cases_nb')
-
-    @position_max_width_ib = new IncBox
-      el: @$el.find('#position_max_width')
-      current: @model.get('position_max_width')
-      min: 3
-      max: 6
-
-    @bass_max_step_ib = new IncBox
-      el: @$el.find('#bass_max_step')
-      current: @model.attributes.chord_filters['bass_max_step']
-
-    @max_step_ib = new IncBox
-      el: @$el.find('#max_step')
-      current: @model.attributes.chord_filters['max_step']
-
   init_tuning_boxes: ->
 
     @strings_nb_ib = new IncBox
@@ -233,32 +175,7 @@ class UserSearchView extends Backbone.View
     for num,index in ["one", "two", "three", "four", "five", "six", "seven", "eight"]
       @tuning_midi_boxes[index]= new MidiBox
         el: @$el.find("#tuning ##{num}")  
-        pitch: @model.attributes.tuning[index]
-
-  init_select_boxes: => 
-    @struct_selector = new SelectBox
-      mother: @$el.find("#struct-selector")
-      placeholder: "Sub-structures"
-      content: @limited_partials()
-  
-    @mode_selector = new SelectBox
-      mother: @$el.find("#mode-selector")
-      placeholder: "Select mode"
-      content: @model.get('mother_scales')  
-
-  refresh_struct_box: =>
-    @struct_selector = new SelectBox
-      mother: @$el.find("#struct-selector")
-      placeholder: "Sub-structures"
-      content: @limited_partials() #@model.get('partials')
-
-  limited_partials: ->
-    lim= {}
-    _.each @model.get('partials'), (v,k) ->
-      lim[k]= v.slice(0,10)
-    lim            
-
-  #################### UI CONTROLS ###################
+        pitch: @model.attributes.tuning[index]           
 
   ######### STRUCT ###########
 
@@ -312,49 +229,10 @@ class UserSearchView extends Backbone.View
     $(e.currentTarget).parent().parent().find('.main').removeClass('uniq enabled disabled optional').addClass k
     $(e.currentTarget).parent().parent().find(".bub").removeClass('uniq enabled disabled optional').addClass k
 
-  # show_mode_menu_toggle: () ->
-  #   if @model.get('name') == "user_current_search"
-  #     @$el.find('#struct_form_wrap i.icon-down-open').fadeIn() unless @$el.find('#mode-menu-wrap').is(":visible")
-  hide_mode_menu_toggle: () ->  
-    @$el.find('#struct_form_wrap i.icon-down-open').fadeOut()
-
-  ############## OPTIONS ###############
-
-  update_options: (e) ->
-    cb = =>
-      cf= @model.get('chord_filters')
-
-      cf['bass_max_step']= @bass_max_step_ib.get_val()
-      cf['max_step']= @max_step_ib.get_val()
-      cf['inversions']= @iv_box.get_val()
-      cf['b9']= @b9_box.get_val()
-      cf['open_strings']= @os_box.get_val()
-      cf['twin_pitches']= @tp_box.get_val()
-
-
-      @model.set
-        chord_filters : cf 
-        fb_min_fret: @fb_min_ib.get_val() 
-        fb_max_fret: @fb_max_ib.get_val()
-        position_max_width: @position_max_width_ib.get_val()
-
-      console.log @model.attributes
-
-    setTimeout cb, 250
-
   toggle_options: (e) ->
-
-    ow= @$el.find('#options-wrapper')
-    mm= @$el.find('#mode-menu-wrap')
-
-    if ow.is(":visible")
-      ow.slideUp()
-      mm.slideUp() unless @model.get('name') == "user_current_search"
-    else
-      #@hide_mode_menu_toggle()
-      ow.slideDown()
-      mm.slideDown()
-
+    ssv= @$el.find('.search-settings-view')
+    if ssv.is(":visible") then ssv.slideUp() else ssv.slideDown() 
+   
   ############ TUNING ##############
 
   update_tuning: ->
@@ -387,56 +265,6 @@ class UserSearchView extends Backbone.View
       tm.slideUp()
     else
       tm.slideDown()
-
-  ########### MODE MENU ############
-  toggle_mode_menu: () ->
-    @hide_mode_menu_toggle()
-    @$el.find('#mode-menu-wrap').slideToggle()
-
-  update_struct: (e) ->
-
-    unless $(e.currentTarget).hasClass("placeholder") or $(e.currentTarget).hasClass("group")
-
-      dsh= @model.get('degree_status_hash')
-      degrees_names= Object.keys(dsh) 
-      val= @struct_selector.value.split(",")
-      h= {}
-      for d in val
-        h[degrees_names[parseInt(d[1])-1]]= d + " enabled"
-      
-      for k,v of dsh
-        dsh[k]= v.split(" ")[0]+" disabled" 
-        dsh[k]= h[k] if h[k] 
-  
-      @model.set
-        degree_status_hash: dsh
-  
-      @renderStruct()
-
-      @model.save()
-        
-  update_mode: (e) ->
-
-    unless $(e.currentTarget).hasClass("placeholder") or $(e.currentTarget).hasClass("group")
-      dsh= @model.get('degree_status_hash')
-      val= @$el.find('#mode-selector .placeholder').text().trim()
-      # console.log "val"
-      # console.log val
-      km= @model.get('known_modes')
-      new_mode= km[val]
-
-      for k,v of dsh
-        dsh[k]= new_mode[k] + " " + v.split(" ")[1] if new_mode[k]
-      
-      @model.set
-        degree_status_hash: dsh
-        mode_name: @model.get('mode_name').split(" ")[0] + " " + val
-      
-      success_cb= =>
-        @refresh_struct_box()
-        @renderStruct()
-
-      @model.save({}, {success: success_cb})
              
 ##############################################################################################################
 class UserSearchColl extends Backbone.Collection

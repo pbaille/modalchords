@@ -54,17 +54,9 @@ UserSearchView = (function(_super) {
   __extends(UserSearchView, _super);
 
   function UserSearchView() {
-    this.refresh_struct_box = __bind(this.refresh_struct_box, this);
-
-    this.init_select_boxes = __bind(this.init_select_boxes, this);
-
     this.hideControls = __bind(this.hideControls, this);
 
-    this.renderOptions = __bind(this.renderOptions, this);
-
     this.renderTuning = __bind(this.renderTuning, this);
-
-    this.renderModeMenu = __bind(this.renderModeMenu, this);
 
     this.renderStruct = __bind(this.renderStruct, this);
     return UserSearchView.__super__.constructor.apply(this, arguments);
@@ -74,12 +66,14 @@ UserSearchView = (function(_super) {
 
   UserSearchView.prototype.initialize = function() {
     _.bindAll(this, 'render');
-    return this.model.bind('refresh', this.render);
+    this.model.bind('refresh', this.render);
+    this.settings_view = new SettingsView({
+      model: this.model
+    });
+    return this.settings_view.mother = this;
   };
 
   UserSearchView.prototype.struct_template = window.HAML['struct_template'];
-
-  UserSearchView.prototype.settings_template = window.HAML['settings_template'];
 
   UserSearchView.prototype.tuning_template = window.HAML['tuning_template'];
 
@@ -96,12 +90,8 @@ UserSearchView = (function(_super) {
     "mouseleave .wrapper": "hide_degree_control",
     "click .little_circle": "assign_status",
     "focusout .user-search-name input": "update_name",
-    "mouseleave #options-wrapper": "update_options",
     "mouseleave #tuning-wrapper": "update_tuning",
-    "click #tuning-wrapper #strings": "nb_strings_update",
-    "click #struct-selector .item": "update_struct",
-    "click #mode-selector .item": "update_mode",
-    "click .close_button": "toggle_mode_menu"
+    "click #tuning-wrapper #strings": "nb_strings_update"
   };
 
   UserSearchView.prototype.render = function() {
@@ -111,8 +101,7 @@ UserSearchView = (function(_super) {
     }
     this.renderTuning();
     this.renderStruct();
-    this.renderModeMenu();
-    this.renderOptions();
+    this.$el.append(this.settings_view.render().el);
     this.hideControls();
     return this;
   };
@@ -128,22 +117,9 @@ UserSearchView = (function(_super) {
     return this;
   };
 
-  UserSearchView.prototype.renderModeMenu = function() {
-    this.$el.find('#mode-menu-wrap').empty().append("<div id='mode-menu'><div class='select-box' id='mode-selector'></div><div class='select-box' id='struct-selector'></div><div class='close_button'><i class='icon-cancel-circled2'/></div></div>");
-    setTimeout(this.init_select_boxes, 30);
-    return this;
-  };
-
   UserSearchView.prototype.renderTuning = function() {
     this.$el.find('#tuning-menu').html(this.tuning_template(this.model.toJSON()));
     this.init_tuning_boxes();
-    return this;
-  };
-
-  UserSearchView.prototype.renderOptions = function() {
-    this.$el.find('#options-wrapper').html(this.settings_template(this.model.toJSON()));
-    this.init_cycle_boxes();
-    this.init_inc_boxes();
     return this;
   };
 
@@ -253,54 +229,6 @@ UserSearchView = (function(_super) {
     return _results;
   };
 
-  UserSearchView.prototype.init_cycle_boxes = function() {
-    this.tp_box = new CycleBox({
-      mother: this.$el.find("#twin-pitches .cycle-box"),
-      values: [null, false, true]
-    });
-    this.os_box = new CycleBox({
-      mother: this.$el.find("#open-strings .cycle-box"),
-      values: [null, false, true]
-    });
-    this.iv_box = new CycleBox({
-      mother: this.$el.find("#inversions .cycle-box"),
-      values: [null, false, true]
-    });
-    return this.b9_box = new CycleBox({
-      mother: this.$el.find("#b9 .cycle-box"),
-      values: [null, false, true]
-    });
-  };
-
-  UserSearchView.prototype.init_inc_boxes = function() {
-    this.fb_min_ib = new IncBox({
-      el: this.$el.find('#fb_min'),
-      current: this.model.get('fb_min_fret'),
-      min: 1,
-      max: this.model.get('cases_nb')
-    });
-    this.fb_max_ib = new IncBox({
-      el: this.$el.find('#fb_max'),
-      current: this.model.get('fb_max_fret'),
-      min: this.model.get('fb_min_fret'),
-      max: this.model.get('cases_nb')
-    });
-    this.position_max_width_ib = new IncBox({
-      el: this.$el.find('#position_max_width'),
-      current: this.model.get('position_max_width'),
-      min: 3,
-      max: 6
-    });
-    this.bass_max_step_ib = new IncBox({
-      el: this.$el.find('#bass_max_step'),
-      current: this.model.attributes.chord_filters['bass_max_step']
-    });
-    return this.max_step_ib = new IncBox({
-      el: this.$el.find('#max_step'),
-      current: this.model.attributes.chord_filters['max_step']
-    });
-  };
-
   UserSearchView.prototype.init_tuning_boxes = function() {
     var index, num, _i, _len, _ref, _results;
     this.strings_nb_ib = new IncBox({
@@ -320,36 +248,6 @@ UserSearchView = (function(_super) {
       }));
     }
     return _results;
-  };
-
-  UserSearchView.prototype.init_select_boxes = function() {
-    this.struct_selector = new SelectBox({
-      mother: this.$el.find("#struct-selector"),
-      placeholder: "Sub-structures",
-      content: this.limited_partials()
-    });
-    return this.mode_selector = new SelectBox({
-      mother: this.$el.find("#mode-selector"),
-      placeholder: "Select mode",
-      content: this.model.get('mother_scales')
-    });
-  };
-
-  UserSearchView.prototype.refresh_struct_box = function() {
-    return this.struct_selector = new SelectBox({
-      mother: this.$el.find("#struct-selector"),
-      placeholder: "Sub-structures",
-      content: this.limited_partials()
-    });
-  };
-
-  UserSearchView.prototype.limited_partials = function() {
-    var lim;
-    lim = {};
-    _.each(this.model.get('partials'), function(v, k) {
-      return lim[k] = v.slice(0, 10);
-    });
-    return lim;
   };
 
   UserSearchView.prototype.hide_stuffs = function() {
@@ -416,45 +314,13 @@ UserSearchView = (function(_super) {
     return $(e.currentTarget).parent().parent().find(".bub").removeClass('uniq enabled disabled optional').addClass(k);
   };
 
-  UserSearchView.prototype.hide_mode_menu_toggle = function() {
-    return this.$el.find('#struct_form_wrap i.icon-down-open').fadeOut();
-  };
-
-  UserSearchView.prototype.update_options = function(e) {
-    var cb,
-      _this = this;
-    cb = function() {
-      var cf;
-      cf = _this.model.get('chord_filters');
-      cf['bass_max_step'] = _this.bass_max_step_ib.get_val();
-      cf['max_step'] = _this.max_step_ib.get_val();
-      cf['inversions'] = _this.iv_box.get_val();
-      cf['b9'] = _this.b9_box.get_val();
-      cf['open_strings'] = _this.os_box.get_val();
-      cf['twin_pitches'] = _this.tp_box.get_val();
-      _this.model.set({
-        chord_filters: cf,
-        fb_min_fret: _this.fb_min_ib.get_val(),
-        fb_max_fret: _this.fb_max_ib.get_val(),
-        position_max_width: _this.position_max_width_ib.get_val()
-      });
-      return console.log(_this.model.attributes);
-    };
-    return setTimeout(cb, 250);
-  };
-
   UserSearchView.prototype.toggle_options = function(e) {
-    var mm, ow;
-    ow = this.$el.find('#options-wrapper');
-    mm = this.$el.find('#mode-menu-wrap');
-    if (ow.is(":visible")) {
-      ow.slideUp();
-      if (this.model.get('name') !== "user_current_search") {
-        return mm.slideUp();
-      }
+    var ssv;
+    ssv = this.$el.find('.search-settings-view');
+    if (ssv.is(":visible")) {
+      return ssv.slideUp();
     } else {
-      ow.slideDown();
-      return mm.slideDown();
+      return ssv.slideDown();
     }
   };
 
@@ -501,65 +367,6 @@ UserSearchView = (function(_super) {
       return tm.slideUp();
     } else {
       return tm.slideDown();
-    }
-  };
-
-  UserSearchView.prototype.toggle_mode_menu = function() {
-    this.hide_mode_menu_toggle();
-    return this.$el.find('#mode-menu-wrap').slideToggle();
-  };
-
-  UserSearchView.prototype.update_struct = function(e) {
-    var d, degrees_names, dsh, h, k, v, val, _i, _len;
-    if (!($(e.currentTarget).hasClass("placeholder") || $(e.currentTarget).hasClass("group"))) {
-      dsh = this.model.get('degree_status_hash');
-      degrees_names = Object.keys(dsh);
-      val = this.struct_selector.value.split(",");
-      h = {};
-      for (_i = 0, _len = val.length; _i < _len; _i++) {
-        d = val[_i];
-        h[degrees_names[parseInt(d[1]) - 1]] = d + " enabled";
-      }
-      for (k in dsh) {
-        v = dsh[k];
-        dsh[k] = v.split(" ")[0] + " disabled";
-        if (h[k]) {
-          dsh[k] = h[k];
-        }
-      }
-      this.model.set({
-        degree_status_hash: dsh
-      });
-      this.renderStruct();
-      return this.model.save();
-    }
-  };
-
-  UserSearchView.prototype.update_mode = function(e) {
-    var dsh, k, km, new_mode, success_cb, v, val,
-      _this = this;
-    if (!($(e.currentTarget).hasClass("placeholder") || $(e.currentTarget).hasClass("group"))) {
-      dsh = this.model.get('degree_status_hash');
-      val = this.$el.find('#mode-selector .placeholder').text().trim();
-      km = this.model.get('known_modes');
-      new_mode = km[val];
-      for (k in dsh) {
-        v = dsh[k];
-        if (new_mode[k]) {
-          dsh[k] = new_mode[k] + " " + v.split(" ")[1];
-        }
-      }
-      this.model.set({
-        degree_status_hash: dsh,
-        mode_name: this.model.get('mode_name').split(" ")[0] + " " + val
-      });
-      success_cb = function() {
-        _this.refresh_struct_box();
-        return _this.renderStruct();
-      };
-      return this.model.save({}, {
-        success: success_cb
-      });
     }
   };
 

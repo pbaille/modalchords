@@ -638,7 +638,7 @@ class ChordFilter
 	end
 
 	def inversions bool
-		p "bool_inversion = #{bool}"
+		#p "bool_inversion = #{bool}"
 		if bool
           Proc.new {|c| c.root == c.pitches.compact.sort[0]%12 }
 		else	

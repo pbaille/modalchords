@@ -79,66 +79,101 @@ body {
   padding-top: 20px;
 }
 
-/* line 19, ../../app/assets/stylesheets/_general.sass */
-#mode-menu-wrap {
-  position: relative;
-  height: 40px;
-  padding-top: 10px;
-}
-/* line 23, ../../app/assets/stylesheets/_general.sass */
-#mode-menu-wrap #mode-menu {
+/* line 21, ../../app/assets/stylesheets/_general.sass */
+.search-settings-view .toggles_wrap .toggles {
+  height: 20px;
   display: inline-block;
-  position: relative;
-  z-index: 1;
+  margin: 10px auto 10px auto;
 }
-
-/* line 28, ../../app/assets/stylesheets/_general.sass */
-.close_button {
-  position: absolute;
+/* line 26, ../../app/assets/stylesheets/_general.sass */
+.search-settings-view .toggles_wrap .toggles .toggle {
+  -webkit-transition-duration: 0.1s;
+  -moz-transition-duration: 0.1s;
+  -o-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  border-radius: 20px;
+  height: 14px;
+  width: 14px;
   display: inline-block;
-  left: -22px;
-  top: 13px;
-  color: rgba(231, 238, 226, 0.3);
+  float: left;
+  margin: 12px;
+  border: 2px solid #e7eee2;
 }
-/* line 34, ../../app/assets/stylesheets/_general.sass */
-.close_button:hover {
-  color: rgba(231, 238, 226, 0.6);
+/* line 36, ../../app/assets/stylesheets/_general.sass */
+.search-settings-view .toggles_wrap .toggles .toggle:hover {
+  -webkit-box-shadow: #e7eee2 0 0 4px;
+  -moz-box-shadow: #e7eee2 0 0 4px;
+  box-shadow: #e7eee2 0 0 4px;
 }
-
-/* line 37, ../../app/assets/stylesheets/_general.sass */
-#hide-menu {
-  position: absolute;
-  display: inline-block;
-  color: rgba(231, 238, 226, 0.3);
-  top: 13px;
-  left: -20px;
+/* line 40, ../../app/assets/stylesheets/_general.sass */
+.search-settings-view .toggles_wrap .toggles .toggle.blue {
+  background: #47b8c8;
 }
-/* line 43, ../../app/assets/stylesheets/_general.sass */
-#hide-menu:hover {
-  color: rgba(231, 238, 226, 0.6);
+/* line 42, ../../app/assets/stylesheets/_general.sass */
+.search-settings-view .toggles_wrap .toggles .toggle.orange {
+  background: #d7503e;
 }
-
+/* line 44, ../../app/assets/stylesheets/_general.sass */
+.search-settings-view .toggles_wrap .toggles .toggle.grey {
+  background: #bdb9b1;
+}
 /* line 46, ../../app/assets/stylesheets/_general.sass */
-#mode-menu .select-box-wrap {
-  margin: 0 10px;
+.search-settings-view .toggles_wrap .toggles .toggle.open {
+  height: 20px;
+  width: 20px;
+  margin: 9px;
 }
 
-/* line 50, ../../app/assets/stylesheets/_general.sass */
+/* line 51, ../../app/assets/stylesheets/_general.sass */
+.state-selector-wrap {
+  position: absolute;
+  width: 11px;
+  display: inline-block;
+  right: 7px;
+  top: 15px;
+  cursor: none;
+}
+
+/* line 59, ../../app/assets/stylesheets/_general.sass */
+.little_circle {
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  border-radius: 20px;
+  height: 7px;
+  width: 7px;
+  display: inline-block;
+  float: left;
+  margin: 2px;
+}
+/* line 66, ../../app/assets/stylesheets/_general.sass */
+.little_circle:hover {
+  height: 11px;
+  width: 11px;
+  margin: 0px;
+}
+
+/* line 101, ../../app/assets/stylesheets/_general.sass */
 #user-searches .search {
   padding: 5px 0 15px 0;
 }
-/* line 52, ../../app/assets/stylesheets/_general.sass */
+/* line 103, ../../app/assets/stylesheets/_general.sass */
 #user-searches .search:nth-child(2n) {
   background: #4a413f;
 }
 
-/* line 55, ../../app/assets/stylesheets/_general.sass */
+/* line 106, ../../app/assets/stylesheets/_general.sass */
 #user-chords {
   background: #4a413f;
   border-top: 5px solid rgba(231, 238, 226, 0.3);
 }
 
-/* line 61, ../../app/assets/stylesheets/_general.sass */
+/* line 112, ../../app/assets/stylesheets/_general.sass */
 #user-searches p.categorie, #user-chords p.categorie {
   background: #423a38;
   font-size: 30px;
@@ -147,7 +182,7 @@ body {
   color: #47b8c8;
 }
 
-/* line 71, ../../app/assets/stylesheets/_general.sass */
+/* line 122, ../../app/assets/stylesheets/_general.sass */
 #lean_overlay {
   opacity: 0.5;
   position: fixed;
@@ -160,23 +195,23 @@ body {
   display: none;
 }
 
-/* line 82, ../../app/assets/stylesheets/_general.sass */
+/* line 133, ../../app/assets/stylesheets/_general.sass */
 #user-menu {
   position: fixed;
   right: 20px;
   top: 0;
 }
-/* line 86, ../../app/assets/stylesheets/_general.sass */
+/* line 137, ../../app/assets/stylesheets/_general.sass */
 #user-menu #login_link, #user-menu #logout_link, #user-menu #signup_link {
   display: inline-block;
 }
-/* line 88, ../../app/assets/stylesheets/_general.sass */
+/* line 139, ../../app/assets/stylesheets/_general.sass */
 #user-menu i {
   color: rgba(231, 238, 226, 0.6);
   font-size: 20px;
   line-height: 50px;
 }
-/* line 92, ../../app/assets/stylesheets/_general.sass */
+/* line 143, ../../app/assets/stylesheets/_general.sass */
 #user-menu i:hover {
   text-shadow: rgba(231, 238, 226, 0.8) 0 0 4px;
   color: rgba(231, 238, 226, 0.8);
@@ -233,9 +268,9 @@ body {
 }
 /* line 48, ../../app/assets/stylesheets/_struct_form.sass */
 .main:hover {
-  -webkit-box-shadow: #e7eee2 0 0 4px;
-  -moz-box-shadow: #e7eee2 0 0 4px;
-  box-shadow: #e7eee2 0 0 4px;
+  -webkit-box-shadow: rgba(231, 238, 226, 0.7) 0 0 4px;
+  -moz-box-shadow: rgba(231, 238, 226, 0.7) 0 0 4px;
+  box-shadow: rgba(231, 238, 226, 0.7) 0 0 4px;
 }
 /* line 51, ../../app/assets/stylesheets/_struct_form.sass */
 .main.enabled {
@@ -484,44 +519,56 @@ i.icon-down-open:hover {
   color: #e7eee2;
 }
 
-/* line 1, ../../app/assets/stylesheets/_options.sass */
-#options-wrapper {
+/* line 4, ../../app/assets/stylesheets/_options.sass */
+.search_options {
   display: inline-block;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
   border-radius: 5px;
-  width: 400px;
-  background: #bdb9b1;
-  border: 3px solid rgba(231, 238, 226, 0.7);
+  width: 500px;
+  background: #e7eee2;
+  border: 2px solid rgba(231, 238, 226, 0.7);
   margin: 20px 0 5px 0;
 }
-/* line 9, ../../app/assets/stylesheets/_options.sass */
-#options-wrapper .opt-item {
+/* line 13, ../../app/assets/stylesheets/_options.sass */
+.search_options .opt-item {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  float: left;
+  width: 246px;
   height: 60px;
+  background: #bdb9b1;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  margin: 2px;
 }
-/* line 11, ../../app/assets/stylesheets/_options.sass */
-#options-wrapper .opt-item span.label {
+/* line 21, ../../app/assets/stylesheets/_options.sass */
+.search_options .opt-item span.label {
   color: #423a38;
   line-height: 60px;
   font-size: 18px;
   float: left;
   margin-left: 10px;
 }
-/* line 18, ../../app/assets/stylesheets/_options.sass */
-#options-wrapper .control {
+/* line 28, ../../app/assets/stylesheets/_options.sass */
+.search_options .control {
   float: right;
   margin: 5px 12px;
 }
-/* line 22, ../../app/assets/stylesheets/_options.sass */
-#options-wrapper .opt-item:nth-child(2n+1) {
-  background: rgba(231, 238, 226, 0.2);
-}
-/* line 25, ../../app/assets/stylesheets/_options.sass */
-#options-wrapper .cycle-box {
+/* line 35, ../../app/assets/stylesheets/_options.sass */
+.search_options .cycle-box {
   float: right;
   margin: 15px 12px;
+}
+/* line 39, ../../app/assets/stylesheets/_options.sass */
+.search_options .incBoxDisplay {
+  background: #47b8c8;
 }
 
 /* line 6, ../../app/assets/stylesheets/_modals.sass */
@@ -846,6 +893,103 @@ p.three {
 /* line 26, ../../app/assets/stylesheets/_selectBox.sass */
 .placeholder {
   background: rgba(231, 238, 226, 0.8);
+}
+
+/* line 5, ../../app/assets/stylesheets/_select_table.sass */
+.STwrapper {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  background: #47b8c8;
+  padding: 4px 4px 0 0;
+  color: #423a38;
+  font-weight: bold;
+  display: inline-block;
+  margin: 10px auto;
+}
+/* line 16, ../../app/assets/stylesheets/_select_table.sass */
+.STwrapper .STtitle {
+  background: rgba(231, 238, 226, 0.7);
+}
+/* line 19, ../../app/assets/stylesheets/_select_table.sass */
+.STwrapper .STelement {
+  background: rgba(231, 238, 226, 0.4);
+}
+/* line 21, ../../app/assets/stylesheets/_select_table.sass */
+.STwrapper .STelement:hover {
+  background: rgba(231, 238, 226, 0.6);
+}
+/* line 23, ../../app/assets/stylesheets/_select_table.sass */
+.STwrapper .STelement.selected {
+  text-shadow: rgba(231, 238, 226, 0.5) 0 0 5px;
+  background: rgba(231, 238, 226, 0.15);
+  color: #e7eee2;
+}
+/* line 28, ../../app/assets/stylesheets/_select_table.sass */
+.STwrapper .STcase {
+  color: rgba(66, 58, 56, 0.9);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  margin: 0 0 4px 4px;
+  width: 150px;
+  height: 30px;
+  line-height: 30px;
+}
+
+/* line 37, ../../app/assets/stylesheets/_select_table.sass */
+.STwrapper {
+  background: #e7eee2;
+}
+/* line 40, ../../app/assets/stylesheets/_select_table.sass */
+.STwrapper.mode_selector .STtitle {
+  background: #47b8c8;
+}
+/* line 42, ../../app/assets/stylesheets/_select_table.sass */
+.STwrapper.mode_selector .STelement {
+  background: #bdb9b1;
+}
+/* line 44, ../../app/assets/stylesheets/_select_table.sass */
+.STwrapper.mode_selector .STelement:hover {
+  background: #d7503e;
+  color: #e7eee2;
+}
+/* line 47, ../../app/assets/stylesheets/_select_table.sass */
+.STwrapper.mode_selector .STelement.selected {
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  background: #47b8c8;
+  text-shadow: rgba(231, 238, 226, 0.5) 0 0 5px;
+  color: #e7eee2;
+}
+/* line 54, ../../app/assets/stylesheets/_select_table.sass */
+.STwrapper.struct_selector .STtitle {
+  background: #d7503e;
+}
+/* line 56, ../../app/assets/stylesheets/_select_table.sass */
+.STwrapper.struct_selector .STelement {
+  background: #bdb9b1;
+}
+/* line 58, ../../app/assets/stylesheets/_select_table.sass */
+.STwrapper.struct_selector .STelement:hover {
+  background: #47b8c8;
+  color: #e7eee2;
+}
+/* line 61, ../../app/assets/stylesheets/_select_table.sass */
+.STwrapper.struct_selector .STelement.selected {
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  background: #d7503e;
+  text-shadow: rgba(231, 238, 226, 0.5) 0 0 5px;
+  color: #e7eee2;
 }
 
 /* line 6, ../../app/assets/stylesheets/_tablature.sass */

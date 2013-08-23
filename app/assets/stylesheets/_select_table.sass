@@ -1,0 +1,67 @@
+$elem_height: 30px
+$elem_width: 150px
+$margin: 4px
+
+.STwrapper
+  +border-radius
+  background: $theme_2
+  padding: $margin $margin 0 0
+  color: $theme_1
+  font-weight: bold
+  display: inline-block
+  margin: 10px auto
+
+  .STrow
+  
+  .STtitle
+    background: rgba($theme_3,.7)
+  
+  .STelement 
+    background: rgba($theme_3,.4)
+    &:hover
+      background: rgba($theme_3,.6)
+    &.selected
+      +text-shadow(rgba($theme_3,.5) 0 0 5px)
+      background: rgba($theme_3,.15)
+      color: $theme_3
+    
+  .STcase 
+    color: rgba($theme_1, .9)
+    +border-radius
+    margin: 0 0 $margin $margin
+    width: $elem_width
+    height: $elem_height 
+    line-height: $elem_height   
+
+// App specific
+.STwrapper
+  background: $theme_3
+  &.mode_selector
+    .STtitle
+      background: $theme_2   
+    .STelement
+      background: $theme_4
+      &:hover
+        background: $theme_5
+        color: $theme_3
+      &.selected 
+        +transition-duration(0.5s) 
+        background: $theme_2
+        +text-shadow(rgba($theme_3,.5) 0 0 5px)
+        color: $theme_3
+
+  &.struct_selector
+    .STtitle
+      background: $theme_5  
+    .STelement
+      background: $theme_4
+      &:hover
+        background: $theme_2
+        color: $theme_3
+      &.selected 
+        +transition-duration(0.5s)
+        background: $theme_5
+        +text-shadow(rgba($theme_3,.5) 0 0 5px)
+        color: $theme_3
+
+

@@ -1,13 +1,23 @@
-#options-wrapper
+$total_width: 500
+$margin: 4
+
+.search_options
   display: inline-block
   +border-radius
-  width: 400px
-  background: $theme_4
-  border: 3px solid rgba($theme_3, .7)
+  width: #{$total_width}px
+  background: $theme_3
+  border: #{$margin / 2}px solid rgba($theme_3, .7)
   margin: 20px 0 5px 0
+  //padding: 2px
 
   .opt-item
+    +box-sizing(border-box)
+    float: left
+    width: #{$total_width / 2 - $margin}px
     height: 60px
+    background: $theme_4
+    +border-radius
+    margin: #{$margin / 2}px
     span.label
       color: $theme_1
       line-height: 60px
@@ -19,13 +29,15 @@
     float: right
     margin: 5px 12px
 
-  .opt-item:nth-child(2n+1)
-    background: rgba($theme_3, .2)
+  // .opt-item:nth-child(2n+1)
+  //   background: rgba($theme_3, .2)
 
   .cycle-box
     float: right
     margin: 15px 12px 
-
+  
+  .incBoxDisplay
+    background: $theme_2
   
 // #button
 //   height: 20px
