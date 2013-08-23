@@ -235,7 +235,7 @@ class UserSearchView extends Backbone.View
       ssv.slideUp()
     else 
       ssv.find('.toggle').hide()
-      ssv.slideDown 400, () =>
+      ssv.slideDown 200, () =>
         ssv.find('.toggle').fadeIn()
    
   ############ TUNING ##############

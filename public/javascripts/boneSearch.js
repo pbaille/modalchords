@@ -322,7 +322,7 @@ UserSearchView = (function(_super) {
       return ssv.slideUp();
     } else {
       ssv.find('.toggle').hide();
-      return ssv.slideDown(400, function() {
+      return ssv.slideDown(200, function() {
         return ssv.find('.toggle').fadeIn();
       });
     }
