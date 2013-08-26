@@ -105,7 +105,7 @@ class SearchResultsView extends Backbone.View
           Sorry no matches, please check your settings
         </p>"
     else    
-      @addNext(30)
+      @addNext(20)
 
   addNext: (n)->
     @collection.slice(@index, @index+n).forEach @addOne, this  

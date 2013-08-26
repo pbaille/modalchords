@@ -44,6 +44,9 @@ ModalChordsApp = (function(_super) {
     this.searchResultsView = new SearchResultsView({
       collection: this.searchResults
     });
+    this.searchResults.fetch({
+      reset: true
+    });
     return this.modals = new Modals;
   };
 
@@ -56,7 +59,7 @@ ModalChordsApp = (function(_super) {
   };
 
   ModalChordsApp.prototype.load_more_results = function() {
-    return this.searchResultsView.addNext(30);
+    return this.searchResultsView.addNext(20);
   };
 
   return ModalChordsApp;

@@ -30,8 +30,14 @@ SettingsView = (function(_super) {
   SettingsView.prototype.search_options_template = window.HAML['settings_template'];
 
   SettingsView.prototype.render = function() {
+    var cb,
+      _this = this;
     this.$el.html("    <div class='toggles_wrap'><div class='toggles'>    	<div class='toggle blue'></div>    	<div class='toggle orange'></div>    	<div class='toggle grey'></div>    </div></div>    <div class='mode_selector_wrap'><div class='mode_selector'></div></div>		    <div class='struct_selector_wrap'><div class='struct_selector'></div></div>		    <div class='search_options_wrap'><div class='search_options'></div></div>		    ");
-    setTimeout(this.init_elements, 300);
+    cb = function() {
+      _this.init_elements();
+      return _this.toggle_mode_selector();
+    };
+    setTimeout(cb, 100);
     this.$el.find('.search_options').html(this.search_options_template(this.model.toJSON()));
     this.init_cycle_boxes();
     this.init_inc_boxes();
@@ -154,8 +160,7 @@ SettingsView = (function(_super) {
   SettingsView.prototype.hide_all = function() {
     this.$el.find('.mode_selector_wrap').hide();
     this.$el.find('.struct_selector_wrap').hide();
-    this.$el.find('.search_options_wrap').hide();
-    return this.$el.hide();
+    return this.$el.find('.search_options_wrap').hide();
   };
 
   SettingsView.prototype.update_mode = function() {

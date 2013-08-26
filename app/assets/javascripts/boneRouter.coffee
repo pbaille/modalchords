@@ -23,6 +23,7 @@ class ModalChordsApp extends Backbone.View
 
     @searchResults= new SearchResults
     @searchResultsView= new SearchResultsView {collection: @searchResults}
+    @searchResults.fetch({reset: true})
 
     @modals= new Modals
 
@@ -34,7 +35,7 @@ class ModalChordsApp extends Backbone.View
     this
 
   load_more_results: ->
-    @searchResultsView.addNext(30)
+    @searchResultsView.addNext(20)
 
 
 

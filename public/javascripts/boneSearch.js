@@ -95,7 +95,7 @@ UserSearchView = (function(_super) {
   };
 
   UserSearchView.prototype.render = function() {
-    this.$el.html("<div id='tuning-menu'></div><div id='struct-wrap'></div><div id='mode-menu-wrap'></div><div id='options-wrapper'></div>");
+    this.$el.html("<div id='tuning-menu'></div><div id='struct-wrap'></div></div>");
     if (this.model.get('name') !== "user_current_search") {
       this.$el.prepend("<div class='user-search-name'><input type='text' value=" + (this.model.get('name')) + "></input></div>");
     }
@@ -124,9 +124,7 @@ UserSearchView = (function(_super) {
   };
 
   UserSearchView.prototype.hideControls = function() {
-    this.$el.find('#options-wrapper').hide();
-    this.$el.find('#tuning-menu').hide();
-    return this.$el.find('#mode-menu-wrap').hide();
+    return this.$el.find('#tuning-menu').hide();
   };
 
   UserSearchView.prototype.delete_search = function() {

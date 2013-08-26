@@ -26,7 +26,12 @@ class SettingsView extends Backbone.View
     <div class='struct_selector_wrap'><div class='struct_selector'></div></div>		
     <div class='search_options_wrap'><div class='search_options'></div></div>		
     "
-    setTimeout @init_elements , 300
+    cb = =>
+      @init_elements()
+      @toggle_mode_selector()
+
+    setTimeout cb, 100
+
     @$el.find('.search_options').html(@search_options_template(@model.toJSON()))
     @init_cycle_boxes()
     @init_inc_boxes()
@@ -116,7 +121,6 @@ class SettingsView extends Backbone.View
   	@$el.find('.mode_selector_wrap').hide()
   	@$el.find('.struct_selector_wrap').hide()
   	@$el.find('.search_options_wrap').hide()
-  	@$el.hide()
 
   update_mode: ->
 

@@ -82,7 +82,7 @@ body {
 /* line 17, ../../app/assets/stylesheets/_general.sass */
 #load_more {
   background: #47b8c8;
-  margin: 5px auto;
+  margin: 20px auto;
   color: rgba(231, 238, 226, 0.8);
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;

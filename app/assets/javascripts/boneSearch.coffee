@@ -64,7 +64,7 @@ class UserSearchView extends Backbone.View
 
   render: ->
 
-    @$el.html("<div id='tuning-menu'></div><div id='struct-wrap'></div><div id='mode-menu-wrap'></div><div id='options-wrapper'></div>")
+    @$el.html("<div id='tuning-menu'></div><div id='struct-wrap'></div></div>")
     unless @model.get('name') == "user_current_search"
       @$el.prepend("<div class='user-search-name'><input type='text' value=#{@model.get('name')}></input></div>")
     @renderTuning()
@@ -89,9 +89,9 @@ class UserSearchView extends Backbone.View
   ####
 
   hideControls: =>  
-    @$el.find('#options-wrapper').hide()
+    #@$el.find('#options-wrapper').hide()
     @$el.find('#tuning-menu').hide()
-    @$el.find('#mode-menu-wrap').hide()
+    #@$el.find('#mode-menu-wrap').hide()
 
   delete_search: ->
     @$el.remove()

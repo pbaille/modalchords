@@ -212,7 +212,7 @@ SearchResultsView = (function(_super) {
     if (this.collection.length === 0) {
       return $('#results_wrapper').html("        <p class='empty_search_message'>          Sorry no matches, please check your settings        </p>");
     } else {
-      return this.addNext(30);
+      return this.addNext(20);
     }
   };
 
