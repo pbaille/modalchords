@@ -49,12 +49,12 @@ class SearchesRouter extends Backbone.Router
   user_searches: ->
     $('#user-area').show()
     $('#main-search').hide()
-    $('#results_wrapper').hide()
+    $('#results').hide()
 
   main_search: ->
     $('#main-search').show()
     $('#user-area').hide()
-    $('#results_wrapper').show()
+    $('#results').show()
 
   initialize: (user) ->
     @login(user)

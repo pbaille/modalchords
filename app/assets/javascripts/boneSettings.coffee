@@ -28,7 +28,10 @@ class SettingsView extends Backbone.View
     "
     cb = =>
       @init_elements()
-      @toggle_mode_selector()
+      if @model.get('name') == "user_current_search"
+        @toggle_mode_selector() 
+      else
+        @$el.hide()	
 
     setTimeout cb, 100
 

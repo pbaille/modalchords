@@ -35,7 +35,11 @@ SettingsView = (function(_super) {
     this.$el.html("    <div class='toggles_wrap'><div class='toggles'>    	<div class='toggle blue'></div>    	<div class='toggle orange'></div>    	<div class='toggle grey'></div>    </div></div>    <div class='mode_selector_wrap'><div class='mode_selector'></div></div>		    <div class='struct_selector_wrap'><div class='struct_selector'></div></div>		    <div class='search_options_wrap'><div class='search_options'></div></div>		    ");
     cb = function() {
       _this.init_elements();
-      return _this.toggle_mode_selector();
+      if (_this.model.get('name') === "user_current_search") {
+        return _this.toggle_mode_selector();
+      } else {
+        return _this.$el.hide();
+      }
     };
     setTimeout(cb, 100);
     this.$el.find('.search_options').html(this.search_options_template(this.model.toJSON()));

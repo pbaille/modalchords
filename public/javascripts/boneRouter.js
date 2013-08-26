@@ -82,13 +82,13 @@ SearchesRouter = (function(_super) {
   SearchesRouter.prototype.user_searches = function() {
     $('#user-area').show();
     $('#main-search').hide();
-    return $('#results_wrapper').hide();
+    return $('#results').hide();
   };
 
   SearchesRouter.prototype.main_search = function() {
     $('#main-search').show();
     $('#user-area').hide();
-    return $('#results_wrapper').show();
+    return $('#results').show();
   };
 
   SearchesRouter.prototype.initialize = function(user) {
