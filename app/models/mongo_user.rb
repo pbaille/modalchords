@@ -93,7 +93,6 @@ module Sinatra
 	
 	  def create_guest_user
 
-      p "create"
       salted_email= "guest#{MongoUser.random_string(10)}@modalchords.io"
 
 	    guest_user= MongoUser.new email: salted_email, password: "password", password_confirmation: "password"

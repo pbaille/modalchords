@@ -89,18 +89,31 @@ class SearchResults extends Backbone.Collection
   model: UserChord
   url: "/search_results"
 
-class SearchResultsView extends Backbone.View  
+class SearchResultsView extends Backbone.View 
+
   collection: SearchResults
 
   initialize: ->
-    @collection.on('reset', @addAll, this)
+    @collection.on('reset', @render, this)
+
   render: ->
-  	@addAll()
-  addAll: ->
-  	$('#results_wrapper').empty()
-  	@collection.forEach @addOne, this  
+    $('#results_wrapper').empty()
+    @index = 0
+    if @collection.length == 0
+      $('#results_wrapper').html "
+        <p class='empty_search_message'>
+          Sorry no matches, please check your settings
+        </p>"
+    else    
+      @addNext(30)
+
+  addNext: (n)->
+    @collection.slice(@index, @index+n).forEach @addOne, this  
+    @index+=n 
+    if @index >= @collection.length then $('#load_more').hide() else $('#load_more').show()
+
   addOne: (item) ->
-  	itemView = new UserChordView {model: item}
-  	$('#results_wrapper').append(itemView.render().el)
+    itemView = new UserChordView {model: item}
+    $('#results_wrapper').append(itemView.render().el)
 
 

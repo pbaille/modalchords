@@ -203,16 +203,27 @@ SearchResultsView = (function(_super) {
   SearchResultsView.prototype.collection = SearchResults;
 
   SearchResultsView.prototype.initialize = function() {
-    return this.collection.on('reset', this.addAll, this);
+    return this.collection.on('reset', this.render, this);
   };
 
   SearchResultsView.prototype.render = function() {
-    return this.addAll();
+    $('#results_wrapper').empty();
+    this.index = 0;
+    if (this.collection.length === 0) {
+      return $('#results_wrapper').html("        <p class='empty_search_message'>          Sorry no matches, please check your settings        </p>");
+    } else {
+      return this.addNext(30);
+    }
   };
 
-  SearchResultsView.prototype.addAll = function() {
-    $('#results_wrapper').empty();
-    return this.collection.forEach(this.addOne, this);
+  SearchResultsView.prototype.addNext = function(n) {
+    this.collection.slice(this.index, this.index + n).forEach(this.addOne, this);
+    this.index += n;
+    if (this.index >= this.collection.length) {
+      return $('#load_more').hide();
+    } else {
+      return $('#load_more').show();
+    }
   };
 
   SearchResultsView.prototype.addOne = function(item) {

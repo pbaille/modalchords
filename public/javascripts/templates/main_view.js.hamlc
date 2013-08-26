@@ -1,7 +1,9 @@
 #main-search 
 
-#results_wrapper
-
+#results
+  #results_wrapper
+  #load_more
+    %p more
 #user-area
   #user-searches
     %p.categorie User searches

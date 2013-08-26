@@ -2,6 +2,9 @@ class ModalChordsApp extends Backbone.View
 
   className: "modal-chords-app"
 
+  events: 
+    "click #load_more": "load_more_results"
+
   template: window.HAML['main_view']
 
   initialize: (user) ->
@@ -27,8 +30,11 @@ class ModalChordsApp extends Backbone.View
     @$el.html(@template)
     @$el.append(@modals.render().el)
     @$el.prepend(@user_menu.render().el)
+    @$el.find('#load_more').hide()
     this
 
+  load_more_results: ->
+    @searchResultsView.addNext(30)
 
 
 

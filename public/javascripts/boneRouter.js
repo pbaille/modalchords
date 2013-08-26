@@ -12,6 +12,10 @@ ModalChordsApp = (function(_super) {
 
   ModalChordsApp.prototype.className = "modal-chords-app";
 
+  ModalChordsApp.prototype.events = {
+    "click #load_more": "load_more_results"
+  };
+
   ModalChordsApp.prototype.template = window.HAML['main_view'];
 
   ModalChordsApp.prototype.initialize = function(user) {
@@ -47,7 +51,12 @@ ModalChordsApp = (function(_super) {
     this.$el.html(this.template);
     this.$el.append(this.modals.render().el);
     this.$el.prepend(this.user_menu.render().el);
+    this.$el.find('#load_more').hide();
     return this;
+  };
+
+  ModalChordsApp.prototype.load_more_results = function() {
+    return this.searchResultsView.addNext(30);
   };
 
   return ModalChordsApp;

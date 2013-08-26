@@ -16,13 +16,8 @@ class Search
   field :partials,           type: Hash
   field :mother_scales,      type: Hash
   field :known_modes,        type: Hash
-  # field :users_ids,          type: Array 
 
   belongs_to :mongo_user
-
-  # def users
-  #    MongoUser.criteria.in(:_id => self.users_ids) 
-  # end
 
   def self.create_from_current_settings name
     n=self.new_from_current_settings name
@@ -150,10 +145,7 @@ end
 put "/api/searches/:_id" do
   content_type(:json)
   request_body = JSON.parse(request.body.read.to_s).reject{|k,v| k == "splat"}
-  #p "req: #{request_body}"
   user= MongoUser.where(_id: session[:user]).first
-  p "user"
-  p user
   t=user.searches.where(_id: params[:_id]).first() 
 
   t.update_attributes(request_body)
@@ -192,67 +184,7 @@ delete "/api/searches/:_id" do
     halt 500
   end
 end  
-
-# #UPDATE
-# put "/api/searches/:_id" do
-#   content_type(:json)
-#   request_body = JSON.parse(request.body.read.to_s).reject{|k,v| k == "splat"}
-#   #p "req: #{request_body}"
-#   user= current_user
-#   search =user.searches.where(_id: params[:_id]).first
-#   if search.mongo_user_ids.size == 1
-#     #regular update
-#     p "unshared search"
-#     search.update_attributes(request_body) 
-#     search.partials_calc
-#     search.save
-#   else
-#     #if search is shared,delete user's search reference and create new one with params
-#     p "shared search"
-#     new_ids = user.search_ids.delete_if {|x| x == Moped::BSON::ObjectId.from_string(params[:_id])}
-#     user.update_attributes search_ids: new_ids
-#     new_search= Search.new(request_body)
-#     new_search.partials_calc
-#     user.searches.push new_search
-#     search = new_search
-#   end  
-
-#   if user.save(validate: false)
-#     search.to_json
-#   else
-#     halt 500
-#   end
-
-# end 
-
-
-# #DELETE
-# delete "/api/searches/:_id" do
-#   content_type(:json)
-#   user= current_user
-#   new_ids = user.search_ids.delete_if {|x| x == Moped::BSON::ObjectId.from_string(params[:_id])}
-#   user.update_attributes search_ids: new_ids
-
-#   if user.save(validate: false)
-#     {:success => "ok"}.to_json
-#   else
-#     halt 500
-#   end
-# end
-
-# #NEW #useless
-# post "/api/searches" do
-#   content_type(:json)
-#   request_body = JSON.parse(request.body.read.to_s)
-#   user= MongoUser.where(_id: session[:user]).first
-
-#   t=Search.new(name: request_body["name"],content: request_body["content"])
-#   if t.save
-#     t.to_json
-#   else
-#     halt 500
-#   end  
-# end    
+  
 
 
 

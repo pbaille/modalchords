@@ -12,111 +12,27 @@ body
   text-align: center
 
 #main-search
-  padding-top: 20px  
-  
-//########### MODE MENU ###########
+  padding-top: 20px 
 
-.search-settings-view
-  .toggles_wrap
-    .toggles
-      height: 20px
-      display: inline-block
-      margin: 10px auto 10px auto
-  
-      .toggle
-        +transition-duration(0.1s)
-        +border-radius(20px)
-        height: 14px
-        width: 14px
-        display: inline-block
-        float: left
-        margin: 12px
-        border: 2px solid $theme_3
-        
-        &:hover
-          +box-shadow($theme_3 0 0 4px)
-          
-  
-        &.blue
-          background: $theme_2
-        &.orange
-          background: $theme_5
-        &.grey
-          background: $theme_4
-        &.open
-          height: 20px
-          width: 20px
-          margin: 9px
-
-.state-selector-wrap
-  position: absolute
-  width: 11px
-  display: inline-block
-  right: 7px
-  top: 15px
-  cursor: none
-  
-.little_circle
-  +border-radius(20px)
-  height: 7px
-  width: 7px
-  display: inline-block
-  float: left
-  margin: 2px
+#load_more
+  background: $theme_2
+  margin: 5px auto
+  color: rgba($theme_3, .8)
+  +border-radius
+  font-size: 18px
+  font-weight: bold
+  line-height: 20px
+  padding: 5px
+  width: 100px
+  border: 3px solid $theme_3
   &:hover
-    height: 11px
-    width: 11px
-    margin: 0px
-// #mode-menu-wrap
-//   position: relative
-//   height: 40px
-//   padding-top: 10px
-//   #mode-menu
-//     display: inline-block
-//     position: relative
-//     z-index: 1
+    +box-shadow($theme_3 0 0 5px)
+    +text-shadow($theme_3 0 0 2px)
 
-// .close_button    
-//   position: absolute
-//   display: inline-block
-//   left: -22px
-//   top: 13px   
-//   color: rgba($theme_3, .3)
-//   &:hover
-//     color: rgba($theme_3, .6)
-
-// #hide-menu
-//   position: absolute
-//   display: inline-block
-//   color: rgba($theme_3, .3)
-//   top: 13px
-//   left: -20px
-//   &:hover
-//     color: rgba($theme_3, .6)
-
-// #mode-menu .select-box-wrap
-//   margin: 0 10px 
-
-//################################## 
-#user-searches .search
-  padding: 5px 0 15px 0
-  &:nth-child(2n)
-    background: lighten($theme_1, 3%)
-    
-#user-chords
-  background: lighten($theme_1, 3%)
-  border-top: 5px solid rgba($theme_3, .3) 
-
-  //border-top: 3px solid rgba($theme_3, .8) 
-#user-searches, #user-chords
-  p.categorie 
-    background: $theme_1
-    font-size: 30px
-    font-weight: bold
-    line-height: 50px
-    color: $theme_2//lighten($theme_2, 10%)//rgba($theme_3, .7)
-     
-
+.empty_search_message
+  margin-top: 20px
+  font-size: 26px 
+  color: rgba($theme_3, .7)   
 
   
 #lean_overlay 
@@ -130,19 +46,6 @@ body
   background: #000
   display: none
 
-#user-menu
-  position: fixed
-  right: 20px
-  top: 0
-  #login_link, #logout_link, #signup_link
-    display: inline-block
-  i
-    color: rgba($theme_3, .6)
-    font-size: 20px
-    line-height: 50px
-    &:hover
-      +text-shadow(rgba($theme_3, .8) 0 0 4px)
-      color: rgba($theme_3, .8) 
 
  
 

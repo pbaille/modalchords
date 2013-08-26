@@ -104,7 +104,7 @@ input#chord-name
   background: transparent
   border: none
   margin: 3px 5px -6px 5px
-  color: $theme_3
+  color: rgba($theme_3, .8)
   +border-radius
   font-size: 16px
   line-height: 20px
@@ -112,17 +112,23 @@ input#chord-name
   padding: 5px
   width: 57%
   outline: none
+  &:hover
+    +text-shadow(rgba($theme_3, .7) 0 0 4px)
+
   &:focus
     background: $theme_5
     color: $theme_3
+    &:hover
+      +text-shadow(none)
     
 
 #edit-chord-wrapper
   text-align: center
-  border: 4px solid $theme_3
+  border: 4px solid rgba($theme_3, .7)
   background: $theme_1
   +border-radius(10px)    
   padding: 20px 10px 20px 10px
+  +box-shadow(rgba($theme_3, .7) 0 0 4px)
   // .tab
   //   background: $theme_1
   // .case
@@ -140,7 +146,11 @@ input#chord-name
     margin-top: 10px
     border: none
     background: $theme_2
+    font-weight: bold
     width: 100px 
+    &:hover
+      +text-shadow(rgba($theme_3, .7) 0 0 4px)
+      +box-shadow(none)
 
 
 .user-chord-name

@@ -4,7 +4,6 @@ require 'thin'
 require 'haml'
 require 'mongoid'
 require "digest/sha1"
-#require 'rack-flash'
 require 'sass'
 
 require_relative './app/guitar_chords_gen/lib/mode_new.rb'
