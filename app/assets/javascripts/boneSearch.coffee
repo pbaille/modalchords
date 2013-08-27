@@ -66,7 +66,7 @@ class UserSearchView extends Backbone.View
 
     @$el.html("<div id='tuning-menu'></div><div id='struct-wrap'></div></div>")
     unless @model.get('name') == "user_current_search"
-      @$el.prepend("<div class='user-search-name'><input type='text' value=#{@model.get('name')}></input></div>")
+      @$el.prepend("<div class='user-search-name'><input type='text' value=\"#{@model.get('name')}\"></input></div>")
     @renderTuning()
     @renderStruct()
     @$el.append(@settings_view.render().el)

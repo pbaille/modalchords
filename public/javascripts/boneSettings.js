@@ -41,7 +41,7 @@ SettingsView = (function(_super) {
         return _this.$el.hide();
       }
     };
-    setTimeout(cb, 100);
+    setTimeout(cb, 50);
     this.$el.find('.search_options').html(this.search_options_template(this.model.toJSON()));
     this.init_cycle_boxes();
     this.init_inc_boxes();

@@ -80,6 +80,12 @@ body {
 }
 
 /* line 17, ../../app/assets/stylesheets/_general.sass */
+#results {
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* line 21, ../../app/assets/stylesheets/_general.sass */
 #load_more {
   background: #47b8c8;
   margin: 20px auto;
@@ -96,7 +102,7 @@ body {
   width: 100px;
   border: 3px solid #e7eee2;
 }
-/* line 28, ../../app/assets/stylesheets/_general.sass */
+/* line 32, ../../app/assets/stylesheets/_general.sass */
 #load_more:hover {
   -webkit-box-shadow: #e7eee2 0 0 5px;
   -moz-box-shadow: #e7eee2 0 0 5px;
@@ -104,14 +110,14 @@ body {
   text-shadow: #e7eee2 0 0 2px;
 }
 
-/* line 32, ../../app/assets/stylesheets/_general.sass */
+/* line 36, ../../app/assets/stylesheets/_general.sass */
 .empty_search_message {
   margin-top: 20px;
   font-size: 26px;
   color: rgba(231, 238, 226, 0.7);
 }
 
-/* line 38, ../../app/assets/stylesheets/_general.sass */
+/* line 42, ../../app/assets/stylesheets/_general.sass */
 #lean_overlay {
   opacity: 0.5;
   position: fixed;
@@ -181,7 +187,7 @@ body {
 }
 /* line 51, ../../app/assets/stylesheets/_struct_form.sass */
 .main.enabled {
-  background: #47b8c8;
+  background: #d7503e;
 }
 /* line 53, ../../app/assets/stylesheets/_struct_form.sass */
 .main.enabled b {
@@ -197,7 +203,7 @@ body {
 }
 /* line 59, ../../app/assets/stylesheets/_struct_form.sass */
 .main.uniq {
-  background: #d7503e;
+  background: #47b8c8;
 }
 /* line 61, ../../app/assets/stylesheets/_struct_form.sass */
 .main.uniq b {
@@ -258,7 +264,7 @@ body {
 }
 /* line 98, ../../app/assets/stylesheets/_struct_form.sass */
 .bub.uniq {
-  background: #47b8c8;
+  background: #d7503e;
 }
 /* line 100, ../../app/assets/stylesheets/_struct_form.sass */
 .bub.uniq b {
@@ -266,7 +272,7 @@ body {
 }
 /* line 102, ../../app/assets/stylesheets/_struct_form.sass */
 .bub.enabled {
-  background: #d7503e;
+  background: #47b8c8;
 }
 /* line 104, ../../app/assets/stylesheets/_struct_form.sass */
 .bub.enabled b {
@@ -316,14 +322,14 @@ body {
 }
 /* line 132, ../../app/assets/stylesheets/_struct_form.sass */
 .little_circle.enabled {
-  background: #47b8c8;
-  border: 1px solid #47b8c8;
+  background: #d7503e;
+  border: 1px solid #d7503e;
 }
 /* line 135, ../../app/assets/stylesheets/_struct_form.sass */
 .little_circle.enabled:hover {
-  -webkit-box-shadow: #47b8c8 0 0 4px;
-  -moz-box-shadow: #47b8c8 0 0 4px;
-  box-shadow: #47b8c8 0 0 4px;
+  -webkit-box-shadow: #d7503e 0 0 4px;
+  -moz-box-shadow: #d7503e 0 0 4px;
+  box-shadow: #d7503e 0 0 4px;
 }
 /* line 137, ../../app/assets/stylesheets/_struct_form.sass */
 .little_circle.disabled {
@@ -349,14 +355,14 @@ body {
 }
 /* line 147, ../../app/assets/stylesheets/_struct_form.sass */
 .little_circle.uniq {
-  background: #d7503e;
-  border: 1px solid #d7503e;
+  background: #47b8c8;
+  border: 1px solid #47b8c8;
 }
 /* line 150, ../../app/assets/stylesheets/_struct_form.sass */
 .little_circle.uniq:hover {
-  -webkit-box-shadow: #d7503e 0 0 4px;
-  -moz-box-shadow: #d7503e 0 0 4px;
-  box-shadow: #d7503e 0 0 4px;
+  -webkit-box-shadow: #47b8c8 0 0 4px;
+  -moz-box-shadow: #47b8c8 0 0 4px;
+  box-shadow: #47b8c8 0 0 4px;
 }
 
 /* line 153, ../../app/assets/stylesheets/_struct_form.sass */

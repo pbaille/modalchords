@@ -111,7 +111,7 @@ get '/load_current_search' do
 
 get '/save_search/:name' do
   content_type(:json)
-
+  p params[:name]
   s=Search.create_from_current_settings(params[:name])
   if s
     user= MongoUser.where(_id: session[:user]).first

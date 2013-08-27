@@ -33,8 +33,8 @@ class SettingsView extends Backbone.View
       else
         @$el.hide()	
 
-    setTimeout cb, 100
-
+    setTimeout cb, 50
+    
     @$el.find('.search_options').html(@search_options_template(@model.toJSON()))
     @init_cycle_boxes()
     @init_inc_boxes()
