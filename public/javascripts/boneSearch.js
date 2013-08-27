@@ -160,6 +160,7 @@ UserSearchView = (function(_super) {
   };
 
   UserSearchView.prototype.save_search = function() {
+    this.search();
     return router.app.modals.pop_search_naming();
   };
 

@@ -115,7 +115,6 @@ Modals = (function(_super) {
 
   Modals.prototype.save_search_submit = function() {
     var n;
-    console.log("search sub");
     this.hide_all();
     n = $('#search-naming #user-fav-name').val();
     return $.get("/save_search/" + n, function(ss) {

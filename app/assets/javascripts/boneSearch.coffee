@@ -115,6 +115,7 @@ class UserSearchView extends Backbone.View
     if callback then @model.save({}, {success: callback}) else @model.save()
 
   save_search: ->
+    @search()
     router.app.modals.pop_search_naming() 
 
   load_search: ->

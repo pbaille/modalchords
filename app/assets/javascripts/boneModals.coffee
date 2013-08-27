@@ -84,7 +84,7 @@ class Modals extends Backbone.View
 
   	
   save_search_submit: ->
-  	console.log "search sub"
+  	#console.log "search sub"
   	@hide_all()
   	n = $('#search-naming #user-fav-name').val()
   	$.get "/save_search/#{n}", (ss) ->
