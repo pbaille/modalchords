@@ -75,15 +75,17 @@ window.router= {}
 
 jQuery ($) ->
 
-  # window.onbeforeunload = ->
-  #   if router.app.user.get('email').slice(0,5) == "guest"
-  #     return "Are you sure you want to leave?  someCondition does not equal someValue..."
-  #   else
-  #     return  
-
+  window.onbeforeunload = ->
+    if router.app.user.get('email').slice(0,5) == "guest"
+      return "Are you sure you want to leave?  All your work will be lost, maybe should you signup first..."
+    else
+      return undefined  
 
   $.get 'ensure_user', (r) ->
     window.router= new SearchesRouter r
     window.router.start()
+
+  $.get 'destroy_old_guests', (r) ->
+    console.log r  
 
 

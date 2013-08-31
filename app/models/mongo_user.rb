@@ -154,16 +154,6 @@ get "/ensure_user" do
 	current_user.to_json 
 end	
 
-# get "/remove_all_guest" do 
-# 	MongoUser.all.each do |u|
-# 		if u.email[0..4] == "guest"
-# 			u.destroy
-# 		end	
-# 	end	
-# end	
-
-## AUTH ##
-
 get "/mongo_users/login/:email/:password" do
     content_type(:json)
     previous_user = current_user
@@ -184,17 +174,13 @@ get '/mongo_users/logout' do
   guest.to_json
 end
 
-# get "/mongo_users/signup/:email/:password/:password_confirmation" do
-  #     content_type(:json)
-  # 	current_user.update_attributes params.reject {|k,v| k=="splat" or k=="captures"}
-  # 	if current_user.save
-  #       #add_current_search_to_new_user new_user
-  #       #session[:user] = new_user._id
-  # 	  current_user.to_json
-  #     else
-  #       false.to_json
-  #     end
-# end	
+get '/destroy_old_guests' do
+  MongoUser.all.each do |u|
+    if u.email[0..4] == "guest" and (Time.now-u.updated_at)/3600 > 24
+      u.destroy
+    end 
+  end
+end  
 
 get "/mongo_users/signup/:email/:password/:password_confirmation" do
   content_type(:json)

@@ -117,8 +117,18 @@ SearchesRouter = (function(_super) {
 window.router = {};
 
 jQuery(function($) {
-  return $.get('ensure_user', function(r) {
+  window.onbeforeunload = function() {
+    if (router.app.user.get('email').slice(0, 5) === "guest") {
+      return "Are you sure you want to leave?  All your work will be lost, maybe should you signup first...";
+    } else {
+      return void 0;
+    }
+  };
+  $.get('ensure_user', function(r) {
     window.router = new SearchesRouter(r);
     return window.router.start();
+  });
+  return $.get('destroy_old_guests', function(r) {
+    return console.log(r);
   });
 });
